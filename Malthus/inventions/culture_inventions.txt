@@ -89,7 +89,7 @@ realist_literature = {
 			nationalvalue = nv_equality
 		}
 		modifier = {
-			factor = -2
+			factor = -1
 			OR = {
 				invention = realist_art
 				invention = realist_music
@@ -706,7 +706,7 @@ darwinism = {
 		}
 		modifier = {
 			factor = 2
-			invention = genetics:_heredity
+			invention = genetics_heredity
 		}
 		modifier = {
 			factor = 1
@@ -844,7 +844,7 @@ the_decline_of_the_west_and_the_lost_generation = {
 }
 #the rights of man - called enlightenment_thought in files...
 paternalism = {
-	limit = { enlightenment_thought = 1 }
+	limit = { state_n_government = 1 }
 	news = no
 	chance = {
 		base = 1
@@ -858,9 +858,15 @@ paternalism = {
 		}
 	}
 	org_regain = 0.05
+	effect = {
+		plurality = -0.05
+		}
 }
 constitutionalism = {
-	limit = { enlightenment_thought = 1 }
+	limit = {
+		state_n_government = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 3
@@ -881,7 +887,10 @@ constitutionalism = {
 	}
 }
 atheism = {
-	limit = { enlightenment_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -903,7 +912,10 @@ atheism = {
 	}
 }
 egalitarianism = {
-	limit = { enlightenment_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -928,7 +940,10 @@ egalitarianism = {
 	}
 }
 rationalism = {
-	limit = { enlightenment_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 3
@@ -947,7 +962,10 @@ rationalism = {
 }
 #ideological_thought
 authoritarianism = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 0
@@ -963,16 +981,20 @@ authoritarianism = {
 		}
 	}
 	core_pop_consciousness_modifier = -0.02
+	effect = {
+		plurality = -0.05
+	}
 }
 hierarchical_order = {
 	news = no
-	limit = { 
-			ideological_thought = 1 
-			OR = { 
+	limit = {
+		has_country_flag = existing_country
+		state_n_government = 1 
+		OR = { 
 			government = hms_government
 			government = prussian_constitutionalism
 			government = absolute_monarchy
-			}			
+		}			
 	}
 	chance = {
 		base = 1
@@ -987,9 +1009,15 @@ hierarchical_order = {
 	}
 	core_pop_militancy_modifier = -0.01
 	core_pop_consciousness_modifier = 0.01
+	effect = {
+		plurality = -0.05
+	}
 }
 traditionalism = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 0
@@ -1011,6 +1039,9 @@ traditionalism = {
 		}
 	}
 	core_pop_consciousness_modifier = -0.01
+	effect = {
+		plurality = -0.05
+	}
 }
 political_religion = {
 	limit = { ideological_thought = 1 }
@@ -1033,7 +1064,10 @@ political_religion = {
 	political_reform_desire = 0.1
 }
 individualism = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1052,7 +1086,10 @@ individualism = {
 	}
 }
 secularization = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 1
@@ -1073,7 +1110,10 @@ secularization = {
 	}
 }
 social_conscience = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1092,7 +1132,10 @@ social_conscience = {
 	}
 }
 collectivism = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1110,7 +1153,10 @@ collectivism = {
 	}
 }
 determinism = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1133,7 +1179,10 @@ determinism = {
 }
 
 social_justice = {
-	limit = { ideological_thought = 1 }
+	limit = {
+		ideological_thought = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1172,7 +1221,10 @@ populism_vs._establishment = {
 
 }
 clericalism_vs._anticlericalism = {
-	limit = { state_n_government = 1 }
+	limit = {
+		state_n_government = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1209,7 +1261,10 @@ bureaucracy_vs._nepotism = {
 	social_reform_desire = 0.05
 }
 meritocracy_vs._aristocracy = {
-	limit = { state_n_government = 1 }
+	limit = {
+		state_n_government = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1228,7 +1283,10 @@ meritocracy_vs._aristocracy = {
 }
 #nationalism_n_imperialism
 national_fraternity = {
-	limit = { nationalism_n_imperialism = 1 }
+	limit = {
+		nationalism_n_imperialism = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1238,7 +1296,7 @@ national_fraternity = {
 		}
 		modifier = {
 			factor = 2
-			prestige = 50
+			prestige = 200
 		}
 	}
 	effect = {
@@ -1269,7 +1327,10 @@ biased_multiculturalism = {
 	}
 }
 manifest_destiny = {
-	limit = { nationalism_n_imperialism = 1 }
+	limit = {
+		nationalism_n_imperialism = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1292,7 +1353,10 @@ manifest_destiny = {
 	}
 }
 expansionism = {
-	limit = { nationalism_n_imperialism = 1 }
+	limit = {
+		nationalism_n_imperialism = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1302,7 +1366,7 @@ expansionism = {
 		}
 		modifier = {
 			factor = 2
-			badboy = 5
+			badboy = 1
 		}
 	}
 	effect = {
@@ -1312,12 +1376,17 @@ expansionism = {
 }
 mission_to_civilize = {
 	limit = { 
-		year = 1850 
+		year = 1860 
 		state_n_government = 1
+		has_country_flag = existing_country
 	}
 	news = no
 	chance = {
 		base = 0
+		modifier = {
+			factor = -75
+			NOT = { year = 1860 }
+		}
 		modifier = {
 			factor = 25
 			nationalism_n_imperialism = 1
@@ -1350,7 +1419,10 @@ mission_to_civilize = {
 	}
 }
 separatism = {
-	limit = { nationalism_n_imperialism = 1 }
+	limit = {
+		nationalism_n_imperialism = 1
+		has_country_flag = existing_country
+	}
 	news = no
 	chance = {
 		base = 2
@@ -1586,7 +1658,40 @@ the_doctrine_of_fascism = {
 	limit = { mass_politics = 1 }
 	news = no
 	chance = {
-		base = 2
+		base = -4
+		
+		modifier = {
+			factor = 2
+			anti__rationalism = 1
+		}
+		modifier = {
+			factor = 5
+			mass_culture_n_the_avant_garde = 1
+		}
+		modifier = {
+			factor = 1
+			invention = nihilism_and_the_will
+		}
+		modifier = {
+			factor = 1
+			invention = futurism
+		}
+		modifier = {
+			factor = 1
+			invention = existentialism
+		}
+		modifier = {
+			factor = 2
+			invention = rhetoric_of_hate
+		}
+		modifier = {
+			factor = 2
+			invention = dogma_of_violence
+		}
+		modifier = {
+			factor = 2
+			invention = dogma_of_mass_action
+		}
 		modifier = {
 			factor = 2
 			ruling_party_ideology = fascist
@@ -1595,6 +1700,12 @@ the_doctrine_of_fascism = {
 			factor = 1
 			nationalvalue = nv_order
 		}
+		
+		modifier = {
+			factor = 2
+			invention = paramilitary_groups
+		}
+		
 		modifier = {
 			factor = 3
 			average_militancy = 4
@@ -1689,14 +1800,12 @@ national_radio_networks = {
 			year = 1920
 		}
 		modifier = {
-			factor = 2
-			government = democracy
+			factor = -1
+			NOT = { press_rights = free_press }
 		}
 		modifier = {
-			factor = -1
-			NOT = {
-				press_rights = free_press
-			}
+			factor = -3
+			NOT = { invention = vacuum_tube }
 		}
 	}
 	effect = { 
