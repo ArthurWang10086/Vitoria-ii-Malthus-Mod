@@ -5,8 +5,7 @@ is_slave = yes
 color = { 17 17 17 }
 unemployment = yes
 
-rebel =
-{
+rebel = {
 	cavalry = 0.0
 	artillery = 0.0
 	cuirassier = 0.0
@@ -28,20 +27,44 @@ luxury_needs = {
 
 ideologies = {
 	liberal = {
-		factor = 4
+		factor = 3
 	}
 	conservative = {
 		factor = 1
 	}
 }
 issues = {
-	full_citizenship =  {
-		factor = 3
-	}
 	no_slavery = {
-		factor = 5
+		factor = 4
+		
+		modifier = {
+			factor = 0
+			OR = {
+			NOT = { is_next_reform = no_slavery }
+			country = { civilized = no }
+			}
+		}
 	}
+	
+	freedom_of_womb = {
+		factor = 4
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { is_next_reform = freedom_of_womb }
+				country = { civilized = no }
+			}
+		}
+	}
+	
 	yes_slavery = {
-		factor = 2
+		factor = 1
+		modifier = {
+		factor = 0
+		OR = {
+			slavery = no_slavery
+			country = { civilized = no }
+			}
+		}
 	}
-} 
+}
