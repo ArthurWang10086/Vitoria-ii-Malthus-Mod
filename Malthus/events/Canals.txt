@@ -1,0 +1,2064 @@
+#################################################################################
+#																				#
+#             					Kiel Canal										#
+#																				#
+#################################################################################
+
+country_event = {
+
+	id = 97200
+	title = "基尔运河股利"
+	desc = "由控制基尔运河获得年度股利。"
+	picture = "Kiel"
+	
+	trigger = {
+		369 = { has_province_modifier = kiel_canal }
+		NOT = { has_country_modifier = kiel_canal_dividend }
+		NOT = { month = 1 }
+		owns = 369
+	}
+		
+	mean_time_to_happen = {
+		days = 3
+	}
+	
+	option = {
+		name = "明年还有"	
+		treasury = 5000
+		add_country_modifier = {
+			name = kiel_canal_dividend
+			duration = 31
+		}
+	}
+}
+
+country_event = {
+	
+	id = 97205
+	title = "基尔运河"
+	desc = "我们已掌控基尔运河。"
+	news = yes
+	news_title = "EVTNAME97205_NEWS_TITLE"
+	news_desc_long = "EVTDESC97205_NEWS_LONG"
+	news_desc_medium = "EVTDESC97205_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97205_NEWS_SHORT"
+	picture = "Kiel"
+	
+	trigger = {
+		is_canal_enabled = 1
+		369 = {
+			owned_by = THIS
+			NOT = { has_province_modifier = kiel_canal }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "很好！"
+		369 = {
+			add_province_modifier = {
+				name = kiel_canal
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97210
+	title = "基尔运河施工计划完成"
+	desc = "基尔运河的施工计划已经完成，现在就可以开工了！"
+	news = yes
+	news_title = "EVTNAME97210_NEWS_TITLE"
+	news_desc_long = "EVTDESC97210_NEWS_LONG"
+	news_desc_medium = "EVTDESC97210_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97210_NEWS_SHORT"
+	picture = "Kiel"
+	
+	trigger = {
+		has_global_flag = building_kiel_canal_phase0
+		has_country_modifier = building_kiel_canal
+	}
+		
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "让我们开工吧！"
+		treasury = -35000	
+		clr_global_flag = building_kiel_canal_phase0
+		set_global_flag = building_kiel_canal_phase1
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 35000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "让我们把这事先推一年再说吧。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 250000
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97215
+	title = "基尔运河一期工程完成！"
+	desc = "将基尔运河挖至格兰泰桥下。"
+	picture = "Kiel"
+	
+	trigger = {
+		has_global_flag = building_kiel_canal_phase1
+		has_country_modifier = building_kiel_canal
+	}
+		
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "让我们开始第二期工程。"
+		treasury = -35000	
+		clr_global_flag = building_kiel_canal_phase1
+		set_global_flag = building_kiel_canal_phase2
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 35000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "让我们把这事先推一年再说吧。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 250000
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 97220
+	title = "基尔运河二期工程完成！"
+	desc = "1893年9月，基尔-霍尔特瑙的运河闸正在建造中。"
+	picture = "Kiel"
+	
+	trigger = {
+		has_global_flag = building_kiel_canal_phase2
+		has_country_modifier = building_kiel_canal
+	}
+		
+	mean_time_to_happen = {
+		months = 12
+	}
+		
+	option = {
+		name = "让我们开始第三期工程。"
+		treasury = -35000	
+		clr_global_flag = building_kiel_canal_phase2
+		set_global_flag = building_kiel_canal_phase3
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 35000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "让我们把这事先推一年再说吧。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 250000
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 97225
+	title = "基尔运河完工！"
+	desc = "EVTDESC188718953"
+	news = yes
+	news_desc_long = "kiel_canal_NEWS_LONG"
+	news_desc_medium = "kiel_canal_NEWS_MEDIUM"
+	news_desc_short = "kiel_canal_NEWS_SHORT"
+	picture = "Kiel"
+	
+	trigger = {
+		has_global_flag = building_kiel_canal_phase3
+		has_country_modifier = building_kiel_canal
+	}
+		
+	mean_time_to_happen = {
+		months = 12		
+	}
+	
+	option = {
+		name = "好哇！"
+		prestige = 40
+		research_points = 120
+		enable_canal = 1
+		369 = { set_province_flag = kiel_canal }
+		set_country_flag = built_kiel
+		369 = { 
+			add_province_modifier = {
+				name = kiel_canal
+				duration = -1
+			}
+		}
+		clr_global_flag = building_kiel_canal_phase3
+		remove_country_modifier = building_kiel_canal
+	}
+}
+
+country_event = {
+	id = 97230
+	title = "失去基尔！"
+	desc = "运河建造暂时停工。一旦我们重夺基尔，我们就可以完成它。"
+	picture = "administration"
+	
+	trigger = {
+		has_country_modifier = building_kiel_canal
+		NOT = { owns = 369 }
+	}
+		
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "多么令人沮丧！"
+		prestige = -5
+		clr_global_flag = kiel_canal_global
+		remove_country_modifier = building_kiel_canal
+	}
+}
+
+country_event = {
+
+	id = 97235
+	title = "来自基尔的贺卡"
+	desc = "EVTDESC188718955"
+	picture = "Kiel"
+	
+	fire_only_once = yes
+	
+	trigger = {
+		ai = no
+		NOT = {	has_country_flag = built_kiel }
+		is_canal_enabled = 1
+	}
+		
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "邮费足够"	
+	}
+}
+
+country_event = {
+
+	id = 97240
+	title = "基尔运河"
+	desc = "有国家已开始建造基尔运河了！"
+	picture = "Kiel"
+	
+	fire_only_once = yes
+	
+	trigger = {
+		ai = no
+		has_global_flag = kiel_canal_global
+		NOT = { has_country_modifier = building_kiel_canal }
+		NOT = {	has_country_flag = built_kiel }
+	}
+		
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "哦"	
+	}
+}
+
+#################################################################################
+#																				#
+#             					Suez Canal										#
+#																				#
+#################################################################################
+
+country_event = {
+
+	id = 97250
+	title = "苏伊士运河股利"
+	desc = "由控制苏伊士运河获得年度股利。"
+	picture = "Suez3"
+	
+	trigger = {
+		1755 = { has_province_modifier = suez_canal }
+		NOT = { has_country_modifier = suez_canal_dividend }
+		NOT = { month = 1 }
+		owns = 1755
+	}
+		
+	mean_time_to_happen = {
+		days = 3
+	}
+	
+	option = {
+		name = "明年还有"	
+		treasury = 25000 
+		add_country_modifier = {
+			name = suez_canal_dividend
+			duration = 31
+		}
+		random_country = {
+			limit = { has_country_modifier = suez_canal_treaty }
+			military_access = THIS
+		}
+	}
+}
+
+country_event = {
+	
+	id = 97255
+	title = "苏伊士运河"
+	desc = "我们已掌控苏伊士运河。"
+	news = yes
+	news_title = "EVTNAME97255_NEWS_TITLE"
+	news_desc_long = "EVTDESC97255_NEWS_LONG"
+	news_desc_medium = "EVTDESC97255_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97255_NEWS_SHORT"
+	picture = "Suez3"
+	
+	trigger = {
+		is_canal_enabled = 2
+		1755 = {
+			owned_by = THIS
+			NOT = { has_province_modifier = suez_canal }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "很好。"
+		1755 = {
+			add_province_modifier = {
+				name = suez_canal
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	
+	id = 97260
+	title = "苏伊士运河建造停工"
+	desc = "运河所有权的变更意味着我们的工作结束了，至少目前如此。"
+	picture = "Suez3"
+	
+	trigger = {
+		NOT = { is_canal_enabled = 2 }
+		has_country_modifier = building_suez_canal
+		1755 = {
+			NOT = { owned_by = THIS }
+			owner = {
+				NOT = { has_country_modifier = suez_canal_treaty }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	option = {
+		name = "该死！"
+		prestige = -5
+		clr_global_flag = suez_canal_global
+		remove_country_modifier = building_suez_canal
+	}
+}
+	
+country_event = {
+
+	id = 97265
+	title = "苏伊士运河施工计划完成"
+	desc = "苏伊士运河的施工计划已经完成，现在就可以开工了！"
+	news = yes
+	news_title = "EVTNAME97265_NEWS_TITLE"
+	news_desc_long = "EVTDESC97265_NEWS_LONG"
+	news_desc_medium = "EVTDESC97265_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97265_NEWS_SHORT"
+	picture = "Suez3"
+	
+	trigger = {
+		has_global_flag = building_suez_canal_phase0
+		has_country_modifier = building_suez_canal
+		1755 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = suez_canal_treaty }
+			}
+		}	
+	}
+		
+	mean_time_to_happen = {
+		months = 6
+		modifier = {
+			factor = 0.8
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.8
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.8
+			empiricism = 1
+		}
+	}
+	
+	option = {
+		name = "让我们开始第一期工程。"
+		treasury = -75000
+		clr_global_flag = building_suez_canal_phase0
+		set_global_flag = building_suez_canal_phase1
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 75000 }
+			}
+		}
+	}
+
+	option = {
+		name = "让我们把这事先推一年再说吧。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 50000
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97270
+	title = "苏伊士运河一期工程完成！"
+	desc = "埃尔盖舌尔（El Guisr）南部，工程运输列车。"
+	picture = "Suez1"
+	
+	trigger = {
+		has_global_flag = building_suez_canal_phase1
+		has_country_modifier = building_suez_canal
+		1755 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = suez_canal_treaty }
+			}
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 0.8
+			has_global_flag = building_suez_canal_dredges
+		}
+		modifier = {
+			factor = 0.8
+			has_global_flag = berlin_conference
+		}
+		modifier = {
+			factor = 10
+			has_country_modifier = building_suez_canal_revolt
+		}
+		modifier = {
+			factor = 0.8
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.8
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.8
+			empiricism = 1
+		}
+	}
+	
+	option = {
+		name = "让我们开始第二期工程。"
+		treasury = -75000
+		clr_global_flag = building_suez_canal_phase1
+		set_global_flag = building_suez_canal_phase2
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 75000 }
+			}
+		}
+	}
+
+	option = {
+		name = "让我们把这事先推一年再说吧。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 50000
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97275
+	title = "苏伊士运河二期工程完成！"
+	desc = "EVTDESC185918692"
+	picture = "Suez3"
+	
+	trigger = {
+		has_global_flag = building_suez_canal_phase2
+		has_country_modifier = building_suez_canal
+		1755 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = suez_canal_treaty }
+			}
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 0.8
+			has_global_flag = building_suez_canal_dredges
+		}
+		modifier = {
+			factor = 0.8
+			has_global_flag = berlin_conference
+		}
+		modifier = {
+			factor = 10
+			has_country_modifier = building_suez_canal_revolt
+		}
+		modifier = {
+			factor = 0.8
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.8
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.8
+			empiricism = 1
+		}
+	}
+	
+	option = {
+		name = "让我们开始第三期工程。"
+		treasury = -75000
+		clr_global_flag = building_suez_canal_phase2
+		set_global_flag = building_suez_canal_phase3
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 75000 }
+			}
+		}
+	}
+
+	option = {
+		name = "让我们把这事推后几年。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 50000
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97280
+	title = "苏伊士运河完工！"
+	desc = "在坎塔拉与埃尔-菲丹（El-Ferdane）之间，第一艘穿过运河的船只。"
+	news = yes
+	news_desc_long = "suez_canal_NEWS_LONG"
+	news_desc_medium = "suez_canal_NEWS_MEDIUM"
+	news_desc_short = "suez_canal_NEWS_SHORT"
+	picture = "Suez3"
+	
+	trigger = {
+		has_global_flag = building_suez_canal_phase3
+		has_country_modifier = building_suez_canal
+	}
+		
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 0.8
+			has_global_flag = building_suez_canal_dredges
+		}
+		modifier = {
+			factor = 0.8
+			has_global_flag = berlin_conference
+		}
+		modifier = {
+			factor = 10
+			has_country_modifier = building_suez_canal_revolt
+		}
+		modifier = {
+			factor = 0.8
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.8
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.8
+			empiricism = 1
+		}
+	}
+	
+	option = {
+		name = "万岁！"
+		prestige = 100
+		research_points = 300
+		1755 = { secede_province = THIS }
+		enable_canal = 2
+		1755 = { set_province_flag = suez_canal }
+		set_country_flag = built_suez
+		1755 = {
+			add_province_modifier = {
+				name = suez_canal
+				duration = -1
+			}
+		}
+		clr_global_flag = building_suez_canal_phase3
+		remove_country_modifier = building_suez_canal
+		random_country = {
+			limit = { has_country_modifier = suez_canal_treaty }
+			military_access = THIS
+		}
+	}
+}
+
+country_event = {
+	id = 97285
+	title = "使用挖泥船"
+	desc = "EVTDESC185918694"
+	picture = "Suez3"
+	
+	trigger = {
+		has_country_modifier = building_suez_canal
+		NOT = { has_global_flag = building_suez_canal_phase0 }
+	}
+		
+	fire_only_once = yes
+		
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 0.8
+			has_global_flag = berlin_conference
+		}
+	}
+	
+	option = {
+		name = "建造工作现在将加速了。"
+		research_points = 100
+		set_global_flag = building_suez_canal_dredges
+	}
+}
+
+country_event = {
+	id = 97290
+	title = "运河工人暴动！"
+	desc = "EVTDESC185918695"
+	picture = "arab_revolt"
+	
+	trigger = {
+		has_country_modifier = building_suez_canal
+		NOT = { has_country_modifier = building_suez_canal_revolt }
+		NOT = { has_global_flag = building_suez_canal_phase0 }
+		NOT = { tag = ENG }
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 36
+	}
+	
+	option = {
+		name = "废除徭役"
+		treasury = -50000
+		add_country_modifier = {
+			name = building_suez_canal_revolt
+			duration = 365
+		}
+	}
+}
+
+country_event = {
+	id = 97295
+	title = "苏伊士运河条约"
+	desc = "EVTDESC185918696"
+	picture = "treaty"
+	
+	trigger = {
+		has_country_modifier = building_suez_canal
+		1755 = {
+			NOT = { owned_by = THIS }
+			owner = {
+				in_sphere = THIS
+				NOT = { has_country_modifier = suez_canal_treaty }
+			}
+		}
+	}
+		
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	option = {
+		name = "可以开始计划了。"
+		treasury = -30000
+		random_country = {
+			limit = { owns = 1755 }
+			country_event = 97300
+		}
+	}
+}
+
+country_event = {
+	id = 97300
+	title = "苏伊士运河条约"
+	desc = "EVTDESC185918697"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+		
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "总觉得我们被坑了……"
+		treasury = 30000
+		add_country_modifier = {
+			name = suez_canal_treaty
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+
+	id = 97305
+	title = "苏伊士运河条约"
+	desc = "EVTDESC185918698"
+	picture = "treaty"
+	
+	trigger = {
+		has_country_modifier = suez_canal_treaty
+		NOT = { has_country_modifier = suez_canal_treaty_annuity }
+		NOT = { month = 1 }
+	}
+		
+	mean_time_to_happen = {
+		days = 3
+	}
+	
+	option = {
+		name = "明年还有。"	
+		treasury = 7500
+		add_country_modifier = {
+			name = suez_canal_treaty_annuity
+			duration = 31
+		}
+	}
+}
+
+country_event = {
+
+	id = 97310
+	title = "苏伊士运河条约取消"
+	desc = "我们失去苏伊士后，条约就没有意义了。"
+	picture = "treaty"
+	
+	trigger = {
+		has_country_modifier = suez_canal_treaty
+		NOT = { owns = 1755 }
+		NOT = { is_canal_enabled = 2 }
+	}
+		
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	option = {
+		name = "就这样吧。"	
+		remove_country_modifier = suez_canal_treaty
+	}
+}
+
+country_event = {
+
+	id = 97315
+	title = "来自苏伊士的贺卡"
+	desc = "EVTDESC185918699"
+	picture = "Suez3"
+	
+	trigger = {
+		ai = no
+		is_canal_enabled = 2
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "谁想出这主意的？"	
+	}
+}
+
+country_event = {
+
+	id = 97325
+	title = "苏伊士运河"
+	desc = "有国家已开始建造苏伊士运河了！"
+	picture = "Suez3"
+	
+	trigger = {
+		ai = no
+		NOT = { has_country_modifier = building_suez_canal }
+		NOT = { has_country_flag = built_suez }
+		has_global_flag = suez_canal_global
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "我们祝他们好运。"	
+	}
+}
+
+#################################################################################
+#																				#
+#             					Panama Canal									#
+#																				#
+#################################################################################
+
+country_event = {
+
+	id = 97350
+	title = "巴拿马运河股利"
+	desc = "由控制巴拿马运河获得年度股利。"
+	picture = "Panama3"
+	
+	trigger = {
+		1723 = { has_province_modifier = panama_canal }
+		NOT = { has_country_modifier = panama_canal_dividend }
+		NOT = { month = 1 }
+		owns = 1723
+	}
+		
+	mean_time_to_happen = {
+		days = 3
+	}
+	
+	option = {
+		name = "明年还有。"	
+		treasury = 10000
+		add_country_modifier = {
+			name = panama_canal_dividend
+			duration = 31
+		}
+		random_country = {
+			limit = { has_country_modifier = panama_canal_treaty }
+			military_access = THIS
+		}
+	}
+}
+
+country_event = {
+	
+	id = 97355
+	title = "巴拿马运河"
+	desc = "我们已掌控巴拿马运河。"
+	news = yes
+	news_title = "EVTNAME97355_NEWS_TITLE"
+	news_desc_long = "EVTDESC97355_NEWS_LONG"
+	news_desc_medium = "EVTDESC97355_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97355_NEWS_SHORT"
+	picture = "Panama3"
+	
+	trigger = {
+		is_canal_enabled = 3
+		1723 = {
+			owned_by = THIS
+			NOT = { has_province_modifier = panama_canal }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "很好。"
+		1723 = {
+			add_province_modifier = {
+				name = panama_canal
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	
+	id = 97360
+	title = "巴拿马运河建造停工"
+	desc = "运河所有权的变更意味着我们的工作结束了，至少目前如此。"
+	picture = "Panama3"
+	
+	trigger = {
+		NOT = { is_canal_enabled = 3 }
+		has_country_modifier = building_panama_canal
+		1723 = {
+			NOT = { owned_by = THIS }
+			owner = {
+				NOT = { has_country_modifier = panama_canal_treaty }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "该死！"
+		prestige = -5
+		clr_global_flag = panama_canal_global
+		remove_country_modifier = building_panama_canal
+	}
+}
+
+country_event = {
+
+	id = 97365
+	title = "巴拿马运河施工计划完成"
+	desc = "巴拿马运河的施工计划已经完成，现在就可以开工了！"
+	news = yes
+	news_title = "EVTNAME97365_NEWS_TITLE"
+	news_desc_long = "EVTDESC97365_NEWS_LONG"
+	news_desc_medium = "EVTDESC97365_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97365_NEWS_SHORT"
+	picture = "Panama3"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		NOT = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2
+			has_global_flag = building_panama_canal_phase3
+			is_canal_enabled = 3
+		}
+		1723 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = panama_canal_treaty }
+			}
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 10
+		modifier = {
+			factor = 0.9
+			steel_railroad = 1
+		}
+		modifier = {
+			factor = 0.9
+			semi_automatization = 1
+		}
+		modifier = {
+			factor = 0.9
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.9
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.9
+			empiricism = 1
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { money = 50000 }
+		}
+	}
+	
+	option = {
+		name = "让我们开始第一期工程。"
+		treasury = -50000
+		set_global_flag = building_panama_canal_phase1
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
+	}
+
+	option = {
+		name = "让我们把这事先推一年再说吧。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 50000
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97370
+	title = "巴拿马运河一期工程完成！"
+	desc = "1904年，法国交出运河后的库莱布拉水道（Culebra Cut）。当运河完工时，共挖掘了7千6百万立方米的泥土，使得海拔从59米降至12米。"
+	picture = "Panama3"
+	
+	trigger = {
+		has_global_flag = building_panama_canal_phase1
+		has_country_modifier = building_panama_canal
+		1723 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = panama_canal_treaty }
+			}
+		}
+		NOT = {
+			has_global_flag = building_panama_canal_phase2
+			has_global_flag = building_panama_canal_phase3
+			is_canal_enabled = 3
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 20
+		modifier = {
+			factor = 1.5
+			has_global_flag = building_panama_canal_malaria
+		}
+		modifier = {
+			factor = 0.5
+			has_global_flag = building_panama_canal_antimalaria
+		}
+		modifier = {
+			factor = 0.95
+			has_global_flag = building_panama_canal_shovel
+		}
+		modifier = {
+			factor = 0.95
+			has_global_flag = building_panama_canal_dynamite
+		}
+		modifier = {
+			factor = 1.2
+			has_global_flag = building_panama_canal_slide
+		}
+		modifier = {
+			factor = 0.9
+			steel_railroad = 1
+		}
+		modifier = {
+			factor = 0.9
+			semi_automatization = 1
+		}
+		modifier = {
+			factor = 0.9
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.9
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.9
+			empiricism = 1
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { money = 50000 }
+		}
+	}
+	
+	option = {
+		name = "让我们开始第二期工程。"
+		treasury = -50000
+		clr_global_flag = building_panama_canal_phase1
+		set_global_flag = building_panama_canal_phase2
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
+	}
+
+	option = {
+		name = "让我们把这事推后几年。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 50000
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 97375
+	title = "巴拿马运河二期工程完成！"
+	desc = "1911年，建造中的皮德洛米盖闸（Pedro Miguel locks）。"
+	picture = "Panama2"
+	
+	trigger = {
+		has_global_flag = building_panama_canal_phase2
+		has_country_modifier = building_panama_canal
+		1723 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = panama_canal_treaty }
+			}
+		}
+		NOT = {
+			has_global_flag = building_panama_canal_phase3
+			is_canal_enabled = 3
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 20
+		modifier = {
+			factor = 1.2
+			has_global_flag = building_panama_canal_malaria
+		}
+		modifier = {
+			factor = 0.5
+			has_global_flag = building_panama_canal_antimalaria
+		}
+		modifier = {
+			factor = 0.9
+			has_global_flag = building_panama_canal_shovel
+		}
+		modifier = {
+			factor = 0.9
+			has_global_flag = building_panama_canal_dynamite
+		}
+		modifier = {
+			factor = 1.2
+			has_global_flag = building_panama_canal_slide
+		}
+		modifier = {
+			factor = 0.9
+			steel_railroad = 1
+		}
+		modifier = {
+			factor = 0.9
+			semi_automatization = 1
+		}
+		modifier = {
+			factor = 0.9
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.9
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.9
+			empiricism = 1
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { money = 50000 }
+		}
+	}
+	
+	option = {
+		name = "让我们开始第三期工程。"
+		treasury = -50000
+		clr_global_flag = building_panama_canal_phase2
+		set_global_flag = building_panama_canal_phase3
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
+	}
+
+	option = {
+		name = "让我们把这事推后几年。"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				money = 50000
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 97380
+	title = "巴拿马运河完工！"
+	desc = "1914年，巴拿马运河通航。蒸汽船SS安肯号（SS Ancon）从库莱布拉水道（Culebra Cut）进入皮德洛米盖闸（Pedro Miguel locks）。"
+	news = yes
+	news_desc_long = "panama_canal_NEWS_LONG"
+	news_desc_medium = "panama_canal_NEWS_MEDIUM"
+	news_desc_short = "panama_canal_NEWS_SHORT"
+	picture = "Panama3"
+	
+	trigger = {
+		has_global_flag = building_panama_canal_phase3
+		has_country_modifier = building_panama_canal
+		1723 = {
+			OR = {
+				owned_by = THIS
+				owner = { has_country_modifier = panama_canal_treaty }
+			}
+		}
+		NOT = {
+			is_canal_enabled = 3
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 20
+		modifier = {
+			factor = 1.2
+			has_global_flag = building_panama_canal_malaria
+		}
+		modifier = {
+			factor = 0.5
+			has_global_flag = building_panama_canal_antimalaria
+		}
+		modifier = {
+			factor = 0.9
+			has_global_flag = building_panama_canal_shovel
+		}
+		modifier = {
+			factor = 0.9
+			has_global_flag = building_panama_canal_dynamite
+		}
+		modifier = {
+			factor = 1.2
+			has_global_flag = building_panama_canal_slide
+		}
+		modifier = {
+			factor = 0.9
+			steel_railroad = 1
+		}
+		modifier = {
+			factor = 0.9
+			semi_automatization = 1
+		}
+		modifier = {
+			factor = 0.9
+			cheap_steel = 1
+		}
+		modifier = {
+			factor = 0.9
+			invention = nitroglycerin
+		}
+		modifier = {
+			factor = 0.9
+			empiricism = 1
+		}	
+	}
+	
+	option = {
+		name = "好哇！"
+		prestige = 200
+		research_points = 1200
+		1723 = { secede_province = THIS }
+		enable_canal = 3
+		2325 = { remove_province_modifier = gateway_to_harbor }
+		1723 = { set_province_flag = panama_canal } # canal sprite
+		1723 = {
+			add_province_modifier = {
+				name = panama_canal
+				duration = -1
+			}
+		}
+		set_country_flag = built_panama
+		clr_global_flag = building_panama_canal_phase3
+		remove_country_modifier = building_panama_canal
+		random_country = {
+			limit = { has_country_modifier = panama_canal_treaty }
+			military_access = THIS
+		}
+	}
+}
+
+country_event = {
+	id = 97385
+	title = "巴拿马运河条约"
+	desc = "EVTDESC19049144"
+	picture = "treaty"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		1723 = {
+			NOT = { owned_by = THIS }
+			owner = {
+				NOT = { has_country_modifier = panama_canal_treaty }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	option = {
+		name = "开始交涉。"
+		random_country = {
+			limit = {
+				NOT = { tag = PNM }
+				owns = 1723
+			}
+			country_event = 97390
+		}
+		random_country = {
+			limit = {
+				tag = PNM
+				owns = 1723
+			}
+			country_event = 97394
+		}
+	}
+}
+
+country_event = {
+	id = 97390
+	title = "巴拿马运河条约"
+	desc = "EVTDESC9049145"
+	picture = "treaty"
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "签署条约"
+		treasury = 30000
+		prestige = -10
+		FROM = { country_event = 97391 }
+		add_country_modifier = {
+			name = panama_canal_treaty
+			duration = -1
+		}
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = 3
+		}
+		ai_chance = {
+			factor = 30
+		}
+	}
+	
+	option = {
+		name = "拒绝"
+		set_global_flag = refused_canal_treaty_once
+		prestige = 5
+		relation = { who = FROM value = -100 }
+		FROM = { country_event = 97392 }
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 0
+				vassal_of = FROM
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = refused_canal_treaty_once
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 97391
+	title = "海-布诺-瓦里拉条约"
+	desc = "$FROMCOUNTRY$签署了我们提出的条约。运河建造可以开始了！"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "很好！"
+		treasury = -30000
+	}
+}
+
+country_event = {
+	id = 97392
+	title = "$FROMCOUNTRY$拒绝"
+	desc = "EVTDESC9049147"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "目前还是放弃努力吧。"
+		prestige = -10
+		treasury = 50000
+		clr_global_flag = panama_canal_global
+		remove_country_modifier = building_panama_canal
+		diplomatic_influence = { who = FROM value = -200 }
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				war_policy = jingoism
+			}
+			modifier = {
+				factor = 0.5
+				war_policy = pro_military
+			}
+		}
+	}
+	
+	option = {
+		name = "支援叛乱者，我们会拿到运河的。"
+		badboy = 3
+		FROM = {
+			release = PNM
+			country_event = 97393
+		}
+		relation = { who = PNM value = 200 }
+		diplomatic_influence = { who = PNM value = 300 }
+		diplomatic_influence = { who = FROM value = -100 }
+		create_alliance = PNM
+		PNM = { country_event = 97394 }
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0.5
+				war_policy = pacifism
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 97393
+	title = "巴拿马叛乱！"
+	desc = "EVTDESC9049148"
+	picture = "unite"
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "放巴拿马走。"
+		prestige = -10
+		CLM_1723 = { remove_core = THIS }
+		relation = { who = FROM value = 50 }
+		relation = { who = PNM value = 50 }
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = 3
+		}
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	option = {
+		name = "巴拿马是$COUNTRY_ADJ$的！"
+		relation = { who = PNM value = -100 }
+		FROM = {
+			diplomatic_influence = { who = THIS value = -100 }
+		}
+		leave_alliance = FROM
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = -3
+			dominant_issue = {
+				factor = 0.05
+				value = jingoism
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}	
+	
+country_event = {
+	id = 97394
+	title = "海-布诺-瓦里拉条约"
+	desc = "EVTDESC190419145"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = "感谢美国佬！"
+		treasury = 30000
+		add_country_modifier = {
+			name = panama_canal_treaty
+			duration = -1
+		}
+		FROM = { country_event = 97391 }
+	}
+}
+
+country_event = {
+
+	id = 97395
+	title = "海-布诺-瓦里拉条约"
+	desc = "EVTDESC190419146"
+	picture = "treaty"
+	
+	trigger = {
+		has_country_modifier = panama_canal_treaty
+		NOT = { has_country_modifier = panama_canal_treaty_annuity }
+		NOT = { month = 1 }
+	}
+		
+	mean_time_to_happen = {
+		days = 3
+	}
+	
+	option = {
+		name = "明年还有。"	
+		treasury = 7500
+		add_country_modifier = {
+			name = panama_canal_treaty_annuity
+			duration = 31
+		}
+	}
+}
+
+country_event = {
+
+	id = 97400
+	title = "巴拿马运河条约取消"
+	desc = "们失去地峡后，条约就没有意义了。"
+	picture = "treaty"
+	
+	trigger = {
+		has_country_modifier = panama_canal_treaty
+		NOT = { owns = 1723 }
+		NOT = { is_canal_enabled = 3 }
+	}
+		
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	option = {
+		name = "就这样吧。"	
+		remove_country_modifier = panama_canal_treaty
+	}
+}
+
+country_event = {
+
+	id = 97405
+	title = "来自巴拿马运河的贺卡"
+	desc = "EVTDESC190419147"
+	news = yes
+	news_title = "EVTNAME97405_NEWS_TITLE"
+	news_desc_long = "EVTDESC97405_NEWS_LONG"
+	news_desc_medium = "EVTDESC97405_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC97405_NEWS_SHORT"
+	picture = "Panama3"
+	
+	trigger = {
+		ai = no
+		is_canal_enabled = 3
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "邮费不足"	
+		treasury = -1
+	}
+}
+
+country_event = {
+
+	id = 97410
+	title = "疟疾！"
+	desc = "EVTDESC190419148"
+	picture = "Panama3"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		OR = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2	
+			has_global_flag = building_panama_canal_phase3
+		}
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	option = {
+		name = "这是一股什么恶臭？"	
+		set_global_flag = building_panama_canal_malaria
+	}
+}
+
+country_event = {
+
+	id = 97415
+	title = "卫生措施"
+	desc = "EVTDESC190419149"
+	picture = "Panama3"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		OR = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2	
+			has_global_flag = building_panama_canal_phase3
+		}
+		has_global_flag = building_panama_canal_malaria
+		invention = prophylaxis_against_malaria
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.5
+			year = 1880
+		}
+		modifier = {
+			factor = 0.5
+			year = 1890
+		}
+		modifier = {
+			factor = 0.5
+			year = 1900
+		}
+	}
+		
+	option = {
+		name = "一边喷药一边祈祷。"	
+		research_points = 100
+		set_global_flag = building_panama_canal_antimalaria
+	}
+}
+
+country_event = {
+
+	id = 97420
+	title = "使用蒸汽挖掘机"
+	desc = "EVTDESC1904191410"
+	picture = "Panama3"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		OR = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2	
+			has_global_flag = building_panama_canal_phase3
+		}
+		high_n_low_pressure_steam_engines = 1
+		interchangeable_parts = 1
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "继续"	
+		research_points = 100
+		set_global_flag = building_panama_canal_shovel
+	}
+}
+
+country_event = {
+
+	id = 97425
+	title = "使用炸药"
+	desc = "EVTDESC1904191411"
+	picture = "Panama3"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		OR = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2	
+			has_global_flag = building_panama_canal_phase3
+		}
+		invention = nitroglycerin
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "砰！"	
+		research_points = 100
+		set_global_flag = building_panama_canal_dynamite
+	}
+}
+
+country_event = {
+
+	id = 97430
+	title = "库卡拉查滑坡"
+	desc = "EVTDESC1904191412"
+	picture = "Panama3"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		OR = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2	
+			has_global_flag = building_panama_canal_phase3
+		}
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 36
+	}
+	
+	option = {
+		name = "妈的！"	
+		set_global_flag = building_panama_canal_slide
+	}
+}
+
+country_event = {
+
+	id = 97435
+	title = "巴拿马运河丑闻"
+	desc = "EVTDESC1904191413"
+	picture = "Panama13"
+	
+	trigger = {
+		has_country_modifier = building_panama_canal
+		OR = {
+			has_global_flag = building_panama_canal_phase1
+			has_global_flag = building_panama_canal_phase2	
+			has_global_flag = building_panama_canal_phase3
+		}
+		NOT = { has_country_flag = building_panama_canal_scandal }
+		NOT = { has_country_flag = building_panama_canal_bailout }
+		NOT = { economic_policy = planned_economy }
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 1.2
+			invention = limited_partnership_company
+		}	
+		modifier = {
+			factor = 1.2
+			invention = joint_stock_company
+		}
+		modifier = {
+			factor = 1.2
+			invention = anti_trust_laws
+		}
+		modifier = {
+			factor = 1.2
+			invention = financial_regulations
+		}
+		modifier = {
+			factor = 1.2
+			invention = banking_regulations
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { invention = financial_regulations }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { invention = banking_regulations }
+		}
+		modifier = {
+			factor = 0.8
+			economic_policy = laissez_faire
+		}
+	}
+	
+	option = {
+		name = "开始正式调查（降低破产几率）。"
+		prestige = -25
+		treasury = -50000	
+		any_pop = {
+			limit = {
+				OR = {
+					is_primary_culture = yes
+					is_accepted_culture = yes
+				}
+			}
+			militancy = 1
+			consciousness = 0.5
+		}	
+		set_country_flag = building_panama_canal_scandal
+		set_country_flag = building_panama_canal_scandal_investigation
+		ai_chance = {
+			factor = 35
+			modifier = {
+				factor = 0
+				NOT = { money = 50000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "掩盖起来。"
+		treasury = -30000
+		any_pop = {
+			limit = {
+				OR = {
+					is_primary_culture = yes
+					is_accepted_culture = yes
+				}
+			}
+			militancy = 0.2
+			consciousness = 0.1
+		}
+		set_country_flag = building_panama_canal_scandal
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 0
+				NOT = { money = 30000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "停止建造。"
+		prestige = -50
+		set_country_flag = building_panama_canal_scandal
+		remove_country_modifier = building_panama_canal
+		clr_global_flag = panama_canal_global
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+country_event = {
+
+	id = 97440
+	title = "巴拿马运河公司破产！"
+	desc = "EVTDESC1904191414"
+	picture = "Panama13"
+	fire_only_once = yes
+	trigger = {
+		has_country_modifier = building_panama_canal
+		has_country_flag = building_panama_canal_scandal
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 1.5
+			has_country_flag = building_panama_canal_scandal_investigation
+		}
+	}
+		
+	option = {
+		name = "停止建造巴拿马运河。（可能十年后重启）"	
+		prestige = -100
+		any_pop = {
+			limit = {
+				OR = {
+					is_primary_culture = yes
+					is_accepted_culture = yes
+				}
+			}
+			militancy = 1
+			consciousness = 2
+		}
+		remove_country_modifier = building_panama_canal
+		clr_country_flag = building_panama_canal_scandal_investigation
+		clr_global_flag = panama_canal_global
+		add_country_modifier = {
+			name = building_panama_canal_scandal
+			duration = 3650
+		}
+		ai_chance = {
+			factor = 75
+		}
+	}
+	
+	option = {
+		name = "为了国家而挽救公司。"
+		prestige = -20
+		money = -75000
+		any_pop = {
+			limit = {
+				OR = {
+					is_primary_culture = yes
+					is_accepted_culture = yes
+				}
+			}
+			dominant_issue = {
+				factor = 0.10
+				value = interventionism
+			}
+			scaled_militancy = {
+				issue = laissez_faire
+				factor = 3
+			}
+		}
+		clr_country_flag = building_panama_canal_scandal_investigation
+		set_country_flag = building_panama_canal_bailout
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				NOT = { money = 75000 }
+			}
+			modifier = {
+				factor = 0.5
+				economic_policy = laissez_faire
+			}
+			modifier = {
+				factor = 3
+				economic_policy = state_capitalism
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 97445
+	title = "出售设备"
+	desc = "EVTDESC1904191415"
+	picture = "Panama13"
+	
+	trigger = {
+		NOT = { is_canal_enabled = 3 }
+		NOT = { has_country_modifier = building_panama_canal }
+		has_country_flag = building_panama_canal_scandal
+		NOT = { has_country_flag = sold_canal_equipment }
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+		
+	option = {
+		name = "总比没有好"
+		set_country_flag = sold_canal_equipment
+		treasury = 120000 # French got 40 million for their equipment
+	}
+}
+
+country_event = {
+
+	id = 97450
+	
+	trigger = {
+		ai = no
+		NOT = { has_country_flag = built_panama }
+		has_global_flag = panama_canal_global
+		NOT = { has_country_modifier = building_panama_canal }
+	}
+		
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	title = "巴拿马运河"
+	desc = "有国家已开始建造巴拿马运河了！"
+	picture = "Panama3"
+
+	option = {
+		name = "我们祝他们好运。"	
+	}
+}

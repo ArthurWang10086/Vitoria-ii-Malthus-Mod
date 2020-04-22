@@ -1,0 +1,909 @@
+#############################################################################
+# French conquest of Indochina
+#############################################################################
+
+country_event = {
+	id = 95639
+	title = "EVTNAME95640" #Persecution of French Missionaries
+	desc = "EVTDESC95639"
+	picture = "missionaries"
+	
+	trigger = {
+		owns = 1380
+		civilized = no
+		is_vassal = no
+		part_of_sphere = no
+		FRA = {
+			war = no
+			is_disarmed = no
+			state_n_government = 1
+			is_greater_power = yes
+			NOT = {
+				is_sphere_leader_of = THIS
+				alliance_with = THIS
+				truce_with = THIS
+				war_exhaustion = 20
+				war_policy = pacifism
+				has_country_flag = cochinchina_campaign
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 36
+		modifier = {
+			factor = 0.5
+			FRA = { nationalism_n_imperialism = 1 }
+		}
+		modifier = {
+			factor = 0.5
+			has_global_flag = berlin_conference
+		}
+		modifier = {
+			factor = 0.5
+			neighbour = FRA
+		}
+	}
+	
+	option = {
+		name = "这不是个好兆头。"
+		FRA = {
+			set_country_flag = cochinchina_campaign
+			country_event = 95640
+		}
+	}
+}
+	
+	
+
+country_event = {
+	id = 95640
+	title = "EVTNAME95640" #Persecution of French Missionaries - French Response
+	desc = "EVTDESC95640"
+	picture = "missionaries"
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "不交出交趾支那就开战！"
+		FROM = { country_event = 95641 }
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	option = {
+		name = "我们将继续走外交渠道。"
+		prestige = -20
+		badboy = -2
+		relation = {
+			who = FROM
+			value = 50
+		}
+		diplomatic_influence = {
+			who = FROM
+			value = 100
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = {
+	id = 95641
+	title = "EVTNAME95641" #The French Demand
+	desc = "EVTDESC95641"
+	picture = "missionaries"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "交出南圻吧。我们改变不了什么。"
+		prestige = -10
+		relation = { who = FROM value = -50 }
+		any_pop = { militancy = 3 }
+		any_owned = {
+			limit = { region = DAI_1380 }
+			secede_province = FRA	
+		}
+		ai_chance = { factor = 10 }
+	}
+	
+	option = {
+		name = "他们是纸老虎。如果他们敢就放马过来吧。"
+		prestige = 5
+		any_pop = { militancy = -2 }
+		FROM = { country_event = 95642 }
+		ai_chance = { factor = 90 }
+	}
+}
+
+country_event = {
+	id = 95642
+	title = "$FROMCOUNTRY$拒绝"
+	desc = "$FROMCOUNTRY$的统治者愚蠢地拒绝了我国的要求。"
+	news = yes
+	news_title = "EVTNAME95641_NEWS_TITLE"
+	news_desc_long = "EVTDESC95641_NEWS_LONG"
+	news_desc_medium = "EVTDESC95641_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC95641_NEWS_SHORT"
+	picture = "administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "那就开战吧。"
+		relation = {
+			who = FROM
+			value = -200
+		}
+		diplomatic_influence = {
+			who = FROM
+			value = -200
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					NOT = { nationalism_n_imperialism = 1 }
+				}
+			}
+			owner = {
+				casus_belli = {
+					target = FROM
+					type = demand_concession_casus_belli
+					months = 12
+				}
+				war = {
+					target = FROM
+					attacker_goal = {
+						casus_belli = demand_concession_casus_belli
+						state_province_id = 1380
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					nationalism_n_imperialism = 1
+					NOT = { has_global_flag = berlin_conference }
+				}
+			}
+			owner = {
+				casus_belli = {
+					target = FROM
+					type = demand_concession_NI_casus_belli
+					months = 12
+				}
+				war = {
+					target = FROM
+					attacker_goal = {
+						casus_belli = demand_concession_NI_casus_belli
+						state_province_id = 1380
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					nationalism_n_imperialism = 1
+					has_global_flag = berlin_conference
+				}
+			}
+			owner = {
+				casus_belli = {
+					target = FROM
+					type = demand_concession_BC_casus_belli
+					months = 12
+				}
+				war = {
+					target = FROM
+					attacker_goal = {
+						casus_belli = demand_concession_BC_casus_belli
+						state_province_id = 1380
+					}
+				}
+			}
+		}
+	}
+}
+
+#Events leading to the Cambodia's release by Dai Nam
+
+country_event = {
+	id = 95645
+	title = "EVTNAME95645" #The Suzerainty of Cambodia
+	desc = "EVTDESC95645"
+	picture = "asian_administration"
+	
+	trigger = {
+		tag = CAM
+		civilized = no
+		DAI = {
+			is_our_vassal = THIS
+			war = no
+			civilized = no
+		}
+		FRA = {
+			neighbour = THIS
+			war = no
+			is_disarmed = no
+			is_greater_power = yes
+			NOT = {
+				war_policy = pacifism
+				truce_with = DAI
+			}
+		}
+		NOT = {
+			number_of_states = 2
+			has_country_flag = asked_for_french_protection
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 50
+		modifier = {
+			factor = 0.5
+			year = 1865
+		}
+		modifier = {
+			factor = 0.5
+			has_global_flag = berlin_conference
+		}
+		modifier = {
+			factor = 0.5
+			DAI = { exists = no }
+		}
+	}
+	
+	option = {
+		name = "寻求法国保护。"
+		FRA = { country_event = 95646 }
+		ai_chance = {
+			factor = 80
+		}
+	}
+	
+	option = {
+		name = "赶走泰人！即使一战也在所不惜。"
+		DAI = {
+			release_vassal = CAM
+			leave_alliance = CAM
+			relation = { who = CAM value = -200 }
+			casus_belli = {
+				target = THIS
+				type = conquest
+				months = 60
+			}
+		}
+		any_neighbor_country = {
+			limit = {
+				civilized = no
+				NOT = { tag = DAI }
+			}
+			casus_belli = {
+				target = THIS
+				type = conquest
+				months = 24
+			}
+		}
+		ai_chance = {
+			factor = 20
+		}
+	}
+}
+
+country_event = {
+	id = 95646
+	title = "EVTNAME95646" #The King of Cambodia
+	desc = "EVTDESC95646"
+	picture = "deliberation"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "从越南人处索要柬埔寨。"
+		diplomatic_influence = { who = CAM value = 200 }
+		relation = { who = CAM value = 100 }
+		DAI = { country_event = 95647 }
+		ai_chance = { factor = 90 }
+	}
+	
+	option = {
+		name = "柬埔寨只能靠自己。"
+		CAM = { country_event = 95649 }
+		ai_chance = { factor = 10 }
+	}
+}
+
+country_event = {
+	id = 95647
+	title = "EVTNAME95645" #The Suzerainty of Cambodia - To Dai Nam
+	desc = "EVTDESC95645"
+	picture = "asian_administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "交出柬埔寨。"
+		FRA = { create_vassal = CAM }
+		relation = { who = FRA value = -100 }
+		random_country = {
+			limit = {
+				tag = SIA
+				exists = yes
+			}
+			relation = { who = FRA value = -100 }
+		}
+		ai_chance = { factor = 75 }
+	}
+	
+	option = {
+		name = "这不能允许！"
+		FRA = { country_event = 95648 }
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = 95648
+	title = "大南拒绝"
+	desc = "大南拒绝将柬埔寨交给我们。似乎我们除了行动以外别无选择。"
+	picture = "asian_administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "开战吧。"
+		war = {
+			target = DAI
+			attacker_goal = {
+				casus_belli = release_puppet
+				country = CAM
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 95649
+	title = "法国拒绝"
+	desc = "法国拒绝干涉。似乎我们只能靠自己了。"
+	picture = "asian_administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "那么我们就宣布独立。即使一战也在所不惜。"
+		DAI = {
+			release_vassal = CAM
+			leave_alliance = CAM
+			relation = { who = CAM value = -200 }
+			casus_belli = {
+				target = THIS
+				type = conquest
+				months = 60
+			}
+		}
+		any_neighbor_country = {
+			limit = {
+				civilized = no
+				NOT = { tag = DAI }
+			}
+			casus_belli = {
+				target = THIS
+				type = conquest
+				months = 24
+			}
+		}
+		ai_chance = { factor = 90 }
+	}
+	
+	option = {
+		name = "我们什么都别做。"
+		prestige = -10
+		any_pop = { militancy = 4 }
+		ai_chance = { factor = 10 }
+	}
+}
+
+# Indochina campaigns
+
+country_event = {
+	id = 95650
+	title = "EVTNAME95650" #French Indochina
+	desc = "EVTDESC95650"
+	picture = "deliberation"
+
+	trigger = {
+		tag = FRA
+		war = no
+		is_disarmed = no
+		is_greater_power = yes
+		nationalism_n_imperialism = 1
+		has_global_flag = berlin_conference
+		any_neighbor_country = {
+			civilized = no
+			OR = {
+				primary_culture = lao
+				primary_culture = khmer
+				primary_culture = vietnamese
+				AND = {
+					tag = SIA
+					any_owned_province = {
+						OR = {
+							is_core = DAI
+							is_core = CAM
+							is_core = LUA
+							is_core = WIA
+							is_core = CHK
+						}
+					}
+				}
+			}
+			NOT = {
+				in_sphere = THIS
+				truce_with = THIS
+			}
+		}
+		NOT = {
+			has_country_flag = no_more_indochina
+			has_country_modifier = punitive_effects
+			war_policy = pacifism
+			casus_belli = DAI
+			casus_belli = CAM
+			casus_belli = LUA
+			casus_belli = WIA
+			casus_belli = CHK
+			casus_belli = LXA
+			casus_belli = SIA
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 30
+		modifier = {
+			factor = 2
+			ai = no
+		}
+		modifier = {
+			factor = 0.75
+			mass_politics = 1
+		}
+	}
+
+	option = {
+		name = "可以试一试。"
+		badboy = 2
+		random_country = {
+			limit = {
+				OR = {
+					primary_culture = lao
+					primary_culture = khmer
+					primary_culture = vietnamese
+					AND = {
+						tag = SIA
+						any_owned_province = {
+							OR = {
+								is_core = DAI
+								is_core = CAM
+								is_core = LUA
+								is_core = WIA
+								is_core = CHK
+							}
+						}
+					}
+				}
+				exists = yes
+				civilized = no
+				neighbour = THIS
+				NOT = {
+					number_of_states = 2
+					truce_with = THIS
+					in_sphere = THIS
+				}
+			}
+			leave_alliance = THIS
+			relation = {
+				who = THIS
+				value = -100
+			}
+			add_casus_belli = {
+				target = THIS
+				type = establish_protectorate_BC_casus_belli
+				months = 60
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					primary_culture = lao
+					primary_culture = khmer
+					AND = {
+						tag = SIA
+						any_owned_province = {
+							OR = {
+								is_core = DAI
+								is_core = CAM
+								is_core = LUA
+								is_core = WIA
+								is_core = CHK
+							}
+						}
+					}
+				}
+				exists = yes
+				civilized = no
+				neighbour = THIS
+				number_of_states = 2
+				NOT = {
+					truce_with = THIS
+					in_sphere = THIS
+				}
+			}
+			leave_alliance = THIS
+			relation = {
+				who = THIS
+				value = -100
+			}
+			add_casus_belli = {
+				target = THIS
+				type = demand_concession_BC_casus_belli
+				months = 60
+			}
+		}
+		random_country = {
+			limit = {
+				tag = DAI
+				exists = yes
+				civilized = no
+				neighbour = THIS
+				number_of_states = 2
+				NOT = {
+					truce_with = THIS
+					in_sphere = THIS
+				}
+			}
+			leave_alliance = THIS
+			relation = {
+				who = THIS
+				value = -100
+			}
+			add_casus_belli = {
+				target = THIS
+				type = demand_concession_BC_casus_belli
+				months = 60
+			}
+			THIS = { diplomatic_influence = { who = DAI value = -200 } }
+		}
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				badboy = 0.92
+			}
+		}
+	}
+	option = {
+		name = "这并不符合我国利益。"
+		prestige = -5
+		any_neighbor_country = {
+			limit = {
+				OR = {
+					primary_culture = lao
+					primary_culture = khmer
+					primary_culture = vietnamese
+					AND = {
+						tag = SIA
+						any_owned_province = {
+							OR = {
+								is_core = DAI
+								is_core = CAM
+								is_core = LUA
+								is_core = WIA
+								is_core = CHK
+							}
+						}
+					}
+				}
+				exists = yes
+				civilized = no
+				NOT = {
+					truce_with = THIS
+					in_sphere = THIS
+				}
+			}
+			relation = {
+				who = THIS
+				value = 25
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "别再提起此事了。"
+		prestige = -10
+		set_country_flag = no_more_indochina
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+# Siamese Border Treaty
+
+country_event = {
+	id = 95652
+	title = "EVTNAME95641" #The French Demand
+	desc = "EVTDESC95652"
+	picture = "asian_administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "我们没有选择，只能交出领土。"
+		prestige = -20
+		FRA = { country_event = 95654 }
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = 3
+		}
+		any_owned = {
+			limit = { is_core = LUA }
+			remove_core = SIA
+			secede_province = LUA
+		}
+		any_owned = {
+			limit = { is_core = WIA }
+			remove_core = SIA
+			secede_province = WIA
+		}
+		any_owned = {
+			limit = { is_core = CHK }
+			remove_core = SIA
+			secede_province = CHK
+		}
+		any_owned = {
+			limit = {
+				is_core = CAM
+				CAM = { exists = no }
+			}
+			secede_province = FRA
+		}
+		any_owned = {
+			limit = {
+				is_core = CAM
+				CAM = { exists = yes }
+			}
+			secede_province = CAM
+		}
+		any_owned = {
+			limit = {
+				is_core = DAI
+				DAI = { exists = no }
+			}
+			secede_province = FRA
+		}
+		any_owned = {
+			limit = {
+				is_core = DAI
+				DAI = { exists = yes }
+			}
+			secede_province = DAI
+		}
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 0.25
+				part_of_sphere = yes
+				NOT = { in_sphere = FRA }
+			}
+		}
+	}
+	
+	option = {
+		name = "绝不！他们要么抢走，要么别吱声。"
+		FRA = { country_event = 95653 }
+		prestige = 10
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = -3
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				in_sphere = FRA
+			}
+			modifier = {
+				factor = 4
+				civilized = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 95653
+	title = "$FROMCOUNTRY$拒绝"
+	desc = "$FROMCOUNTRY$固执地拒绝交出他们征服的土地。现在只能靠我国武力来保护这些不幸的人们了。"
+	picture = "deliberation"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "愚蠢之举。"
+		prestige = -10
+		relation = { who = FROM value = -200 }
+		diplomatic_influence = { who = FROM value = -100 }
+		casus_belli = {
+			target = SIA
+			type = free_peoples
+			months = 60
+		}
+		casus_belli = {
+			target = SIA
+			type = cut_down_to_size
+			months = 60
+		}
+	}
+}
+
+country_event = {
+	id = 95654
+	title = "$FROMCOUNTRY$同意"
+	desc = "$FROMCOUNTRY$屈服于我们的要求。两国间的良好关系再度恢复。"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "明智之举。"
+		prestige = 20
+		relation = { who = SIA value = 200 }
+		diplomatic_influence = { who = SIA value = 100 }
+		diplomatic_influence = { who = LUA value = 200 }
+		diplomatic_influence = { who = WIA value = 200 }
+		diplomatic_influence = { who = CHK value = 200 }			
+	}
+}
+
+# Vietnamese Unequal Treaty
+
+country_event = {
+	id = 95655
+	title = "EVTNAME95655" #The Unequal Treaty
+	desc = "EVTDESC95655"
+	picture = "Opiumwar"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "给他们想要的。"
+		FRA = { country_event = 95656 }
+		prestige = -10
+		random_owned = {
+			limit = {
+				owner = { has_country_modifier = uncivilized_isolationism }
+			}
+			owner = {
+				remove_country_modifier = uncivilized_isolationism
+				add_country_modifier = {
+					name = "western_influences"
+					duration = -1
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { diplomatic_reform = isolationism }
+			}
+			owner = {
+				economic_reform = interactive
+				activate_technology = early_classical_theory_and_critique
+				any_pop = {
+					scaled_militancy = {
+						ideology = liberal
+						factor = -10
+					}
+					scaled_militancy = {
+						ideology = conservative
+						factor = 3
+					}
+					scaled_militancy = {
+						ideology = reactionary
+						factor = 6
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					NOT = { owns = 1380 }
+					owns = 1375
+				}
+			}
+			owner = {
+				any_owned = {
+					limit = { region = DAI_1375 }
+					secede_province = FRA
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { owns = 1380 }
+			}
+			owner = {
+				any_owned = {
+					limit = { region = DAI_1380 }
+					secede_province = FRA
+				}
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "这什么都解决不了！"
+		FROM = { country_event = 95657 }
+		war_exhaustion = 20
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = 95656
+	title = "大南皇帝同意" 
+	desc = "$FROMCOUNTRY_ADJ$的统治者同意签署我们的和平条约，让与我们一块地区作为租借地。"
+	news = yes
+	news_title = "EVTNAME95656_NEWS_TITLE"
+	news_desc_long = "EVTDESC95656_NEWS_LONG"
+	news_desc_medium = "EVTDESC95656_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC95656_NEWS_SHORT"
+	picture = "asian_administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "很好！"
+		clr_country_flag = negotiate_unequal_treaty
+		FROM = { clr_country_flag = negotiate_unequal_treaty }
+		any_country = {
+			limit = {
+				alliance_with = THIS
+				war_with = FROM
+			}
+			end_war = FROM
+		}
+		end_war = FROM
+	}
+}
+
+country_event = { #The Dai Viet Emperor has Refused!
+	id = 95657
+	title = "大南皇帝拒绝！" 
+	desc = "大南拒绝屈服。显然他们将战斗到底。"
+	picture = "Opiumwar"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "不幸的选择。"
+		FROM = { clr_country_flag = negotiate_unequal_treaty }
+		casus_belli = {
+			target = FROM
+			type = humiliate
+			months = 100
+		}
+	}
+}

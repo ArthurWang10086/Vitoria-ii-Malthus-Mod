@@ -1,0 +1,29 @@
+country_event = {
+	
+	id = 99999999999
+	title = "注入金钱"
+	desc = "当发现世界上没有一个人有钱后，他们无一例外地全部抢走了自己祖父母的长袜以将其内的存款洗劫一空。"
+	
+	trigger = {
+		year = 1836
+		TAG = HAW
+		NOT = { has_global_flag = money_injected }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = "好！"
+		
+		set_global_flag = money_injected
+		any_country = {
+			limit = { is_greater_power = yes }
+			treasury = 100000
+		}
+		any_country = {
+			treasury = 50000
+		}
+	}
+}

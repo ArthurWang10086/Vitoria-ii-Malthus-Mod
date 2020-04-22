@@ -1,0 +1,523 @@
+country_event = {
+	id = 190401
+	title = "发掘迈锡尼"
+	desc = "某个列强国家已经派人来到我国，希望能够发掘当地遗迹。"
+	picture = "ValleyoftheKings"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "当然"
+		set_global_flag = greek_excavation_rights
+		FROM = {
+			country_event = 190411
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.1
+				has_global_flag = greek_excavation_rights
+			}
+			modifier = {
+				factor = 3
+				FROM = {
+					prestige = 365
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					is_greater_power = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "绝不！"
+		FROM = {
+			country_event = 190421
+		}
+	}
+}
+
+#Egypt Allows
+country_event = {
+	id = 190411
+	title = "希腊准许！"
+	desc = "希腊人同意让我们发掘迈锡尼。"
+	picture = "ValleyoftheKings"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "好哇！"
+		add_country_modifier = {
+			name = mycenaean_excavations
+			duration = -1
+		}
+		relation = {
+			who = FROM
+			value = 20
+		}
+		set_global_flag = mycenaean_excavation_rights
+		prestige = 5
+	}
+}
+
+#Egypt Refuses
+country_event = {
+	id = 190421
+	title = "希腊拒绝！"
+	desc = "愚蠢的希腊人将我国考古学家拒之门外！"
+	picture = "ValleyoftheKings"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "妈的！"
+		relation = {
+			who = FROM
+			value = -20
+		}
+		prestige = -5
+		set_country_flag = greece_refused
+	}
+}
+
+# Excavation team gets into trouble
+country_event = {
+	id = 190431
+	title = "法律问题"
+	desc = "在希腊，有人不幸获指控……"
+	picture = "ValleyoftheKings"
+	
+	trigger = {
+		has_country_modifier = mycenaean_excavations
+		NOT = {
+			owns = 840
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "一点钱或许能摆平？"
+		treasury = -20000
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 20000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "把他们召回国"
+		relation = {
+			who = GRE
+			value = -20
+		}
+		clr_global_flag = mycenaean_excavation_rights
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+# Tomb Found
+country_event = {
+	id = 190441
+	title = "发现希腊古墓！"
+	desc = "在希腊，一座王家墓地重见天日。"
+	picture = "Tomb"
+	
+	trigger = {
+		has_country_modifier = mycenaean_excavations
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "很好"
+		years_of_research = 0.1
+	}
+}
+
+country_event = {
+	id = 190451
+	title = "被控诈骗"
+	desc = "一些由我国人员挖掘的珠宝被发现有伪造的嫌疑。"
+	picture = "Egyptian"
+		
+	trigger = {
+		has_country_modifier = mycenaean_excavations
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "见鬼！"
+		prestige = -5
+	}
+}
+
+country_event = {
+	id = 190461
+	title = "阿伽门农的面容"
+	desc = "当我们将面具从躯体上揭下来时，我凝视着阿伽门农的面容。"
+	news = yes
+	news_desc_long = "EVTDESC190461_NEWS_LONG"
+	news_desc_medium = "EVTDESC190461_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC190461_NEWS_SHORT"
+	picture = "Egyptian"	
+	
+	trigger = {
+		has_country_modifier = mycenaean_excavations
+		NOT = {
+			has_global_flag = agamemnon_found
+		}
+	}
+	
+	major = yes
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "太棒了"
+		prestige = 30
+		years_of_research = 1
+		set_global_flag = agamemnon_found
+		any_country = {
+			remove_country_modifier = mycenaean_excavations
+		}
+		remove_country_modifier = mycenaean_excavations
+		clr_global_flag = mycenaean_excavation_rights
+	}
+}
+
+
+
+
+country_event = {
+	id = 1904012
+	title = "发掘米诺斯"
+	desc = "某个列强国家已经派人来到我国，希望能够发掘当地遗迹。"
+	picture = "ValleyoftheKings"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "当然"
+		set_global_flag = crete_excavation_rights
+		FROM = {
+			country_event = 1904112
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.1
+				has_global_flag = crete_excavation_rights
+			}
+			modifier = {
+				factor = 3
+				FROM = {
+					prestige = 365
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					is_greater_power = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "绝不！"
+		FROM = {
+			country_event = 1904212
+		}
+	}
+}
+
+#Egypt Allows
+country_event = {
+	id = 1904112
+	title = "克里特准许！"
+	desc = "克里特人同意让我们发掘克诺索斯。"
+	picture = "ValleyoftheKings"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "好哇！"
+		add_country_modifier = {
+			name = minoan_excavations
+			duration = -1
+		}
+		relation = {
+			who = FROM
+			value = 20
+		}
+		set_global_flag = minoan_excavation_rights
+		prestige = 5
+	}
+}
+
+#Egypt Refuses
+country_event = {
+	id = 1904212
+	title = "克里特拒绝！"
+	desc = "愚蠢的克里特人将我国考古学家拒之门外！"
+	picture = "ValleyoftheKings"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Damnation!"
+		relation = {
+			who = FROM
+			value = -20
+		}
+		prestige = -5
+		set_country_flag = crete_refused
+	}
+}
+
+# Excavation team gets into trouble
+country_event = {
+	id = 1904312
+	title = "法律问题"
+	desc = "在克里特，有人不幸获指控……"
+	picture = "ValleyoftheKings"
+	
+	trigger = {
+		has_country_modifier = minoan_excavations
+		NOT = {
+			owns = 847
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "一点钱或许能摆平？"
+		treasury = -20000
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 20000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "把他们召回国"
+		relation = {
+			who = CRE
+			value = -20
+		}
+		clr_global_flag = minoan_excavation_rights
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+# Tomb Found
+country_event = {
+	id = 1904412
+	title = "发现大型宫殿！"
+	desc = "一座大型宫殿被发现于克诺索斯！"
+	picture = "ValleyoftheKings"
+	
+	trigger = {
+		has_country_modifier = minoan_excavations
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "有趣"
+		years_of_research = 0.1
+	}
+}
+
+
+country_event = {
+	id = 1904612
+	title = "迷宫"
+	desc = "EVTDESC1904612_NEWS_LONG"
+	news = yes
+	news_title = "EVTNAME1904612_NEWS_TITLE"
+	news_desc_long = "EVTDESC1904612_NEWS_LONG"
+	news_desc_medium = "EVTDESC1904612_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC1904612_NEWS_SHORT"
+	picture = "Egyptian"	
+	
+	trigger = {
+		has_country_modifier = minoan_excavations
+		NOT = {
+			has_global_flag = minos_found
+		}
+	}
+	
+	major = yes
+	
+	mean_time_to_happen = {
+		months = 400
+	}
+	
+	option = {
+		name = "棒极了"
+		prestige = 20
+		years_of_research = 0.5
+		set_global_flag = minos_found
+		any_country = {
+			remove_country_modifier = minoan_excavations
+		}
+		remove_country_modifier = minoan_excavations
+		clr_global_flag = minoan_excavation_rights
+	}
+}
+
+country_event = {
+	id = 1905101
+	title = "发现尼安德特人！"
+	desc = "EVTDESC1905101_NEWS_LONG"
+	news = yes
+	news_title = "EVTNAME1905101_NEWS_TITLE"
+	news_desc_long = "EVTDESC1905101_NEWS_LONG"
+	news_desc_medium = "EVTDESC1905101_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC1905101_NEWS_SHORT"
+	picture = "ValleyoftheKings"
+	
+	trigger = {
+		NOT = {
+			has_global_flag = neanderthal
+		}
+		is_greater_power = yes
+		OR = {
+			owns = 840
+			840 = {
+				owner = {
+					in_sphere = THIS
+				}
+			}
+		}
+		cheap_steel = 1
+	}
+	
+	major = yes
+	
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	option = {
+		name = "不可思议！"
+		set_global_flag = neanderthal
+		years_of_research = 0.5
+	}
+	
+}
+country_event = {
+	id = 1905201
+	title = "发现直立人！"
+	desc = "EVTDESC1905201_NEWS_LONG"
+	news = yes
+	news_title = "EVTNAME1905201_NEWS_TITLE"
+	news_desc_long = "EVTDESC1905201_NEWS_LONG"
+	news_desc_medium = "EVTDESC1905201_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC1905201_NEWS_SHORT"
+	picture = "ValleyoftheKings"
+	
+	trigger = {
+
+		NOT = {
+			has_global_flag = erectus #hahaahahahahahahhhhahaha
+		}
+		is_greater_power = yes
+		OR = {
+			owns = 1414
+			1414 = {
+				owner = {
+					in_sphere = THIS
+				}
+			}
+		}
+		phenomenology_n_hermeneutic = 1
+	}
+	
+	major = yes
+	
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	option = {
+		name = "不可思议！"
+		set_global_flag = erectus
+		years_of_research = 0.5
+	}
+	
+}
+
+country_event = {
+	id = 1905301
+	title = "发现非洲南方古猿！"
+	desc = "EVTDESC1905301_NEWS_LONG"
+	news = yes
+	news_title = "EVTNAME1905301_NEWS_TITLE"
+	news_desc_long = "EVTDESC1905301_NEWS_LONG"
+	news_desc_medium = "EVTDESC1905301_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC1905301_NEWS_SHORT"
+	picture = "ValleyoftheKings"
+	
+	trigger = {
+
+		NOT = {
+			has_global_flag = africanus
+		}
+		is_greater_power = yes
+		OR = {
+			owns = 2095
+			2095 = {
+				owner = {
+					in_sphere = THIS
+				}
+			}
+		}
+		anti__rationalism = 1
+		year = 1920
+	}
+	
+	major = yes
+	
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	option = {
+		name = "不可思议！"
+		set_global_flag = africanus
+		years_of_research = 0.5
+	}
+	
+}
