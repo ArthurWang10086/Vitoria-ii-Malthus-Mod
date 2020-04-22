@@ -5,7 +5,7 @@ country_event = {
 	news_desc_long = "EVTDESC44000_NEWS_LONG"
 	news_desc_medium = "EVTDESC44000_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC44000_NEWS_SHORT"
-
+	
 	trigger = {
 		tag = HAW 
 		year = 1872
@@ -39,6 +39,6 @@ country_event = {
 	option = {
 		name = "EVTOPTA44000" 
 		set_country_flag = DamienMolokai
-		treasury = -100
+		treasury = -1000
 	}
 }

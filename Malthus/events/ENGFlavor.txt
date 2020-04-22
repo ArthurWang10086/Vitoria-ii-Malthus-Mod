@@ -1,24 +1,27 @@
 # Coronation of Queen Victoria
 country_event = {
 	id = 36898
+	title = "EVTNAME36898"
+	desc = "EVTDESC36898"
 	news = yes
 	news_desc_long = "EVTDESC36898_NEWS_LONG"
 	news_desc_medium = "EVTDESC36898_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC36898_NEWS_SHORT"
-	title = "EVTNAME36898"
-	desc = "EVTDESC36898"
 	picture = "queenvictoria"
 
 	
 	trigger = {
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		year = 1838
 		OR = {
 			government = absolute_monarchy
 			government = prussian_constitutionalism
 			government = hms_government
 		}
-		is_sphere_leader_of = HAN
+		is_our_vassal = HAN
 	}
 	
 	major = yes
@@ -44,7 +47,10 @@ country_event = {
 	id = 36900  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1836
 		public_meetings = yes_meeting
 		NOT = {
@@ -88,10 +94,13 @@ country_event = {
 	news = yes
 	news_desc_long = "EVTDESC36901_NEWS_LONG"
 	news_desc_medium = "EVTDESC36901_NEWS_MEDIUM"
-	news_desc_short = "EVTDESC36901_NEWS_SHORT"
+	news_desc_short = "EVTDESC36901_NEWS_SHORT"	
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1837
 		realism = 1 #has this tech
 		NOT = {
@@ -145,7 +154,10 @@ country_event = {
 	id = 36902  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1840
 		NOT = {
 			year = 1843
@@ -194,10 +206,13 @@ country_event = {
 	news = yes
 	news_desc_long = "EVTDESC36903_NEWS_LONG"
 	news_desc_medium = "EVTDESC36903_NEWS_MEDIUM"
-	news_desc_short = "EVTDESC36903_NEWS_SHORT"
+	news_desc_short = "EVTDESC36903_NEWS_SHORT"	
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1839
 		OR = {
 			government = absolute_monarchy
@@ -241,7 +256,10 @@ country_event = {
 	id = 36904  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1840
 		press_rights = free_press 
 		NOT = {
@@ -292,7 +310,10 @@ country_event = {
 	id = 36905  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1843
 		public_meetings = yes_meeting
 		NOT = {
@@ -337,7 +358,10 @@ country_event = {
 	id = 36907  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1846
 		press_rights = free_press 
 		NOT = {
@@ -391,7 +415,10 @@ country_event = {
 	id = 36908  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1849
 		early_railroad = 1	
 		NOT = {
@@ -473,7 +500,10 @@ country_event = {
 	id = 36910  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1884
 		press_rights = free_press
 		realism = 1 
@@ -516,7 +546,10 @@ country_event = {
 	news_desc_short = "EVTDESC36911_NEWS_SHORT"
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1892
 		press_rights = free_press
 		realism = 1 
@@ -561,7 +594,10 @@ country_event = {
 	news_desc_short = "EVTDESC36912_NEWS_SHORT"
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1917
 		press_rights = free_press
 		expressionism = 1 
@@ -603,7 +639,10 @@ country_event = {
 	id = 36913 
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1850
 		exists = USA
 		NOT = {
@@ -642,7 +681,10 @@ country_event = {
 	id = 36914 
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1850
 		invention = steamer_transports
 		NOT = {
@@ -685,7 +727,10 @@ country_event = {
 	id = 36915 
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1896
 		OR = {
 			government = absolute_monarchy
@@ -732,7 +777,10 @@ country_event = {
 	id = 36917  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1856
 		public_meetings = yes_meeting #allows public meetings
 		NOT = {
@@ -770,7 +818,10 @@ country_event = {
 	id = 36918  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1856
 		public_meetings = yes_meeting #allows public meetings
 		NOT = {
@@ -826,7 +877,10 @@ country_event = {
 	news_desc_short = "EVTDESC36919_NEWS_SHORT"
 
 	trigger = {
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		war = yes
 		medicine = 1 
 		year = 1851
@@ -867,7 +921,10 @@ country_event = {
 	id = 36921
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1901
 		ruling_party_ideology = conservative
 		NOT = {
@@ -929,7 +986,10 @@ country_event = {
 	news_desc_short = "EVTDESC36922_NEWS_SHORT"
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1881
 		owns = 2468 #Sydney
 		owns = 2476 #Melbourne
@@ -981,7 +1041,10 @@ country_event = {
 	news_desc_short = "EVTDESC36923_NEWS_SHORT"
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		functionalism = 1
 		year = 1858
 		NOT = {
@@ -1031,7 +1094,10 @@ country_event = {
 	id = 36924  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1876
 		public_meetings = yes_meeting #allows public meetings
 		NOT = {
@@ -1071,10 +1137,13 @@ country_event = {
 	news = yes
 	news_desc_long = "EVTDESC36925_NEWS_LONG"
 	news_desc_medium = "EVTDESC36925_NEWS_MEDIUM"
-	news_desc_short = "EVTDESC36925_NEWS_SHORT"
+	news_desc_short = "EVTDESC36925_NEWS_SHORT"	
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		year = 1887
 		experimental_psychology = 1
 		NOT = {
@@ -1127,7 +1196,10 @@ country_event = {
 	id = 36926  
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1853
 		public_meetings = yes_meeting
 		NOT = {
@@ -1158,7 +1230,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA36926" 
-		prestige = 3
+		prestige = 5
 	}
 }
 
@@ -1167,7 +1239,10 @@ country_event = {
 	id = 36927 
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1864
 		NOT = {
 			year = 1867
@@ -1197,7 +1272,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA36927" 
-		prestige = 3
+		prestige = 5
 	}
 }
 
@@ -1206,7 +1281,10 @@ country_event = {
 	id = 36928 
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1867
 		NOT = {
 			year = 1870
@@ -1242,14 +1320,17 @@ country_event = {
 
 country_event = {
 
-	id = 36929
+	id = 36929 
 	news = yes
 	news_desc_long = "EVTDESC36929_NEWS_LONG"
 	news_desc_medium = "EVTDESC36929_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC36929_NEWS_SHORT"
-
+	
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		year = 1879
 		owns = 270
 		owns = 269
@@ -1282,7 +1363,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA36929" 
-		prestige = -2
+		prestige = -10
 	}
 }
 
@@ -1291,10 +1372,13 @@ country_event = {
 	id = 36930
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1865
 		NOT = {
-			war_with = CHI
+			war_with = QNG
 			year = 1868
 		}
 	}
@@ -1330,7 +1414,10 @@ country_event = {
 	id = 36932
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1897
 		expressionism = 1
 		NOT = {
@@ -1370,7 +1457,10 @@ country_event = {
 	id = 36933
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		year = 1867
 		NOT = {
 			year = 1870
@@ -1411,7 +1501,10 @@ country_event = {
 	id = 36935 #parallel to AST43800, ENG more often than not will own AST directly at this point, so needs own event.
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		} 
 		year = 1844
 		owns = 2468 #Sydney
 		owns = 2476 #Melbourne
@@ -1506,7 +1599,10 @@ country_event = {
 	id = 36937 #sets up COB35000
 
 	trigger = {
-		tag = ENG 
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		year = 1836
 		exists = COB
 		OR = {
@@ -1525,7 +1621,7 @@ country_event = {
 		}
  
 	mean_time_to_happen =  {
-		months = 36
+		months = 12
 
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
@@ -1596,10 +1692,10 @@ province_event = {
 		any_pop = {
 			limit = {
 				has_pop_religion = hindu 
-				}
-			militancy = 1
-			consciousness = 2
 			}
+			militancy = 3
+			consciousness = 2
+		}
 
 	}
 
@@ -1614,7 +1710,10 @@ country_event = {
 	news_desc_short = "EVTDESC36939_NEWS_SHORT"
 
 	trigger = {
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		owns = 1251 #Calcutta
 		year = 1853
 		NOT = {
@@ -1650,7 +1749,7 @@ country_event = {
 			limit = {
 				has_pop_religion = hindu
 			}
-			militancy = 2
+			militancy = 3
 		}
 		any_pop = {
 			limit = {
@@ -1686,111 +1785,895 @@ country_event = {
 
 country_event = {
 
-	id = 36940
+	id = 36940 #Treaty of Waitangi
+	title = "EVTNAME36940"
+	desc = "EVTDESC36940"
 	news = yes
 	news_desc_long = "EVTDESC36940_NEWS_LONG"
 	news_desc_medium = "EVTDESC36940_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC36940_NEWS_SHORT"
+	picture = "Waitangi"
 
 	trigger = {
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		owns = 2509 #Auckland
 		year = 1840
-		NOT = {
-			year = 1850
-			exists = NZL
-			}
+		NOT = { exists = NZL }
 	}
+
 	fire_only_once = yes
  
 	mean_time_to_happen =  {
 		months = 5
-
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
 			year = 1842
 		}
-
-
 		modifier = {
 			factor = 0.95 #increase likelihood to happen
 			year = 1845
 		}
 	}
 
-	title = "EVTNAME36940"
-	desc = "EVTDESC36940"
-	picture = "Waitangi"
-
 	option = {
 		name = "EVTOPTA36940"
+		set_global_flag = treaty_of_waitangi
+		prestige = 5
+		ENG_2509 = { add_core = ENG } #North Island
+		ENG_2513 = { add_core = ENG } #South Island
 		any_pop = { 
-			limit = {
-				has_pop_culture = maori
-				}
-				militancy = -1
-			}
+			limit = { has_pop_culture = maori }
+			militancy = -3
 		}
+	}
 }
 
 country_event = {
 
 	id = 36941
+	title = "EVTNAME36941" #The Flagstaff War
+	desc = "EVTDESC36941"
 	news = yes
 	news_desc_long = "EVTDESC36941_NEWS_LONG"
 	news_desc_medium = "EVTDESC36941_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC36941_NEWS_SHORT"
+	picture = "flagstaffwar"
 
 	trigger = {
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
 		owns = 2509 #Auckland
+		has_global_flag = treaty_of_waitangi
 		year = 1845
-		NOT = {
-			year = 1855
-			exists = NZL
-			}
+		NOT = { exists = NZL }
 	}
+
 	fire_only_once = yes
  
 	mean_time_to_happen =  {
 		months = 5
-
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
 			year = 1847
 		}
-
-
 		modifier = {
 			factor = 0.95 #increase likelihood to happen
 			year = 1849
 		}
 	}
 
-	title = "EVTNAME36941"
-	desc = "EVTDESC36941"
-	picture = "flagstaffwar"
-
 	option = {
 		name = "EVTOPTA36941"
-		prestige = 1
-		any_pop = { 
+		set_country_flag = flagstaff_war
+		ENG_2509 = { add_core = AOT }
+		ENG_2513 = { add_core = AOT }
+		any_owned = {
 			limit = {
-				has_pop_culture = maori
+				OR = {
+					region = ENG_2509
+					region = ENG_2513
 				}
-				militancy = 2
+				culture = maori
+			}
+			add_province_modifier = {
+				name = peasant_revolt
+				duration = 365
 			}
 		}
+		any_pop = { 
+			limit = { has_pop_culture = maori }
+			militancy = 5
+		}
+	}
+}
+
+country_event = {
+	
+	id = 36942
+	title = "EVTNAME36942"
+	desc = "EVTDESC36942"
+	picture = "emigration"
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
+		NZL = {
+			exists = no
+			all_core = { owned_by = THIS }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 5
+		modifier = {
+			factor = 0.75 #increase likelihood to happen
+			year = 1847
+		}
+		modifier = {
+			factor = 0.95 #increase likelihood to happen
+			year = 1849
+		}
+	}
 
 	option = {
-		name = "EVTOPTB36941"
-		prestige = -1
-		any_pop = { 
-			limit = {
-				has_pop_culture = maori
-				}
-				militancy = -1
-				consciousness = -1
+		name = "EVTOPTA36942"
+		ENG_2509 = {
+			add_province_modifier = {
+				name =	colonial_recruitment
+				duration = 730
 			}
 		}
+	}
 }
+
+country_event = {
+	id = 36943
+	title = "EVTNAME36943" #The New Zealand Colony
+	desc = "EVTDESC36943"
+	picture = "flagstaffwar"
+
+	trigger = {
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
+		has_global_flag = treaty_of_waitangi
+		any_owned_province = {
+			is_core = NZL
+			NOT = {
+				life_rating = 35
+				average_militancy = 2
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = "以进步的名义。"
+		any_owned = {
+			limit = {
+				is_core = NZL
+				NOT = {
+					life_rating = 35
+					average_militancy = 2
+				}
+			}
+			life_rating = 5
+		}
+		any_pop = {
+			limit = {
+				has_pop_culture = maori
+				location = { is_core = NZL }
+			}
+			ideology = {
+				value = reactionary
+				factor = 0.10
+			}
+			militancy = 3
+		}
+	}
+}
+
+country_event = {
+	id = 36950
+	title = "EVTNAME36950" #The Danish Gold Coast
+	desc = "EVTDESC36950"
+	picture = "administration"
+
+	trigger = {
+		OR = {
+			tag = ENG
+			tag = ENL
+		}
+		ASH = { owns = 1907 }
+		owns = 1908
+		year = 1850
+		relation = { who = DEN value = 0 }
+		NOT = {
+			has_country_flag = sale_of_danish_gold_coast
+			alliance_with = ASH
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 40
+	}
+
+	option = {
+		name = "我们同意出售。"
+		set_country_flag = sale_of_danish_gold_coast
+		DEN = { prestige = 5 }
+		diplomatic_influence = { who = ASH value = -100 }
+		relation = { who = ASH value = -50 }
+		random_country = {
+			limit = {
+				owns = 1907
+				civilized = no
+				NOT = { has_global_flag = berlin_conference }
+			}
+			add_casus_belli = {
+				target = THIS
+				type = demand_concession_casus_belli
+				months = 60
+			}
+		}
+		random_country = {
+			limit = {
+				owns = 1907
+				civilized = no
+				has_global_flag = berlin_conference
+			}
+			add_casus_belli = {
+				target = THIS
+				type = demand_concession_BC_casus_belli
+				months = 60
+			}
+		}
+		random_country = {
+			limit = {
+				owns = 1907
+				civilized = yes
+			}
+			1907 = { add_core = THIS }
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = "没有必要与阿散蒂发生冲突。"
+		set_country_flag = sale_of_danish_gold_coast
+		prestige = -5
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = 36955
+	title = "EVTNAME36955" #Conflict with Burma
+	desc = "EVTDESC36955"
+	news = yes
+	news_title = "EVTNAME36955_NEWS_TITLE"
+	news_desc_long = "EVTDESC36955_NEWS_LONG"
+	news_desc_medium = "EVTDESC36955_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC36955_NEWS_SHORT"
+	picture = "Opiumwar"
+	
+	trigger = {
+		tag = ENG
+		is_greater_power = yes
+		state_n_government = 1
+		NOT = { has_global_flag = berlin_conference }
+		BUR = {
+			war = no
+			civilized = no
+			is_vassal = no
+			exists = yes
+			neighbour = ENG
+			number_of_states = 2
+			any_owned_province = { port = yes }
+			NOT = { truce_with = ENG }
+		}
+		OR = {
+			war_policy = jingoism
+			war_policy = pro_military
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "我们必须捍卫英国的利益。"
+		prestige = 5
+		badboy = 2
+		relation = { who = BUR value = -200 }
+		diplomatic_influence = { who = BUR value = -200 }
+		casus_belli = {
+			target = BUR
+			type = demand_concession_casus_belli
+			months = 60
+		}
+		ai_chance = {
+			factor = 95
+		}
+	}
+	
+	option = {
+		name = "让缅甸仍然做我们的盟友更有利。"
+		prestige = -25
+		relation = { who = BUR value = 25 }
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			dominant_issue = {
+				factor = 0.05
+				value = pacifism
+			}
+		}
+		any_pop = {
+			limit = {
+				location = { is_core = HND }
+				is_primary_culture = no
+			}
+			militancy = 2
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+country_event = {
+	id = 36960
+	title = "EVTNAME36960" #The Gold Coast Treaty
+	desc = "EVTDESC36960"
+	picture = "deliberation"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "我们将签署该条约。"
+		treasury = 10000
+		relation = { who = FROM value = 100 }
+		FROM = { country_event = 36961 }
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0.5
+				NOT = {
+					relation = { who = FROM value = 50 }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "我们拒绝。塞康是我们的。"
+		relation = { who = FROM value = -50 }
+		FROM = { country_event = 36962 }
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 2
+				NOT = {
+					relation = { who = FROM value = 50 }
+				}
+			}
+			modifier = {
+				factor = 2
+				part_of_sphere = yes
+				NOT = { in_sphere = FROM }
+			}
+			modifier = {
+				factor = 0.5
+				relation = { who = FROM value = 150 }
+			}
+			modifier = {
+				factor = 0.5
+				alliance_with = FROM
+			}
+			modifier = {
+				factor = 0
+				in_sphere = FROM
+			}
+			modifier = {
+				factor = 0
+				vassal_of = FROM
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 36961
+	title = "荷兰已经同意"
+	desc = "荷兰政府已经同意签署《黄金海岸条约》。塞康是我们的了！"
+	news = yes
+	news_title = "EVTNAME36961_NEWS_TITLE"
+	news_desc_long = "EVTDESC36961_NEWS_LONG"
+	news_desc_medium = "EVTDESC36961_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC36961_NEWS_SHORT"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "太好了。"
+		random_country = {
+			limit = {
+				tag = FROM
+				is_greater_power = no
+			}
+			THIS = { diplomatic_influence = { who = FROM value = 100 } }
+		}
+		relation = { who = FROM value = 50 }
+		1909 = { secede_province = THIS }
+		random_country = {
+			limit = {
+				tag = ATJ
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = ATJ value = -200 } }
+		}
+		random_country = {
+			limit = {
+				tag = SAK
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = SAK value = -200 } }
+		}
+		random_country = {
+			limit = {
+				tag = SLW
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = SLW value = -200 } }
+		}
+		random_country = {
+			limit = {
+				tag = BAL
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = BAL value = -200 } }
+		}
+		random_country = {
+			limit = {
+				tag = KTI
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = KTI value = -200 } }
+		}
+		random_country = {
+			limit = {
+				tag = LAN
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = LAN value = -200 } }
+		}
+		random_country = {
+			limit = {
+				tag = KLM
+				exists = yes
+			}
+			leave_alliance = THIS
+			THIS = { diplomatic_influence = { who = KLM value = -200 } }
+		}
+	}
+}
+
+country_event = {
+	id = 36962
+	title = "荷兰已经拒绝"
+	desc = "荷兰政府拒绝签署我们提出的条约。"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "那就算了吧。"
+		prestige = -10
+		treasury = 10000
+	}
+	
+	option = {
+		name = "那么，我们必须考虑使用武力了。"
+		badboy = 2
+		treasury = 10000
+		diplomatic_influence = { who = FROM value = -100 }
+		relation = { who = FROM value = -50 }
+		leave_alliance = FROM
+		1909 = { add_core = THIS }
+		casus_belli = {
+			target = FROM
+			type = humiliate
+			months = 12
+		}
+	}
+}
+
+country_event = {
+	id = 36965
+	title = "EVTNAME36965" #The Lagos Slave Trade
+	desc = "EVTDESC36965"
+	picture = "slaves"
+	
+	trigger = {
+		tag = ENG
+		war = no
+		slavery = no_slavery
+		is_greater_power = yes
+		state_n_government = 1
+		year = 1860
+		NOT = { has_country_flag = lagos_slave_trade }
+		1923 = {
+			owner = {
+				war = no
+				civilized = no
+				slavery = yes_slavery
+				OR = {
+					part_of_sphere = no
+					in_sphere = ENG
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = "派遣我们的舰队！"
+		set_country_flag = lagos_slave_trade
+		1923 = {
+			owner = { country_event = 36966 }
+		}
+		1923 = { secede_province = THIS }
+	}
+	
+	option = {
+		name = "这一冒险划不来啊。"
+		set_country_flag = lagos_slave_trade
+		prestige = -10
+		badboy = -2
+	}
+}
+
+country_event = {
+	id = 36966
+	title = "EVTNAME36966" #United Kingdom Seizes Lagos!
+	desc = "EVTDESC36966"
+	news = yes
+	news_desc_long = "EVTDESC36966_NEWS_LONG"
+	news_desc_medium = "EVTDESC36966_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC36966_NEWS_SHORT"
+	picture = "Slaves"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "我们能做些什么呢？我们必须服从。"
+		prestige = -10
+		relation = { who = FROM value = -50 }
+		any_pop = { militancy = 3 }
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.1
+				part_of_sphere = yes
+				NOT = { in_sphere = FROM }
+			}
+		}
+	}
+	
+	option = {
+		name = "如果他们想要战争，那我们就给他们战争！"
+		prestige = 10
+		any_pop = { militancy = -6 }
+		relation = { who = FROM value = -100 }
+		leave_alliance = FROM
+		FROM = {
+			diplomatic_influence = { who = THIS value = -200 }
+		}
+		war = {
+			target = FROM
+			attacker_goal = {
+				casus_belli = acquire_core_state
+				state_province_id = 1923
+			}
+			call_ally = yes
+		}		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0.5
+				FROM = { brigades_compare = 5 }
+			}
+			modifier = {
+				factor = 0
+				in_sphere = FROM
+			}
+		}
+	}
+}
+
+#The Suez Canal Company
+country_event = {
+	id = 36970
+	title = "EVTNAME36970"
+	desc = "EVTDESC36970"
+	picture = "Suez3"
+	
+	trigger = {
+		OR = {
+			tag = ENG
+			tag = FRA
+		}
+		is_greater_power = yes
+		steam_turbine = 1
+		money = 20000
+		year = 1860
+		EGY = {
+			war = no
+			owns = 1755
+			part_of_sphere = no
+			is_greater_power = no
+		}
+		NOT = {
+			has_country_flag = refused_canal_investment
+			has_country_modifier = in_bankrupcy
+			truce_with = EGY
+			has_global_flag = suez_canal_global
+			is_canal_enabled = 2
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 50
+		modifier = {
+			factor = 0.5
+			year = 1865
+		}
+		modifier = {
+			factor = 0.5
+			year = 1870
+		}
+	}
+	
+	option = {
+		name = "我们将投资该公司。"
+		treasury = -20000
+		diplomatic_influence = { who = EGY value = 200 }
+		relation = { who = EGY value = 50 }
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "这不值得投资。"
+		set_country_flag = refused_canal_investment
+		prestige = -5
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#The Panama Canal Company
+country_event = {
+	id = 36971
+	title = "EVTNAME36971"
+	desc = "EVTDESC36971"
+	picture = "Panama3"
+	
+	trigger = {
+		OR = {
+			capital_scope = { continent = north_america }
+			capital_scope = { continent = south_america }
+			tag = ENG
+			tag = FRA
+			tag = NGF
+			tag = GER
+		}
+		is_greater_power = yes
+		inorganic_chemistry = 1
+		steam_turbine = 1
+		money = 150000
+		year = 1900
+		CLM = {
+			war = no
+			owns = 1723
+			part_of_sphere = no
+			is_greater_power = no
+			NOT = { truce_with = THIS }
+		}
+		NOT = {
+			has_country_flag = refused_panama_investment
+			has_country_modifier = in_bankrupcy
+			has_global_flag = panama_canal_global
+			is_canal_enabled = 3
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 50
+		modifier = {
+			factor = 2
+			NOT = { tag = USA }
+		}
+		modifier = {
+			factor = 0.5
+			year = 1905
+		}
+		modifier = {
+			factor = 0.5
+			year = 1910
+		}
+	}
+	
+	option = {
+		name = "我们将投资该公司。"
+		treasury = -50000
+		diplomatic_influence = { who = CLM value = 200 }
+		relation = { who = CLM value = 50 }
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "这不值得投资。"
+		set_country_flag = refused_panama_investment
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Intervention in Egypt
+country_event = {
+	id = 36975
+	title = "EVTNAME36975"
+	desc = "EVTDESC36975"
+	picture = "deliberation"
+	
+	trigger = {
+		is_greater_power = yes
+		nationalism_n_imperialism = 1
+		OR = {
+			has_country_modifier = building_suez_canal
+			AND = {
+				is_canal_enabled = 2
+				owns = 1755
+			}
+		}
+		NOT = {
+			war_policy = pacifism
+			has_country_modifier = neutrality
+			has_country_flag = suez_egypt_intervention
+		}
+		EGY = {
+			war = no
+			exists = yes
+			is_greater_power = no
+			OR = {
+				is_vassal = no
+				vassal_of = THIS
+			}
+			OR = {
+				revolt_percentage = 0.25
+				any_owned_province = {
+					is_capital = yes
+					controlled_by_rebels = yes
+				}
+				average_militancy = 7
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 0.1
+			EGY = { capital_scope = { controlled_by_rebels = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			EGY = { revolt_percentage = 0.5 }
+		}
+		modifier = {
+			factor = 1.5
+			EGY = {
+				NOT = { revolt_percentage = 0.25 }
+				NOT = { capital_scope = { controlled_by_rebels = yes } }
+			}
+		}	
+	}
+	
+	option = {
+		name = "我们必须保护我们的投资。"
+		set_country_flag = suez_egypt_intervention
+		badboy = 3
+		leave_alliance = EGY
+		diplomatic_influence = { who = EGY value = -200 }
+		relation = { who = EGY value = -200 }
+		random_country = {
+			limit = {
+				tag = EGY
+				civilized = no
+				has_global_flag = berlin_conference
+			}
+			add_casus_belli = {
+				target = THIS
+				type = establish_protectorate_BC_casus_belli
+				months = 60
+			}
+		}
+		random_country = {
+			limit = {
+				tag = EGY
+				OR = {
+					civilized = yes
+					NOT = { has_global_flag = berlin_conference }
+				}
+			}
+			add_casus_belli = {
+				target = THIS
+				type = make_puppet
+				months = 60
+			}
+		}
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				war_policy = anti_military
+			}
+			modifier = {
+				factor = 0
+				badboy = 0.88
+			}
+		}
+	}
+	
+	option = {
+		name = "我们没有必要采取行动。"
+		set_country_flag = suez_egypt_intervention
+		badboy = -1
+		prestige = -10
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				war_policy = anti_military
+			}
+			modifier = {
+				factor = 0.1
+				war_policy = jingoism
+			}
+		}
+	}
+}
+		

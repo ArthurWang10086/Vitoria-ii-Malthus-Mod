@@ -37,7 +37,7 @@ country_event = {
 		528 = {
 			infrastructure = -1
 		}
-		treasury = -100
+		treasury = -1000
 	}
 }
 
@@ -76,7 +76,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA33801" 
-		treasury = -50
+		treasury = -500
 	}
 
 }

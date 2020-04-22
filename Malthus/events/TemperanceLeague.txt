@@ -7,23 +7,19 @@ country_event = {
 	
 	trigger = {
 		civilized = yes
-		NOT = {
-			OR = {
-				religion = sunni
-				religion = shiite
-			}
+		OR = {
+			pop_majority_religion = catholic
+			pop_majority_religion = protestant
 		}
 		NOT = {
-			OR = {
-				has_country_modifier = libertine_culture
-				has_country_modifier = temperance_league
-				poor_strata_life_needs = 0.9
-			}
+			has_country_modifier = libertine_culture
+			has_country_modifier = temperance_league
+			poor_strata_everyday_needs = 0.8
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 500
 		modifier = {
 			factor = 0.9
 			NOT = {
@@ -32,7 +28,33 @@ country_event = {
 		}
 		modifier = {
 			factor = 0.9
+			NOT = {
+				poor_strata_everyday_needs = 0.7
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				poor_strata_everyday_needs = 0.6
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				poor_strata_everyday_needs = 0.5
+			}
+		}
+		modifier = {
+			factor = 0.9
 			liquor = 50
+		}
+		modifier = {
+			factor = 0.5
+			is_culture_group = american_cultures
+		}
+		modifier = {
+			factor = 0.9
+			moralism = 10
 		}
 		modifier = {
 			factor = 0.9
@@ -41,7 +63,7 @@ country_event = {
 			}
 		}
 		modifier = {
-			factor = 1.5
+			factor = 1.1
 			average_consciousness = 5
 		}
 	}
@@ -72,23 +94,25 @@ country_event = {
 	
 	trigger = {
 		civilized = yes
-		NOT = {
-			OR = {
-				religion = sunni
-				religion = shiite
-			}
+		OR = {
+			pop_majority_religion = catholic
+			pop_majority_religion = protestant
 		}
 		NOT = {
-			poor_strata_life_needs = 0.95
+			has_country_modifier = liquor_prohibition
+			poor_strata_everyday_needs = 0.5
+		}
+		any_owned_province = {
+			NOT = { has_province_modifier = beer_halls }
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 300
 		modifier = {
 			factor = 0.9
 			NOT = {
-				poor_strata_everyday_needs = 0.9
+				poor_strata_life_needs = 0.9
 			}
 		}
 		modifier = {
@@ -100,6 +124,10 @@ country_event = {
 		modifier = {
 			factor = 1.5
 			has_country_modifier = temperance_league
+		}
+		modifier = {
+			factor = 0.8
+			has_country_modifier = libertine_culture
 		}
 	}
 	
@@ -140,7 +168,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 250
+		months = 150
 		modifier = {
 			factor = 0.9
 			average_militancy = 5
@@ -154,6 +182,10 @@ province_event = {
 			NOT = {
 				poor_strata_life_needs = 0.9
 			}
+		}
+		modifier = {
+			factor = 0.8
+			owner = { has_country_modifier = libertine_culture }
 		}
 	}
 	
@@ -184,7 +216,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 250
+		months = 150
 		modifier = {
 			factor = 0.9
 			NOT = {
@@ -204,6 +236,10 @@ province_event = {
 		modifier = {
 			factor = 0.9
 			unemployment = 0.15
+		}
+		modifier = {
+			factor = 0.8
+			owner = { has_country_modifier = libertine_culture }
 		}
 	}
 	
@@ -246,7 +282,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 300
+		months = 150
 		modifier = {
 			factor = 0.9
 			owner = {
@@ -303,6 +339,10 @@ province_event = {
 		middle_strata = {
 			consciousness = 2
 			militancy = 1
+			dominant_issue = {
+				value = moralism
+				factor = 0.2
+			}
 		}
 		poor_strata = {
 			militancy = -1
@@ -319,28 +359,26 @@ country_event = {
 
 	trigger = {
 		civilized = yes
-		NOT = {
-			OR = {
-				religion = sunni
-				religion = shiite
-			}
+		OR = {
+			pop_majority_religion = catholic
+			pop_majority_religion = protestant
 		}
 		moralism = 10
 		conservative = 20
 	}
 	
 	mean_time_to_happen = {
-		months = 500
+		months = 200
 		modifier = {
-			factor = 0.9
-			moralism = 15
+			factor = 0.8
+			moralism = 0.15
 		}
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.7
 			average_militancy = 5
 		}
 		modifier = {
@@ -364,7 +402,7 @@ country_event = {
 			any_pop = {
 				dominant_issue = {
 					value = moralism
-					factor = 0.5
+					factor = 0.2
 				}
 			}
 		}
@@ -392,20 +430,19 @@ country_event = {
 		
 	trigger = {
 		civilized = yes
-		NOT = {
-			OR = {
-				religion = sunni
-				religion = shiite
-			}
+		OR = {
+			pop_majority_religion = catholic
+			pop_majority_religion = protestant
 		}
 		has_country_modifier = temperance_league
+		NOT = { has_country_modifier = liquor_prohibition }
 	}
 
 	mean_time_to_happen = {
-		months = 300
+		months = 150
 		modifier = {
 			factor = 0.9
-			moralism = 20
+			moralism = 0.2
 		}
 		modifier = {
 			factor = 0.9
@@ -424,6 +461,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA160"
 		random_state = {
+			limit = { is_colonial = no }
 			any_owned = {
 				remove_province_modifier = beer_halls
 			}
@@ -442,6 +480,7 @@ country_event = {
 	option = {
 		name = "EVTOPTB160"
 		random_state = {
+			limit = { is_colonial = no }
 			poor_strata = {
 				militancy = -0.5
 			}
@@ -464,17 +503,15 @@ country_event = {
 	
 	trigger = {
 		civilized = yes
-		NOT = {
-			OR = {
-				religion = sunni
-				religion = shiite
-			}
+		OR = {
+			pop_majority_religion = catholic
+			pop_majority_religion = protestant
 		}
 		socialist = 20
 	}
 
 	mean_time_to_happen = {
-		months = 500
+		months = 200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -500,6 +537,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA170"
 		random_state = {
+			limit = { is_colonial = no }
 			poor_strata = {
 				militancy = -1
 				consciousness = 2
@@ -513,6 +551,7 @@ country_event = {
 	option = {
 		name = "EVTOPTB170"
 		random_state = {
+			limit = { is_colonial = no }
 			poor_strata = {
 				militancy = 2
 				consciousness = -1
@@ -536,7 +575,7 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 300
+		months = 100
 		modifier = {
 			factor = 0.9
 			average_militancy = 5
@@ -560,6 +599,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA180"
 		random_state = {
+			limit = { is_colonial = no }
 			any_owned = {
 				add_crime = mafia
 			}
@@ -569,8 +609,179 @@ country_event = {
 	option = {
 		name = "EVTOPTB180"
 		random_state = {
+			limit = { is_colonial = no }
 			any_pop = {
 				militancy = 1
+			}
+		}
+	}
+}
+
+#The Push For Liquor Prohibition
+country_event = {
+	id = 185
+	title = "EVTNAME185"
+	desc = "EVTDESC185"
+	picture = "TemperanceLeague"
+	
+	trigger = {
+		has_country_modifier = temperance_league
+		biologism = 1
+		NOT = {
+			liberal = 40
+			has_country_modifier = liquor_prohibition
+			has_country_flag = prohibition_repealed
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+		modifier = {
+			factor = 0.8
+			any_owned_province = { has_province_modifier = beer_halls }
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = { has_province_modifier = destitution_and_poverty }
+		}
+		modifier = {
+			factor = 1.2
+			liberal = 20
+		}
+		modifier = {
+			factor = 1.2
+			liberal = 30
+		}
+	}
+	
+	option = {
+		name = "支持运动"
+		any_pop = {
+			dominant_issue = {
+				value = moralism
+				factor = 0.05
+			}
+		}
+		random_state = {
+			limit = { is_colonial = no }
+			any_pop = {
+				dominant_issue = {
+					value = moralism
+					factor = 0.2
+				}
+				ideology = {
+					value = conservative
+					factor = 0.2
+				}
+			}
+		}
+				
+	}
+	
+	option = {
+		name = "荒谬！他们走得过远了。"
+		random_state = {
+			limit = { is_colonial = no }
+			any_pop = {
+				dominant_issue = {
+					value = moralism
+					factor = 0.1
+				}
+				ideology = {
+					value = conservative
+					factor = 0.1
+				}
+				scaled_consciousness = {
+					issue = moralism
+					factor = 4
+				}
+				scaled_militancy = {
+					issue = moralism
+					factor = 4
+				}
+			}
+		}
+	}
+}
+
+#Libertines
+country_event = {
+	id = 186
+	title = "EVTNAME186"
+	desc = "EVTDESC186"
+	picture = "TemperanceLeague"
+	
+	trigger = {
+		has_country_modifier = libertine_culture
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 0.8
+			any_owned_province = { has_province_modifier = beer_halls }
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = { has_province_modifier = destitution_and_poverty }
+		}
+		modifier = {
+			factor = 1.2
+			liberal = 20
+		}
+		modifier = {
+			factor = 1.2
+			liberal = 30
+		}
+		modifier = {
+			factor = 1.2
+			liberal = 40
+		}
+		modifier = {
+			factor = 0.8
+			moralism = 5
+		}
+		modifier = {
+			factor = 0.8
+			moralism = 10
+		}
+		modifier = {
+			factor = 0.8
+			moralism = 20
+		}
+	}
+	
+	option = {
+		name = "这种活动没有必要。"
+		any_pop = {
+			limit = {
+				location = { is_colonial = no }
+			}
+			scaled_consciousness = {
+				issue = moralism
+				factor = 4
+			}
+			scaled_militancy = {
+				issue = moralism
+				factor = 4
+			}
+		}
+	}
+	
+	option = {
+		name = "最好有些限制。"
+		remove_country_modifier = libertine_culture
+		any_pop = {
+			limit = {
+				location = { is_colonial = no }
+			}
+			dominant_issue = {
+				value = moralism
+				factor = 0.1
+			}
+			scaled_consciousness = {
+				issue = moralism
+				factor = -4
 			}
 		}
 	}
@@ -585,15 +796,18 @@ country_event = {
 	
 	trigger = {
 		has_country_modifier = temperance_league
+		liberal = 20
+		any_owned_province = {
+			is_colonial = no
+			NOT = { has_province_modifier = beer_halls }
+		}
 	}
 
 	mean_time_to_happen = {
-		months = 500
+		months = 200
 		modifier = {
-			factor = 0.9
-			NOT = {
-				average_militancy = 5
-			}
+			factor = 1.2
+			average_militancy = 3
 		}
 		modifier = {
 			factor = 0.9
@@ -607,6 +821,10 @@ country_event = {
 			factor = 0.9
 			liberal = 30
 		}
+		modifier = {
+			factor = 0.9
+			liberal = 40
+		}
 	}
 	
 	option = {
@@ -614,9 +832,8 @@ country_event = {
 		remove_country_modifier = temperance_league
 		random_owned = {
 			limit = {
-				NOT = {
-					has_province_modifier = beer_halls
-				}
+				is_colonial = no
+				NOT = { has_province_modifier = beer_halls }
 			}
 			add_province_modifier = {
 				name = beer_halls
@@ -626,11 +843,17 @@ country_event = {
 	}
 	option = {
 		name = "EVTOPTB190"
-		random_state = {
-			any_pop = {
-				scaled_militancy = {
-					factor = 3
-					ideology = liberal
+		random_owned = {
+			limit = {
+				is_colonial = no
+				NOT = { has_province_modifier = beer_halls }
+			}
+			state_scope = {
+				any_pop = {
+					scaled_militancy = {
+						factor = 3
+						ideology = liberal
+					}
 				}
 			}
 		}

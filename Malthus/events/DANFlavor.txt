@@ -187,9 +187,16 @@ country_event = {
 	option = {
 		name = "EVTOPTA36203" 
 		set_country_flag = LouisPioThird
-		treasury = -100
+		treasury = -10000
 		any_pop = {
 			consciousness = 1
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
 		}
 	}
 
@@ -220,6 +227,9 @@ country_event = {
 		}
 		aristocrats = {
 			militancy = 1
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
 }
@@ -270,8 +280,15 @@ country_event = {
 	option = {
 		name = "EVTOPTA36204" 
 		set_country_flag = WestIndiesRevolt
-		money = -500
+		money = -5000
 		political_reform = no_slavery
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 5000 }
+			}
+		}
 	}
 
 	option = {
@@ -287,6 +304,9 @@ country_event = {
 				factor = 2
 			}
 		}
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -301,12 +321,13 @@ country_event = {
 		OR = {
 			neighbour = GER
 			neighbour = PRU
-			}
+			neighbour = NGF
+		}
 		NOT = {
 			year = 1890
-			has_country_flag = CopenhagenFort
-			}
+				has_country_flag = CopenhagenFort
 		}
+	}
  
 	mean_time_to_happen =  {
 		months = 8
@@ -335,7 +356,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA36205" 
 		set_country_flag = CopenhagenFort
-		money = -1000
+		money = -10000
 		372 = {
 			fort = 1
 		}
@@ -346,6 +367,13 @@ country_event = {
 		dominant_issue = {
 			factor = 0.05
 			value = jingoism
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
 		}
 	}
 
@@ -368,6 +396,9 @@ country_event = {
 				value = jingoism
 			}
 		}
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -375,40 +406,11 @@ country_event = {
 
 	id = 36206
 
-	trigger = {
-		tag = DEN 
-		year = 1896
-		neighbour = GER
-		NOT = {
-			year = 1901
-			has_country_flag = SchlewsigDENesGermanized
-			}
-		}
- 
-	mean_time_to_happen =  {
-		months = 8
-
-		modifier = {
-			factor = 0.75 #increase likelihood to happen
-			year = 1897
-		}
-
-
-		modifier = {
-			factor = 0.95 #increase likelihood to happen
-			year = 1898
-		}
-
-		modifier = {
-			factor = 0.95 #increase likelihood to happen
-			year = 1899
-		}
-	}
-
 	title = "EVTNAME36206"
 	desc = "EVTDESC36206"
 	picture = "Administration"
 
+	is_triggered_only = yes
 
 	option = {
 		name = "EVTOPTA36206" 
@@ -468,15 +470,15 @@ country_event = {
 		set_country_flag = GeneralStrike
 		craftsmen = {
 			consciousness = 1
-			militancy = 1
+			militancy = 3
 		}
 		labourers = {
 			consciousness = 1
-			militancy = 1
+			militancy = 3
 		}
 		artisans = {
 			consciousness = 1
-			militancy = 1
+			militancy = 3
 		}
 		clerks = {
 			consciousness = 2
@@ -504,8 +506,8 @@ country_event = {
 		NOT = {
 			year = 1912
 			has_country_flag = AlberiniAffair
-			}
 		}
+	}
  
 	mean_time_to_happen =  {
 		months = 8
@@ -543,6 +545,55 @@ country_event = {
 
 country_event = {
 
+	id = 36209
+	trigger = {
+		tag = DEN
+		exists = USA
+		year = 1917
+		war = no
+		owns = 2223 #St Thomas, Virgin Islands
+		NOT = {
+			truce_with = USA
+			relation = {
+				who = USA
+				value = 0
+			}
+		}
+		OR = {
+			government = hms_government
+			government = democracy
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+
+	title = "EVTNAME36209"
+	desc = "EVTDESC36209"
+	picture = "danishgovernment"
+
+	option = {
+		name = "EVTOPTA36209" 
+		treasury = 25000
+		relation = {
+			who = USA
+			value = 50
+		}
+		2223 = {
+			secede_province = USA
+			add_core = USA
+			remove_core = DEN
+		}		
+	}
+	option = {
+		name = "Keep them."
+		prestige = 5
+	}
+}
+
+country_event = {
+
 	id = 36210
 
 	trigger = {
@@ -552,7 +603,7 @@ country_event = {
 		NOT = {
 			year = 1886
 			owns = 371 #aabenraa
-
+			exists = SCH
 		}
 	}
 	
@@ -589,6 +640,16 @@ country_event = {
 			dominant_issue = {
 				value = jingoism
 				factor = 0.05
+			}
+		}
+		any_country = {
+			limit = { owns = 371 }
+			any_pop = {
+				limit = {
+					location = { is_core = DEN }
+					has_pop_culture = danish
+				}
+				militancy = 3
 			}
 		}
 	}
@@ -670,7 +731,7 @@ country_event = {
 	fire_only_once = yes
  
 	mean_time_to_happen =  {
-		months = 12
+		months = 6
 
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
@@ -696,7 +757,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA36212" 
 		prestige = -1
-		treasury = -500 
+		treasury = -10000
 	}
 }
 
@@ -710,11 +771,6 @@ country_event = {
 		year = 1891
 		capital = 372 #copenhagen
 		impressionism = 1 #has impressionism tech
-		OR = {
-			government = hms_government
-			government = prussian_constitutionalism
-			government = absolute_monarchy
-		}
 		NOT = {
 			year = 1895
 		}
@@ -723,19 +779,19 @@ country_event = {
 	fire_only_once = yes
  
 	mean_time_to_happen =  {
-		months = 12
+		months = 6
 
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
-			year = 1892
+			year = 1885
 		}
 		modifier = {
 			factor = 0.95 #increase likelihood to happen
-			year = 1893
+			year = 1886
 		}
 		modifier = {
 			factor = 0.95 #increase likelihood to happen
-			year = 1894
+			year = 1887
 		}
 	}
 
@@ -744,7 +800,8 @@ country_event = {
 	picture = "Glyptoteket"
 
 	option = {
-		name = "EVTOPTA36213" 
+		name = "EVTOPTA36213"
+		plurality = 1
 		prestige = 10
 	}
 }
@@ -756,13 +813,16 @@ country_event = {
 	trigger = {
 		tag = DEN 
 		year = 1884
-		ruling_party_ideology = conservative
-		government = hms_government
+		OR = {
+			government = hms_government
+			government = prussian_constitutionalism
+			government = democracy
+		}
 		NOT = {
 			year = 1888
 			has_country_flag = EstrupAssassination
-			}
 		}
+	}
  
 	mean_time_to_happen =  {
 		months = 12
@@ -793,17 +853,185 @@ country_event = {
 		set_country_flag = EstrupAssassination
 		prestige = -5
 		any_pop = {
-			scaled_consciousness = {
+			scaled_militancy = {
 				ideology = conservative
 				factor = 2
 			}
-			scaled_consciousness = {
+			scaled_militancy = {
 				ideology = reactionary
 				factor = 2
 			}
 		}
 	}
 }
+
+country_event = {
+
+	id = 36215 # Iceland's Independence
+
+	title = "EVTNAME36215_NEW"
+	desc = "EVTDESC36215_NEW"
+	picture = "danishgovernment"
+
+	trigger = {
+		war = no
+		owns = 252
+		OR = {
+			year = 1918
+			AND = {
+				year = 1874
+				252 = { is_colonial = no }
+			}
+		} 
+		NOT = {
+			exists = ICL
+			has_global_flag = iceland_independence
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 6
+		modifier = {
+			factor = 20
+			has_country_flag = ICL_independence_refused
+		}
+		modifier = {
+			factor = 0.8
+			252 = {
+				average_militancy = 3
+			}
+		}
+		modifier = {
+			factor = 0.8
+			252 = {
+				average_militancy = 4
+			}
+		}
+	}
+
+	option = {
+		name = "We will grant their request."
+		clr_country_flag = ICL_independence_refused
+		set_global_flag = iceland_independence
+		prestige = -5
+		badboy = -3
+		252 = {
+			remove_province_modifier = nationalist_agitation
+			remove_core = DEN
+		}
+		release_vassal = ICL
+		ICL = {
+			any_pop = { militancy = -8 }
+		}
+		relation = {
+			who = ICL
+			value = 200
+		}
+		diplomatic_influence = {
+			who = ICL
+			value = 200
+		}
+		any_pop = {
+			consciousness = 1
+		}
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 0
+				OR = {
+					government = proletarian_dictatorship
+					government = bourgeois_dictatorship
+					government = fascist_dictatorship
+					government = presidential_dictatorship
+				}
+			}
+			modifier = {
+				factor = 0.25
+				government = absolute_monarchy
+			}
+			modifier = {
+				factor = 1.5
+				government = democracy
+			}
+			modifier = {
+				factor = 0.5
+				war_policy = jingoism
+			}
+			modifier = {
+				factor = 0.75
+				war_policy = pro_military
+			}
+			modifier = {
+				factor = 1.25
+				war_policy = anti_military
+			}
+			modifier = {
+				factor = 1.5
+				war_policy = pacifism
+			}
+			modifier = {
+				factor = 1.2
+				militancy = 3
+			}
+			modifier = {
+				factor = 1.2
+				militancy = 5
+			}
+			
+		}	
+	}
+	option = {
+		name = "They shall remain under our direct control."
+		set_country_flag = ICL_independence_refused
+		252 = {
+			any_pop = {
+				limit = { has_pop_culture = icelandic }
+				militancy = 3
+			}
+			add_province_modifier = {
+				name = nationalist_agitation
+				duration = 1095
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.75
+				government = absolute_monarchy
+			}
+			modifier = {
+				factor = 0.5
+				government = democracy
+			}
+			modifier = {
+				factor = 1.5
+				war_policy = jingoism
+			}
+			modifier = {
+				factor = 1.25
+				war_policy = pro_military
+			}
+			modifier = {
+				factor = 0.75
+				war_policy = anti_military
+			}
+			modifier = {
+				factor = 0.5
+				war_policy = pacifism
+			}
+			modifier = {
+				factor = 0.8
+				militancy = 3
+			}
+			modifier = {
+				factor = 0.8
+				militancy = 5
+			}
+		}
+	}
+}		
+
+
 
 country_event = {
 
@@ -871,7 +1099,7 @@ country_event = {
 	fire_only_once = yes
 	
 	mean_time_to_happen =  {
-		months = 12
+		months = 6
 
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
@@ -922,7 +1150,7 @@ country_event = {
 	fire_only_once = yes
  
 	mean_time_to_happen =  {
-		months = 12
+		months = 6
 
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
@@ -968,6 +1196,7 @@ country_event = {
 		public_meetings = yes_meeting
 		OR = {
 			government = hms_government
+			government = prussian_constitutionalism
 			government = democracy
 		}
 		NOT = {
@@ -978,7 +1207,7 @@ country_event = {
 	fire_only_once = yes
  
 	mean_time_to_happen =  {
-		months = 12
+		months = 6
 
 		modifier = {
 			factor = 0.75 #increase likelihood to happen
@@ -1021,7 +1250,7 @@ country_event = {
 		NOT = {
 			year = 1859
 			has_country_flag = SCAStudent
-			}
+		}
 	}
 	
 	fire_only_once = yes
@@ -1054,7 +1283,7 @@ country_event = {
 		relation = { who = GER value = -50 }
 		relation = { who = SWE value = 75 }
 		any_pop = {
-			scaled_consciousness = {
+			scaled_militancy = {
 				factor = 2
 				ideology = liberal
 			}	
@@ -1062,77 +1291,5 @@ country_event = {
 	}
 }
 
-# Greenland Purchase 1/3
-country_event = {
-	id = 36230
-	title = "EVTNAME36230"
-	desc = "EVTDESC36230"
-	picture = "selling_bears_to_jan_meyen"
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTA36230"
-		money = 4000
-		JAN = {
-			country_event = { id=36231 days=0 }
-			primary_culture = polar_bears
-			add_accepted_culture = norwegian
-		}
-		DEN_251 = {
-			add_core = JAN		
-			secede_province = JAN
-			remove_core = DEN
-		}
-		ai_chance = { factor = 100 }
-	}
-	
-	option = {
-		name = "EVTOPTB36230"
-		JAN = {
-			country_event = { id=36232 days=0 }
-		}
-		ai_chance = { factor = 0 }
-	}
-}
-
-# Greenland Purchase 2/3 Denmark Accepts 
-country_event = {
-	id = 36231
-	title = "EVTNAME36231"
-	desc = "EVTDESC36231"
-	picture = "selling_bears_to_jan_meyen"
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTA36231"
-		money = -4000
-		SWE_308 = {
-			assimilate = yes
-		}
-		DEN_251 = {
-			assimilate = yes
-		}		
-	}
-}
-
-# Greenland Purchase 3/3 Denmark Denies
-country_event = {
-	id = 36232
-	title = "EVTNAME36232"
-	desc = "EVTDESC36232"
-	picture = "selling_bears_to_jan_meyen"
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = "EVTOPTA36232"
-		relation = {
-			who = FROM
-			value = -100
-		}
-	}
-}
 
 ###events 36221 and 36222 are in USAFlavor.txt (US purchase VI events)

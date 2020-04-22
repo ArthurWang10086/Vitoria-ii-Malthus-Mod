@@ -10,10 +10,7 @@ country_event = {
 		tag = BAV
 		year = 1841
 		classicism_n_early_romanticism = 1 #has the romanticism tech
-		NOT = {
-			year = 1844
-			has_country_flag = Walhalla
-			}
+		NOT = {	has_country_flag = Walhalla }
 		}
  
 	mean_time_to_happen =  {
@@ -26,7 +23,7 @@ country_event = {
 
 		modifier = {
 			factor = 0.95 #increase likelihood to happen
-			year = 1843
+			year = 1844
 		}
 	}
 
@@ -36,7 +33,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA33400" 
-		prestige = 5
+		prestige = 10
 		set_country_flag = Walhalla
 	}
 }
@@ -52,7 +49,11 @@ country_event = {
 	trigger = {
 		tag = BAV
 		year = 1846
-		government = absolute_monarchy
+		OR = {
+			government = absolute_monarchy
+			government = prussian_constitutionalism
+			government = hms_government
+		}
 		NOT = {
 			year = 1849
 		}
@@ -82,14 +83,17 @@ country_event = {
 		name = "EVTOPTA33401" 
 		prestige = -10
 		any_pop = {
-			consciousness = 1
-			scaled_militancy = {
+			limit = { has_pop_religion = catholic }
+			militancy = 3
+		}
+		any_pop = {
+			scaled_consciousness = {
 				factor = 2
-				ideology = liberal
+				ideology = conservative
 			}
 			scaled_militancy = {
 				factor = 2
-				ideology = anarcho_liberal
+				ideology = conservative
 			}
 		}
 	}
@@ -109,10 +113,11 @@ country_event = {
 		realism = 1 #has the realism tech
 		OR = {
 			government = absolute_monarchy
+			government = prussian_constitutionalism
 			government = hms_government
 		}
 		NOT = {
-			year = 1855
+			year = 1858
 		}
 	}
 	
@@ -128,7 +133,7 @@ country_event = {
 
 		modifier = {
 			factor = 0.95 #increase likelihood to happen
-			year = 1854
+			year = 1855
 		}
 	}
 
@@ -137,9 +142,10 @@ country_event = {
 	picture = "Bayern"
 
 	option = {
-		name = "EVTOPTA33402" 
-		prestige = 5
-		treasury = -500
+		name = "EVTOPTA33402"
+		plurality = 1 
+		prestige = 10
+		treasury = -5000
 	}
 }
 
@@ -182,8 +188,8 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA33403" 
-		prestige = 5
-		treasury = -200
+		prestige = 10
+		treasury = -2000
 		set_global_flag = RichardWagner
 	}
 }

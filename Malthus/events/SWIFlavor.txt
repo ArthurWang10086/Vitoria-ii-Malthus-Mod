@@ -501,3 +501,26 @@ country_event = {
 	}
 
 }
+
+#The Geneva Convention
+country_event = {
+	id = 31311
+	title = "EVTNAME31311"
+	desc = "EVTDESC31311"
+	picture = "genevaconvention"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA31311"
+		add_country_modifier = {
+			name = signed_the_geneva_convention
+			duration = -1
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB31311"
+		badboy = 1
+	}
+}

@@ -40,7 +40,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA33403" 
 		prestige = 10
-		treasury = -200
+		treasury = -2000
 		set_global_flag = RichardWagner
 	}
 }
@@ -56,14 +56,15 @@ province_event = {
 	trigger = {
 		province_id = 371 #Aabenra/North Schleswig
 		owned_by = GER
+		exists = DEN
 		year = 1896
 		culture = danish
 		NOT = {
 			year = 1899
 			has_global_flag = GermanizeSchlewsigDanes
 			has_global_flag = NOGermanizeSchlewsigDanes
-			}
 		}
+	}
  
 	mean_time_to_happen =  {
 		months = 6
@@ -90,7 +91,7 @@ province_event = {
 			}
 			militancy = 2
 		}
-		relation = { who = DEN value = -100 }
+		DEN = { country_event = 36206 }
 		set_global_flag = GermanizeSchlewsigDanes
 	}
 
@@ -259,7 +260,6 @@ country_event = {
 			is_vassal = no
 			OR = {
 				government = absolute_monarchy
-				government = prussian_constitutionalism
 				government = hms_government
 				}
 			NOT = {
@@ -320,3 +320,739 @@ country_event = {
 	}
 
 }
+
+country_event = {
+
+	id = 33006
+	title = "EVTNAME33006" #Trade For Heligoland?
+	desc = "EVTDESC33006"
+	picture = "treaty"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "我们同意。"
+		random_owned = {
+			limit = {
+				owner = { owns = 2029 }
+			}
+			owner = {
+				any_owned = {
+					limit = {
+						OR = {
+							region = ENG_2024
+							region = ENG_2026
+						}
+					}
+					secede_province = ENG
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { owns = 2029 }
+			}
+			owner = {
+				random_state = {
+					limit = {
+						is_colonial = yes
+						any_owned_province = {
+							continent = africa
+							OR = {
+								port = yes
+								any_neighbor_province = { owned_by = ENG }
+							}
+						}
+					}
+					any_owned = { secede_province = ENG }
+				}
+			}
+		}
+		ENG = { country_event = 33007 }
+			
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = "我们拒绝。"
+		ENG = { country_event = 33008 }
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+
+	id = 33007
+	title = "EVTNAME33007" #Germany Agrees
+	desc = "EVTDESC33007"
+	picture = "treaty"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "太好了！"
+		prestige = 5
+		533 = {
+			remove_core = ENG
+			secede_province = GER
+		}
+		relation = {
+			who = GER
+			value = 25
+		}
+	}
+}
+
+country_event = {
+
+	id = 33008
+	title = "EVTNAME33008" #Germany Has Refused
+	desc = "EVTDESC33008"
+	picture = "treaty"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "太糟糕了。"
+		prestige = -5
+		relation = {
+			who = GER
+			value = -25
+		}
+	}
+}
+
+country_event = {
+
+	id = 33009
+	title = "EVTNAME33009" #For the Glory of Germany
+	desc = "EVTDESC33009"
+	picture = "threehurrahs"
+	
+	trigger = {
+		tag = NGF
+		war = no
+		is_greater_power = yes
+		is_disarmed = no
+		year = 1870
+		NOT = {
+			truce_with = FRA
+			num_of_revolts = 1
+			has_country_flag = glory_of_germany_al
+		}
+		any_owned_province = {
+			any_neighbor_province = { region = FRA_412 }
+		}
+		FRA = {
+			NOT = { brigades_compare = 2 }
+			owns = 410
+		}
+		410 = {
+			is_core = GER
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 100
+		modifier = {
+			factor = 0.1
+			any_greater_power = { war_with = FRA }
+		}
+		modifier = {
+			factor = 0.5
+			FRA = { num_of_revolts = 5 }
+		}
+		modifier = {
+			factor = 2
+			FRA = { alliance_with = RUS }
+		}
+		modifier = {
+			factor = 0.5
+			year = 1880
+		}
+		modifier = {
+			factor = 0.5
+			year = 1890
+		}
+	}
+	
+	option = {
+		name = "开战！"
+		set_country_flag = glory_of_germany_al
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = -6
+		}
+		war = {
+			target = FRA
+			attacker_goal = {
+				casus_belli = unification_casus_belli
+				state_province_id = 410
+			}
+			call_ally = yes
+		}
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	option = {
+		name = "放弃我们的要求。"
+		set_country_flag = glory_of_germany_al
+		FRA_412 = { remove_core = GER }
+		prestige = -50
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			scaled_militancy = {
+				issue = jingoism
+				factor = 6
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = {
+	id = 33010
+	title = "EVTNAME33010" #Alsace-Lorraine is Lost
+	desc = "EVTDESC33010"
+	major = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = NGF
+		war = no
+		has_country_flag = glory_of_germany_al
+		NOT = { has_country_flag = lost_alsace_lorraine }
+		410 = {
+			is_core = GER
+			NOT = { owned_by = THIS }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "绝不！总有一天，我们将重新拥有它..."
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			militancy = -3
+			dominant_issue = {
+				factor = 0.10
+				value = jingoism
+			}
+		}
+		ai_chance = {
+			factor = 30
+		}
+	}
+	
+	option = {
+		name = "放弃我们的要求。"
+		set_country_flag = lost_alsace_lorraine
+		FRA_412 = { remove_core = GER }
+		prestige = -50
+		ai_chance = {
+			factor = 70
+		}
+	}
+}
+
+country_event = {
+	id = 33015
+	title = "我们正处于战争状态"
+	desc = "我们正处在与一个可怕敌人的战争中。我们应该呼吁我们的盟国加入战争。"
+	
+	trigger = {
+		ai = yes
+		OR = {
+			tag = AUS
+			tag = KUK
+			tag = PRU
+			tag = NGF
+			tag = SGF
+		}
+		OR = {
+			war_with = FRA
+			war_with = PRU
+			war_with = NGF
+			war_with = SGF
+			war_with = AUS
+			war_with = KUK
+		}
+		any_neighbor_country = {
+			alliance_with = THIS
+			in_sphere = THIS
+			war = no
+		}
+		NOT = { has_country_flag = called_german_allies }
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = "让我们确定每一个盟友都已参战。"
+		set_country_flag = called_german_allies
+		war = {
+			attacker_goal = {
+				casus_belli = call_allies_cb
+			}
+			call_ally = yes
+		}
+	}
+}
+
+country_event = {
+	id = 33016
+	title = "Call Allies Cleanup"
+	desc = "This removes the flag once peace is achieved."
+
+	trigger = {
+		ai = yes
+		war = no
+		has_country_flag = called_german_allies
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "Let's keep this clean."
+		clr_country_flag = called_german_allies
+	}
+}
+
+country_event = {
+	id = 33020
+	title = "EVTNAME33020" #The League of Three Emperors
+	desc = "EVTDESC33020"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "我们将加入联盟。"
+		prestige = 20
+		GER = { prestige = 20 }
+		relation = { who = GER value = 200 }
+		create_alliance = GER
+		random_country = {
+			limit = {
+				tag = GER
+				THIS = { tag = AUS }
+			}
+			diplomatic_influence = { who = THIS value = 200 }
+		}
+		any_greater_power = {
+			limit = {
+				NOT = {
+					tag = GER
+					tag = AUS
+					tag = KUK
+					tag = RUS
+				}
+				alliance_with = THIS
+			}
+			leave_alliance = THIS
+		}
+		any_country = {
+			limit = {
+				OR = {
+					tag = AUS
+					tag = KUK
+					tag = RUS
+				}
+				exists = yes
+				NOT = { tag = THIS }
+			}
+			relation = { who = THIS value = 100 }
+		}
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 2
+				tag = KUK
+			}
+		}
+	}
+	
+	option = {
+		name = "我们对此没有兴趣。"
+		GER = {
+			prestige = -20
+			relation = { who = THIS value = -50 }
+		}
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0.5
+				tag = KUK
+			}
+			modifier = {
+				factor = 0.75
+				government = absolute_monarchy
+			}
+			modifier = {
+				factor = 1.5
+				government = hms_government
+			}
+			modifier = {
+				factor = 0.5
+				relation = { who = GER value = 50 }
+			}
+			modifier = {
+				factor = 0
+				alliance_with = GER
+			}
+		}
+	}
+}
+
+#German-Spanish Treaty of 1899
+country_event = {
+	id = 33025
+	title = "EVTNAME33205" #The Spanish Pacific
+	desc = "EVTDESC33025"
+	picture = "deliberation"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "同意售出。"
+		treasury = 50000
+		relation = { who = FROM value = 100 }
+		FROM = { country_event = 33026 }
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 0.5
+				NOT = {
+					relation = { who = FROM value = 0 }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "我们没兴趣。"
+		relation = { who = FROM value = -50 }
+		FROM = { country_event = 33027 }
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				in_sphere = FROM
+			}
+			modifier = {
+				factor = 0.5
+				alliance_with = FROM
+			}
+			modifier = {
+				factor = 2
+				NOT = {
+					relation = { who = FROM value = 0 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 33026
+	title = "$COUNTRY_ADJ$-$FROMCOUNTRY_ADJ$$YEAR$年条约"
+	desc = "$FROMCOUNTRY_ADJ$政府已同意签署条约。他们所有加罗林和马里亚纳的剩余领地现在都属于我国了。"
+	picture = "treaty"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "棒极了。"
+		treasury = -50000
+		diplomatic_influence = { who = FROM value = 50 }
+		FROM = {
+			any_owned = {
+				limit = {
+					OR = {
+						region = SPA_610
+						region = SPA_2517
+					}
+				}
+				secede_province = THIS
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 33027
+	title = "西班牙拒绝！"
+	desc = "十分烦人的是，西班牙人回应说不会把任何他们剩下的太平洋领地交给我们。"
+	picture = "administration"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "那么我们就得考虑使用武力了。"
+		prestige = -10
+		relation = { who = FROM value = -100 }
+		diplomatic_influence = { who = FROM value = -200 }
+		casus_belli = {
+			target = FROM
+			type = place_in_the_sun
+			months = 24
+		}
+		casus_belli = {
+			target = FROM
+			type = humiliate
+			months = 24
+		}
+		ai_chance = {
+			factor = 80
+		}
+	}
+	
+	option = {
+		name = "随便吧。"
+		badboy = -1
+		prestige = -20
+		relation = { who = FROM value = -25 }
+		ai_chance = {
+			factor = 20
+		}
+	}
+}
+
+#German East Africa
+country_event = {
+	id = 33030
+	title = "EVTNAME33030" #The German East Africa Company
+	desc = "EVTDESC33030"
+	picture = "scramble_for_africa"
+	
+	trigger = {
+		OR = {
+			tag = NGF
+			tag = GER
+		}
+		OR = {
+			government = absolute_monarchy
+			government = prussian_constitutionalism
+			government = hms_government
+		}
+		is_greater_power = yes
+		invention = the_white_mans_burden
+		invention = indigenous_garrisoning
+		has_global_flag = berlin_conference
+		NOT = { has_country_flag = german_east_africa_company }
+		ZAN = {
+			war = no
+			civilized = no
+			any_owned_province = {
+				OR = {
+					region = ENG_2024
+					region = ENG_2036
+					region = ENG_2039
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 25
+		modifier = {
+			factor = 0.5
+			is_sphere_leader_of = ZAN
+		}
+		modifier = {
+			factor = 0.5
+			year = 1885
+		}
+		modifier = {
+			factor = 0.5
+			year = 1888
+		}
+		modifier = {
+			factor = 2
+			NOT = { is_sphere_leader_of = ZAN }
+			ZAN = { part_of_sphere = yes }
+		}
+	}
+	
+	option = {
+		name = "宣称该海岸是$COUNTRY_ADJ$殖民地。"
+		set_country_flag = german_east_africa_company
+		badboy = 3
+		ZAN = { country_event = 33031 }
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				badboy = 0.88
+			}
+		}		
+	}
+	
+	option = {
+		name = "我们对这个没兴趣。"
+		set_country_flag = german_east_africa_company
+		badboy = -1
+		relation = { who = ZAN value = 100 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 3
+				any_owned_province = { continent = africa }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_sphere_leader_of = ZAN }
+				ZAN = { part_of_sphere = yes }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 33031
+	title = "EVTNAME33031" #German Warships
+	desc = "EVTDESC33031"
+	picture = "scramble_for_africa"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "奇耻大辱！我们拒绝！"
+		clr_country_flag = delay_unciv_annexation
+		prestige = 5
+		relation = { who = FROM value = -200 }
+		add_casus_belli = {
+			target = FROM
+			type = demand_concession_BC_casus_belli
+			months = 60
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 5
+				part_of_sphere = yes
+			}
+			modifier = {
+				factor = 4
+				any_greater_power = { alliance_with = THIS }
+				NOT = { alliance_with = FROM }
+			}
+			modifier = {
+				factor = 0
+				in_sphere = FROM
+			}
+		}
+	}
+	
+	option = {
+		name = "看起来我们没选择。"
+		clr_country_flag = delay_unciv_annexation
+		prestige = -5
+		FROM = { prestige = 5 }
+		relation = { who = FROM value = 400 }
+		FROM = { diplomatic_influence = { who = THIS value = 50 } }
+		any_owned = {
+			limit = {
+				OR = {
+					region = ENG_2024
+					region = ENG_2036
+					region = ENG_2039
+				}
+				NOT = { province_id = 2048 }
+			}
+			secede_province = FROM
+		}
+		any_country = {
+			limit = {
+				civilized = yes
+				OR = {
+					alliance_with = THIS
+					is_sphere_leader_of = THIS
+				}
+				NOT = { tag = FROM }
+			}
+			casus_belli = {
+				target = FROM
+				type = place_in_the_sun
+				months = 12
+			}
+		}
+		ai_chance = {
+			factor = 95
+		}
+	}
+}
+
+country_event = {
+	id = 33035
+	title = "新的挑战者"
+	desc = "一个意欲夺取德意志邦联领导权的挑战者冒了出来！"
+	picture = "greatpowers"
+	
+	trigger = {
+		ai = yes
+		war = no
+		is_culture_group = germanic
+		state_n_government = 1
+		OR = {
+			capital = 549
+			capital = 619
+		}
+		any_greater_power = {
+			ai = yes
+			is_culture_group = germanic
+			NOT = { capital = 549 }
+			NOT = { capital = 619 }
+			OR = {
+				alliance_with = THIS
+				relation = { who = THIS value = 0 }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "不可接受！"
+		random_country = {
+			limit = {
+				ai = yes
+				is_greater_power = yes
+				is_culture_group = germanic
+				NOT = { capital = 549 }
+				NOT = { capital = 619 }
+				OR = {
+					alliance_with = THIS
+					relation = { who = THIS value = 0 }
+				}
+			}
+			leave_alliance = THIS
+			relation = { who = THIS value = -100 }
+			add_casus_belli = {
+				target = THIS
+				type = humiliate
+				months = 12
+			}
+		}
+	}
+}
+
+	

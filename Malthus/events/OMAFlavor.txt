@@ -44,6 +44,58 @@ country_event = {
 
 }
 
-
-
+#Zanzibar creation event
+country_event = {
+	id = 38505
+	title = "EVTNAME38505" #Death of the Sultan
+	desc = "EVTDESC38505"
+	news = yes
+	news_desc_long = "EVTDESC38505_NEWS_LONG"
+	news_desc_medium = "EVTDESC38505_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC38505_NEWS_SHORT"
+	picture = "india"
+	major = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = OMA
+		war = no
+		civilized = no
+		owns = 2048
+		NOT = { num_of_revolts = 1 }
+		year = 1860
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = "一个儿子统治阿曼，一个儿子统治桑给巴尔。"
+		prestige = 5
+		any_pop = {
+			limit = {
+				has_pop_culture = swahili
+				location = { is_core = ZAN }
+			}
+			militancy = -8
+		}
+		release = ZAN
+		relation = { who = ZAN value = 100 }
+		ZAN = { country_event = 95503 }
+		random_country = {
+			limit = {
+				tag = ENG
+				is_greater_power = yes
+				NOT = { is_sphere_leader_of = ZAN }
+				NOT = { is_sphere_leader_of = OMA }
+				ai = yes
+			}
+			diplomatic_influence = { who = ZAN value = 50 }
+			diplomatic_influence = { who = OMA value = 50 }
+		}
+		ai_chance = { factor = 100 }
+	}
+}
 

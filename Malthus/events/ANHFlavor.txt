@@ -13,13 +13,13 @@ country_event = {
 		NOT = {
 			year = 1865
 			has_country_flag = LeopoldIVAnhalt
-			}
+		}
 		war = no
 		OR = {
 			government = absolute_monarchy 
 			government = hms_government
-			} 
-		}
+		} 
+	}
  
 	mean_time_to_happen =  {
 		months = 8
@@ -42,6 +42,9 @@ country_event = {
 	option = {
 		name = "EVTOPTA48300" 
 		prestige = 5
+		any_pop = {
+			militancy = -2
+		}
 		set_country_flag = LeopoldIVAnhalt
 	}
 

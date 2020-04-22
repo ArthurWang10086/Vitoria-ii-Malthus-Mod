@@ -5,7 +5,7 @@
 #Formation of the Internatonal Olympic Committee
 country_event = {
 
-	id = 23400
+	id = 23400 
 	news = yes
 	news_title = "EVTNAME23400_NEWS_TITLE"
 	news_desc_long = "EVTDESC23400_NEWS_LONG"
@@ -13,12 +13,13 @@ country_event = {
 	news_desc_short = "EVTDESC23400_NEWS_SHORT"
 
 	trigger = {
-		NOT = { has_country_flag = IOCMember }
+		not = { has_country_flag = IOCMember }
 		year = 1893
-		war = no # Nation can NOT be at war at the time of invite
+		money = 5000
+		war = no # Nation can not be at war at the time of invite
 		or = { 
 			is_greater_power = yes # Nation is a great power
-			prestige = 500 # Non-Euro/non GP need to be high prestige to get invite in this era
+			prestige = 1500 # Non-Euro/non GP need to be high prestige to get invite in this era
 			tag = GRE # Greece projected to host first games so has to get invite
 			and = {
 				capital_scope = { continent = europe } # European nation with > 25 prestige
@@ -38,15 +39,6 @@ country_event = {
 			factor = 0.8
 			year = 1895
 		}
-		
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
-		}
 	}
 
 	title = "EVTNAME23400"
@@ -57,8 +49,8 @@ country_event = {
 	option = {
 		name = "EVTOPTA23400" # Join the IOC
 		ai_chance = { factor = 99 }
-		money = -10000
-		prestige = 5
+		money = -5000
+		prestige = 20
 		set_country_flag = IOCMember
 	}
 	option = {
@@ -76,16 +68,14 @@ country_event = {
 	trigger = {
 		tag = GRE # Greece hosted 1896 Olympics
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host1Olympiad
-				has_country_flag = Attend1Olympiad
-				has_country_flag = NoHost1Olympiad
-			}
+		not = {
+			has_country_flag = Host1Olympiad
+			has_country_flag = Attend1Olympiad
+			has_country_flag = NoHost1Olympiad
 		}
 		year = 1895
-		NOT = { year = 1898 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1898 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -107,16 +97,26 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		money = -1000
+		money = -10000
 		set_global_flag = Host1Olympiad
 		set_country_flag = Host1Olympiad
 		set_country_flag = Attend1Olympiad
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
+		}
 	}
 	option = {
-		name = "EVTOPTB23401" # NOT interested
-		prestige = -25
+		name = "EVTOPTB23401" # Not interested
+		prestige = -5
 		set_global_flag = GRENoHost1Olympiad
 		set_country_flag = NoHost1Olympiad
+		ai_chance = {
+			factor = 10
+		}
 	}
 }
 
@@ -126,22 +126,19 @@ country_event = {
 	id = 23402 
 
 	trigger = {
-		NOT = { has_global_flag = Host1Olympiad }
-		OR = {
+		or = {
 			has_global_flag = GRENoHost1Olympiad
-			NOT = { exists = GRE }
+			not = { exists = GRE }
 		}
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host1Olympiad
-				has_country_flag = Attend1Olympiad
-				has_country_flag = NoHost1Olympiad
-			}
+		not = {
+			has_country_flag = Host1Olympiad
+			has_country_flag = Attend1Olympiad
+			has_country_flag = NoHost1Olympiad
 		}
 		year = 1895
-		NOT = { year = 1898 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1898 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -155,14 +152,6 @@ country_event = {
 			factor = 0.95
 			year = 1897
 		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
-		}
 	}
 
 	title = "EVTNAME23401"
@@ -171,33 +160,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
-		prestige = 10
+		money = -10000
 		set_global_flag = Host1Olympiad
 		set_country_flag = Host1Olympiad
 		set_country_flag = Attend1Olympiad
-	}
-	option = {
-		name = "EVTOPTB23401" # NOT interested
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
 			}
 		}
-		prestige = -10
+	}
+	option = {
+		name = "EVTOPTB23401" # Not interested
+		prestige = -5
 		set_country_flag = NoHost1Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -209,15 +190,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host1Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend1Olympiad
-				has_global_flag = Hold1Olympiad
-			}
+		not = {
+			has_country_flag = Attend1Olympiad
+			has_global_flag = Hold1Olympiad
 		}
 		year = 1895
-		NOT = { year = 1898 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1898 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -239,31 +218,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
+		money = -10000
+		set_country_flag = Attend1Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
 			}
 		}
-		set_country_flag = Attend1Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		name = "EVTOPTB23403" # We're not going this year
+		prestige = -5
 		set_country_flag = NoAttend1Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -275,10 +246,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host1Olympiad
 		has_country_flag = Attend1Olympiad
-		NOT = { has_global_flag = Hold1Olympiad }
+		not = { has_global_flag = Hold1Olympiad }
 		year = 1896
-		NOT = { year = 1899 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1899 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -314,9 +285,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold1Olympiad
 		has_country_flag = Attend1Olympiad
-		NOT = { has_country_flag = 1OlympiadWinner }
+		not = { has_country_flag = 1OlympiadWinner }
 		year = 1896
-		NOT = { year = 1899 }
+		not = { year = 1899 }
 	}
  
 	mean_time_to_happen =  {
@@ -349,28 +320,20 @@ country_event = {
 	id = 23406 
 
 	trigger = {
-		NOT = { has_global_flag = Host2Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host2Olympiad
-				has_country_flag = Attend2Olympiad
-				has_country_flag = NoHost2Olympiad
-			}
+		not = {
+			has_country_flag = Host2Olympiad
+			has_country_flag = Attend2Olympiad
+			has_country_flag = NoHost2Olympiad
 		}
 		year = 1899
-		NOT = { year = 1902 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1902 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host1Olympiad
-		}
-		
 		modifier = {
 			factor = 0.9
 			year = 1900
@@ -378,14 +341,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1901
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -395,33 +350,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -10000
 		set_global_flag = Host2Olympiad
 		set_country_flag = Host2Olympiad
 		set_country_flag = Attend2Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # No we don't want it
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
-		prestige = -10
+		prestige = -5
 		set_country_flag = NoHost2Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -433,13 +380,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host2Olympiad
 		has_country_flag = IOCMember
-		NOT = {
+		not = {
 			has_country_flag = Attend2Olympiad
 			has_global_flag = Hold2Olympiad
 		}
 		year = 1899
-		NOT = { year = 1902 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1902 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -461,31 +408,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
+		money = -10000
+		set_country_flag = Attend2Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
 			}
 		}
-		set_country_flag = Attend2Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		name = "EVTOPTB23403" # We're not going this year
+		prestige = -5
 		set_country_flag = NoAttend2Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -497,10 +436,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host2Olympiad
 		has_country_flag = Attend2Olympiad
-		NOT = { has_global_flag = Hold2Olympiad }
+		not = { has_global_flag = Hold2Olympiad }
 		year = 1900
-		NOT = { year = 1903 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1903 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -522,7 +461,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23408" # The games are held
-		prestige = 50
+		prestige = 25
 		plurality = 1
 		set_global_flag = Hold2Olympiad
 	}
@@ -536,9 +475,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold2Olympiad
 		has_country_flag = Attend2Olympiad
-		NOT = { has_country_flag = 2OlympiadWinner }
+		not = { has_country_flag = 2OlympiadWinner }
 		year = 1900
-		NOT = { year = 1903 }
+		not = { year = 1903 }
 	}
  
 	mean_time_to_happen =  {
@@ -572,26 +511,20 @@ country_event = {
 	id = 23410
 
 	trigger = {
-		NOT = { has_global_flag = Host3Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host3Olympiad
-				has_country_flag = Attend3Olympiad
-				has_country_flag = NoHost3Olympiad
+		not = {
+			has_country_flag = Host3Olympiad
+			has_country_flag = Attend3Olympiad
+			has_country_flag = NoHost3Olympiad
 			}
-		}
 		year = 1903
-		NOT = { year = 1906 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1906 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
-		modifier = {
-			factor = 3
-			has_country_flag = Host2Olympiad
-		}
+
 		modifier = {
 			factor = 0.9
 			year = 1904
@@ -599,14 +532,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1905
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -616,33 +541,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 50
-			}
-		}
+		money = -10000
 		set_global_flag = Host3Olympiad
 		set_country_flag = Host3Olympiad
 		set_country_flag = Attend3Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # No we don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost3Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -655,15 +572,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host3Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend3Olympiad
-				has_global_flag = Hold3Olympiad
-			}
+		not = {
+			has_country_flag = Attend3Olympiad
+			has_global_flag = Hold3Olympiad
 		}
 		year = 1903
-		NOT = { year = 1906 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1906 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -685,31 +600,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 20
+		money = -5000
+		set_country_flag = Attend3Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 5000 }
 			}
 		}
-		set_country_flag = Attend3Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
+		name = "EVTOPTB23403" # We're not going this year
 		prestige = -5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -20
-			}
-		}
 		set_country_flag = NoAttend3Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -721,10 +628,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host3Olympiad
 		has_country_flag = Attend3Olympiad
-		NOT = { has_global_flag = Hold3Olympiad }
+		not = { has_global_flag = Hold3Olympiad }
 		year = 1904
-		NOT = { year = 1907 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1907 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -760,9 +667,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold3Olympiad
 		has_country_flag = Attend3Olympiad
-		NOT = { has_country_flag = 3OlympiadWinner }
+		not = { has_country_flag = 3OlympiadWinner }
 		year = 1904
-		NOT = { year = 1907 }
+		not = { year = 1907 }
 	}
  
 	mean_time_to_happen =  {
@@ -795,27 +702,20 @@ country_event = {
 	id = 23414
 
 	trigger = {
-		NOT = { has_global_flag = Host4Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host4Olympiad
-				has_country_flag = Attend4Olympiad
-				has_country_flag = NoHost4Olympiad
-			}
+		not = {
+			has_country_flag = Host4Olympiad
+			has_country_flag = Attend4Olympiad
+			has_country_flag = NoHost4Olympiad
 		}
 		year = 1907
-		NOT = { year = 1910 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1910 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
-		
-		modifier = {
-			factor = 3
-			has_country_flag = Host3Olympiad
-		}
+
 		modifier = {
 			factor = 0.9
 			year = 1908
@@ -823,14 +723,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1909
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -840,33 +732,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -10000
 		set_global_flag = Host4Olympiad
 		set_country_flag = Host4Olympiad
 		set_country_flag = Attend4Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost4Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -879,15 +763,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host4Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend4Olympiad
-				has_global_flag = Hold4Olympiad
+		not = {
+			has_country_flag = Attend4Olympiad
+			has_global_flag = Hold4Olympiad
 			}
-		}
 		year = 1907
-		NOT = { year = 1910 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1910 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -909,31 +791,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 15
+		money = -5000
+		set_country_flag = Attend4Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 5000 }
 			}
 		}
-		set_country_flag = Attend4Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
+		name = "EVTOPTB23403" # We're not going this year
 		prestige = -5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -15
-			}
-		}
 		set_country_flag = NoAttend4Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -945,12 +819,12 @@ country_event = {
 	trigger = {
 		has_country_flag = Host4Olympiad
 		has_country_flag = Attend4Olympiad
-		NOT = {
+		not = {
 			has_global_flag = Hold4Olympiad
-		}
+			}
 		year = 1908
-		NOT = { year = 1911 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1911 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -986,9 +860,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold4Olympiad
 		has_country_flag = Attend4Olympiad
-		NOT = { has_country_flag = 4OlympiadWinner }
+		not = { has_country_flag = 4OlympiadWinner }
 		year = 1908
-		NOT = { year = 1911 }
+		not = { year = 1911 }
 	}
  
 	mean_time_to_happen =  {
@@ -1021,27 +895,20 @@ country_event = {
 	id = 23418
 
 	trigger = {
-		NOT = { has_global_flag = Host5Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host5Olympiad
-				has_country_flag = Attend5Olympiad
-				has_country_flag = NoHost5Olympiad
-			}
+		not = {
+			has_country_flag = Host5Olympiad
+			has_country_flag = Attend5Olympiad
+			has_country_flag = NoHost5Olympiad
 		}
 		year = 1911
-		NOT = { year = 1915 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1915 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host4Olympiad
-		}
 		modifier = {
 			factor = 0.9
 			year = 1912
@@ -1049,14 +916,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1913
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -1066,33 +925,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -10000
 		set_global_flag = Host5Olympiad
 		set_country_flag = Host5Olympiad
 		set_country_flag = Attend5Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost5Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1104,15 +955,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host5Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend5Olympiad
-				has_global_flag = Hold5Olympiad
-			}
+		not = {
+			has_country_flag = Attend5Olympiad
+			has_global_flag = Hold5Olympiad
 		}
 		year = 1911
-		NOT = { year = 1914 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1914 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1134,31 +983,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 15
+		money = -5000
+		set_country_flag = Attend5Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 5000 }
 			}
 		}
-		set_country_flag = Attend5Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
+		name = "EVTOPTB23403" # We're not going this year
 		prestige = -5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -15
-			}
-		}
 		set_country_flag = NoAttend5Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1170,10 +1011,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host5Olympiad
 		has_country_flag = Attend5Olympiad
-		NOT = { has_global_flag = Hold5Olympiad }
+		not = { has_global_flag = Hold5Olympiad }
 		year = 1912
-		NOT = { year = 1915 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1915 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1209,9 +1050,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold5Olympiad
 		has_country_flag = Attend5Olympiad
-		NOT = { has_country_flag = 5OlympiadWinner }
+		not = { has_country_flag = 5OlympiadWinner }
 		year = 1912
-		NOT = { year = 1915 }
+		not = { year = 1915 }
 	}
  
 	mean_time_to_happen =  {
@@ -1244,27 +1085,20 @@ country_event = {
 	id = 23422
 
 	trigger = {
-		NOT = { has_global_flag = Host6Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host6Olympiad
-				has_country_flag = Attend6Olympiad
-				has_country_flag = NoHost6Olympiad
-			}
+		not = {
+			has_country_flag = Host6Olympiad
+			has_country_flag = Attend6Olympiad
+			has_country_flag = NoHost6Olympiad
 		}
 		year = 1915
-		NOT = { year = 1919 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1919 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host5Olympiad
-		}
 		modifier = {
 			factor = 0.9
 			year = 1916
@@ -1272,14 +1106,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1917
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -1289,33 +1115,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -50000
 		set_global_flag = Host6Olympiad
 		set_country_flag = Host6Olympiad
 		set_country_flag = Attend6Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost6Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1328,15 +1146,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host6Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend6Olympiad
-				has_global_flag = Hold6Olympiad
-			}
+		not = {
+			has_country_flag = Attend6Olympiad
+			has_global_flag = Hold6Olympiad
 		}
 		year = 1915
-		NOT = { year = 1918 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1918 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1358,31 +1174,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 15
+		money = -10000
+		set_country_flag = Attend6Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
 			}
 		}
-		set_country_flag = Attend6Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
+		name = "EVTOPTB23403" # We're not going this year
 		prestige = -5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -15
-			}
-		}
 		set_country_flag = NoAttend6Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1394,10 +1202,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host6Olympiad
 		has_country_flag = Attend6Olympiad
-		NOT = { has_global_flag = Hold6Olympiad }
+		not = { has_global_flag = Hold6Olympiad }
 		year = 1916
-		NOT = { year = 1919 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1919 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1433,9 +1241,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold6Olympiad
 		has_country_flag = Attend6Olympiad
-		NOT = { has_country_flag = 6OlympiadWinner }
+		not = { has_country_flag = 6OlympiadWinner }
 		year = 1916
-		NOT = { year = 1919 }
+		not = { year = 1919 }
 	}
  
 	mean_time_to_happen =  {
@@ -1468,27 +1276,20 @@ country_event = {
 	id = 23426
 
 	trigger = {
-		NOT = { has_global_flag = Host7Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host7Olympiad
-				has_country_flag = Attend7Olympiad
-				has_country_flag = NoHost7Olympiad
-			}
+		not = {
+			has_country_flag = Host7Olympiad
+			has_country_flag = Attend7Olympiad
+			has_country_flag = NoHost7Olympiad
 		}
 		year = 1919
-		NOT = { year = 1923 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1923 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host6Olympiad
-		}
 		modifier = {
 			factor = 0.9
 			year = 1920
@@ -1496,14 +1297,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1921
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -1513,33 +1306,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -50000
 		set_global_flag = Host7Olympiad
 		set_country_flag = Host7Olympiad
 		set_country_flag = Attend7Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost7Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1551,15 +1336,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host7Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend7Olympiad
-				has_global_flag = Hold7Olympiad
-			}
+		not = {
+			has_country_flag = Attend7Olympiad
+			has_global_flag = Hold7Olympiad
 		}
 		year = 1919
-		NOT = { year = 1922 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1922 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1581,31 +1364,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 15
+		money = -10000
+		set_country_flag = Attend7Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
 			}
 		}
-		set_country_flag = Attend7Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
+		name = "EVTOPTB23403" # We're not going this year
 		prestige = -5
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -15
-			}
-		}
 		set_country_flag = NoAttend7Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1617,10 +1392,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host7Olympiad
 		has_country_flag = Attend7Olympiad
-		NOT = { has_global_flag = Hold7Olympiad }
+		not = { has_global_flag = Hold7Olympiad }
 		year = 1920
-		NOT = { year = 1923 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1923 }
+		war = no # Nation can not be at war at the time of invite
 		}
  
 	mean_time_to_happen =  {
@@ -1656,9 +1431,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold7Olympiad
 		has_country_flag = Attend7Olympiad
-		NOT = { has_country_flag = 7OlympiadWinner }
+		not = { has_country_flag = 7OlympiadWinner }
 		year = 1920
-		NOT = { year = 1923 }
+		not = { year = 1923 }
 	}
  
 	mean_time_to_happen =  {
@@ -1692,27 +1467,20 @@ country_event = {
 	id = 23430
 
 	trigger = {
-		NOT = { has_global_flag = Host8Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host8Olympiad
-				has_country_flag = Attend8Olympiad
-				has_country_flag = NoHost8Olympiad
+		not = {
+			has_country_flag = Host8Olympiad
+			has_country_flag = Attend8Olympiad
+			has_country_flag = NoHost8Olympiad
 			}
-		}
 		year = 1923
-		NOT = { year = 1927 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1927 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host7Olympiad
-		}
 		modifier = {
 			factor = 0.9
 			year = 1924
@@ -1720,14 +1488,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1925
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -1737,33 +1497,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -50000
 		set_global_flag = Host8Olympiad
 		set_country_flag = Host8Olympiad
 		set_country_flag = Attend8Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost8Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1775,15 +1527,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host8Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend8Olympiad
-				has_global_flag = Hold8Olympiad
-			}
+		not = {
+			has_country_flag = Attend8Olympiad
+			has_global_flag = Hold8Olympiad
 		}
 		year = 1923
-		NOT = { year = 1926 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1926 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1805,31 +1555,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 7
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 20
+		money = -10000
+		set_country_flag = Attend8Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
 			}
 		}
-		set_country_flag = Attend8Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
-		prestige = -7
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -20
-			}
-		}
+		name = "EVTOPTB23403" # We're not going this year
+		prestige = -10
 		set_country_flag = NoAttend8Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1841,10 +1583,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host8Olympiad
 		has_country_flag = Attend8Olympiad
-		NOT = { has_global_flag = Hold8Olympiad }
+		not = { has_global_flag = Hold8Olympiad }
 		year = 1924
-		NOT = { year = 1927 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1927 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -1880,9 +1622,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold8Olympiad
 		has_country_flag = Attend8Olympiad
-		NOT = { has_country_flag = 8OlympiadWinner }
+		not = { has_country_flag = 8OlympiadWinner }
 		year = 1924
-		NOT = { year = 1927 }
+		not = { year = 1927 }
 	}
  
 	mean_time_to_happen =  {
@@ -1915,27 +1657,20 @@ country_event = {
 	id = 23434
 
 	trigger = {
-		NOT = { has_global_flag = Host9Olympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host9Olympiad
-				has_country_flag = Attend9Olympiad
-				has_country_flag = NoHost9Olympiad
-			}
+		not = {
+			has_country_flag = Host9Olympiad
+			has_country_flag = Attend9Olympiad
+			has_country_flag = NoHost9Olympiad
 		}
 		year = 1927
-		NOT = { year = 1931 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1931 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host8Olympiad
-		}
 		modifier = {
 			factor = 0.9
 			year = 1928
@@ -1943,14 +1678,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1929
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -1960,33 +1687,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -75000
 		set_global_flag = Host9Olympiad
 		set_country_flag = Host9Olympiad
 		set_country_flag = Attend9Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 75000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost9Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -1998,15 +1717,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host9Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend9Olympiad
-				has_global_flag = Hold9Olympiad
-			}
+		not = {
+			has_country_flag = Attend9Olympiad
+			has_global_flag = Hold9Olympiad
 		}
 		year = 1927
-		NOT = { year = 1930 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1930 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -2028,31 +1745,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 7
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 20
+		money = -20000
+		set_country_flag = Attend9Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 20000 }
 			}
 		}
-		set_country_flag = Attend9Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
-		prestige = -7
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -20
-			}
-		}
+		name = "EVTOPTB23403" # We're not going this year
+		prestige = -10
 		set_country_flag = NoAttend9Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -2064,10 +1773,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host9Olympiad
 		has_country_flag = Attend9Olympiad
-		NOT = { has_global_flag = Hold9Olympiad }
+		not = { has_global_flag = Hold9Olympiad }
 		year = 1928
-		NOT = { year = 1931 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1931 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -2103,9 +1812,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold9Olympiad
 		has_country_flag = Attend9Olympiad
-		NOT = { has_country_flag = 9OlympiadWinner }
+		not = { has_country_flag = 9OlympiadWinner }
 		year = 1928
-		NOT = { year = 1931 }
+		not = { year = 1931 }
 	}
  
 	mean_time_to_happen =  {
@@ -2138,27 +1847,20 @@ country_event = {
 	id = 23438
 
 	trigger = {
-		NOT = { has_global_flag = Host1O0lympiad }
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Host10Olympiad
-				has_country_flag = Attend10Olympiad
-				has_country_flag = NoHost10Olympiad
-			}
+		not = {
+			has_country_flag = Host10Olympiad
+			has_country_flag = Attend10Olympiad
+			has_country_flag = NoHost10Olympiad
 		}
 		year = 1931
-		NOT = { year = 1935 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1935 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
 		months = 12
 
-		modifier = {
-			factor = 3
-			has_country_flag = Host9Olympiad
-		}
 		modifier = {
 			factor = 0.9
 			year = 1932
@@ -2166,14 +1868,6 @@ country_event = {
 		modifier = {
 			factor = 0.95
 			year = 1933
-		}
-		modifier = {
-			factor = 0.9
-			rank = 4
-		}
-		modifier = {
-			factor = 0.9
-			rank = 8
 		}
 	}
 
@@ -2183,33 +1877,25 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23401" # Send invites to other IOC members
-		prestige = 10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 25
-			}
-		}
+		money = -75000
 		set_global_flag = Host10Olympiad
 		set_country_flag = Host10Olympiad
 		set_country_flag = Attend10Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 75000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB23401" # We don't want it
-		prestige = -10
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -25
-			}
-		}
+		prestige = -5
 		set_country_flag = NoHost10Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -2221,15 +1907,13 @@ country_event = {
 	trigger = {
 		has_global_flag = Host10Olympiad
 		has_country_flag = IOCMember
-		NOT = {
-			OR = {
-				has_country_flag = Attend10Olympiad
-				has_global_flag = Hold10Olympiad
-			}
+		not = {
+			has_country_flag = Attend10Olympiad
+			has_global_flag = Hold10Olympiad
 		}
 		year = 1931
-		NOT = { year = 1934 }
-		war = no #nation can NOT be at war at the time of invite
+		not = { year = 1934 }
+		war = no #nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -2251,31 +1935,23 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA23403" # Send a delegation to the games
-		prestige = 7
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = 20
+		money = -20000
+		set_country_flag = Attend10Olympiad
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 20000 }
 			}
 		}
-		set_country_flag = Attend10Olympiad
 	}
 	option = {
-		name = "EVTOPTB23403" # We're NOT going this year
-		prestige = -7
-		any_neighbor_country = {
-			limit = {
-				has_country_flag = IOCMember
-			}
-			relation = {
-				who = THIS
-				value = -20
-			}
-		}
+		name = "EVTOPTB23403" # We're not going this year
+		prestige = -10
 		set_country_flag = NoAttend9Olympiad
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
@@ -2287,10 +1963,10 @@ country_event = {
 	trigger = {
 		has_country_flag = Host10Olympiad
 		has_country_flag = Attend10Olympiad
-		NOT = { has_global_flag = Hold10Olympiad }
+		not = { has_global_flag = Hold10Olympiad }
 		year = 1932
-		NOT = { year = 1935 }
-		war = no # Nation can NOT be at war at the time of invite
+		not = { year = 1935 }
+		war = no # Nation can not be at war at the time of invite
 	}
  
 	mean_time_to_happen =  {
@@ -2326,9 +2002,9 @@ country_event = {
 	trigger = {
 		has_global_flag = Hold10Olympiad
 		has_country_flag = Attend10Olympiad
-		NOT = { has_country_flag = 10OlympiadWinner }
+		not = { has_country_flag = 10OlympiadWinner }
 		year = 1932
-		NOT = { year = 1935 }
+		not = { year = 1935 }
 	}
  
 	mean_time_to_happen =  {

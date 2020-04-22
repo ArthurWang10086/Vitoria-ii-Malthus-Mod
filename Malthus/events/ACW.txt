@@ -7,51 +7,37 @@ country_event = {
 	
 	trigger = {
 		tag = USA
-		slavery = yes_slavery
-		NOT = {
-			has_global_flag = american_civil_war_has_happened
-		}
-		has_country_flag = john_browns_raid
-		has_country_flag = dred_scott_decision
-		upper_house = {
-			ideology = liberal
-			value = 0.4
-		}
-	}
-	
-	immediate = { clr_country_flag = the_slavery_debate }
-	immediate = {
-		CSA = {
-			set_country_flag = the_slavery_debate
+		OR = {
+			AND = {
+				slavery = yes_slavery
+				NOT = { has_global_flag = american_civil_war_has_happened }
+				has_country_flag = john_browns_raid
+				has_country_flag = dred_scott_decision
+				OR = {
+					upper_house = {
+						ideology = liberal
+						value = 0.35
+					}
+					AND = { 
+						ruling_party_ideology = liberal
+						year = 1854 
+					}
+				}
+			}
+			AND = {
+				slavery = no_slavery
+				NOT = { has_global_flag = american_civil_war_has_happened }
+			}
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
+		months = 12
 	}
 	
 	option = {
 		name = "EVTOPTA16000"
+		remove_country_modifier = the_slavery_debate
 		any_pop = {
 			consciousness = -7
 			militancy = -3
@@ -75,6 +61,19 @@ country_event = {
 			}
 			secede_province = CSA
 		}
+		random_owned = {
+			limit = {
+				is_core = TEX
+				NOT = { is_core = CSA }
+				133 = { owned_by = CSA }
+			}
+			state_scope = {
+				any_owned = {
+					add_core = CSA
+					secede_province = CSA
+				}
+			}
+		}
 		CSA = {
 			capital = 211
 			leadership = 80
@@ -91,11 +90,25 @@ country_event = {
 			}
 		}
 		set_global_flag = american_civil_war_has_happened
-		clr_country_flag = the_slavery_debate
+		USA = { 
+			clr_country_flag = the_slavery_debate
+			add_country_modifier = {
+				name = usa_draft
+				duration = -1
+			}
+		}
+		CSA = { 
+			set_country_flag = the_slavery_debate
+			add_country_modifier = {
+				name = csa_draft
+				duration = -1
+			}
+		}
 	}
 	
 	option = {
 		name = "EVTOPTB16000"
+		remove_country_modifier = the_slavery_debate
 		any_pop = {
 			consciousness = -7
 			militancy = -3
@@ -138,7 +151,55 @@ country_event = {
 			}
 		}
 		set_global_flag = american_civil_war_has_happened
-		clr_country_flag = the_slavery_debate
+		USA = { 
+			clr_country_flag = the_slavery_debate
+			add_country_modifier = {
+				name = usa_draft
+				duration = -1
+			}
+		}
+		CSA = { 
+			set_country_flag = the_slavery_debate
+			add_country_modifier = {
+				name = csa_draft
+				duration = -1
+			}
+		}
+	}
+}
+
+#End mobilisation pool bonus from civil war
+country_event = {
+	id = 16003
+	title = "战争结束"
+	desc = "随着战争的结束，退伍士兵纷纷返回久违的家。"
+	picture = "Recruits"
+
+	trigger = {
+		has_global_flag = american_civil_war_has_happened
+		war = no
+		OR = {
+			tag = USA
+			tag = CSA
+			tag = FSA
+		}
+		OR = {
+			has_country_modifier = usa_draft
+			has_country_modifier = csa_draft
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "我们感谢他们的付出。"
+		remove_country_modifier = usa_draft
+		remove_country_modifier = csa_draft
+		any_pop = {
+			militancy = -1
+		}
 	}
 }
 
@@ -147,6 +208,11 @@ country_event = {
 	id = 16001
 	title = "EVTNAME16001"
 	desc = "EVTDESC16001"
+	news = yes
+	news_title = "EVTNAME16001_NEWS_TITLE"
+	news_desc_long = "EVTDESC16001_NEWS_LONG"
+	news_desc_medium = "EVTDESC16001_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC16001_NEWS_SHORT"
 	fire_only_once = yes
 	picture = "Slaves"
 	
@@ -154,12 +220,13 @@ country_event = {
 		tag = USA
 		slavery = yes_slavery
 		NOT = {
-			has_global_flag = american_civil_war_has_happened
+			has_global_flag = american_civil_was_has_happened
+			has_country_flag = house_gag_rule_enacted
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1
+		months = 20
 		modifier = {
 			factor = 20
 			NOT = {
@@ -170,20 +237,15 @@ country_event = {
 			factor = 10
 			year = 1845
 			NOT = {
-				year = 1855
+				year = 1850
 			}
 		}
 		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
+			factor = 0.5
 				year = 1860
-			}
 		}
 	}
-	immediate = {
-		set_country_flag = the_slavery_debate
-	}
+	
 	option = {
 		name = "EVTOPTA16001"
 		add_country_modifier = {
@@ -193,11 +255,66 @@ country_event = {
 	}
 }
 
+#gag rule debated
+country_event = {
+	id = 16002
+	title = "言论限制令被审议！"
+	desc = "众议院的一部分重要人士正在寻求废除言论限制令。"
+	picture = "Slaves"
+	
+	trigger = {
+		tag = USA
+		slavery = yes_slavery
+		has_country_flag = house_gag_rule_enacted
+		upper_house = {
+						ideology = liberal
+						value = 0.1
+					}
+		NOT = {
+			has_global_flag = american_civil_was_has_happened
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 50
+	}
+	
+	option = {
+		name = "废除言论限制令"
+		set_country_flag = house_gag_rule_repealed
+		clr_country_flag = house_gag_rule_enacted
+			any_state = {
+				limit = {
+					is_slave = yes
+				}
+				any_pop = {
+					consciousness = 2
+				}
+			}		
+	}
+	option = {
+		name = "我们不需要废奴主义者的废话！"
+			any_state = {
+				limit = {
+					is_slave = no
+				}
+				any_pop = {
+					consciousness = 2
+				}
+			}
+	}
+}
+
 #John Brown's Raid
 country_event = {
 	id = 16010
 	title = "EVTNAME16010"
 	desc = "EVTDESC16010"
+	news = yes
+	news_desc_long = "EVTDESC16010_NEWS_LONG"
+	news_desc_medium = "EVTDESC16010_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC16010_NEWS_SHORT"
+	picture = "Execution"
 	major = yes
 	
 	trigger = {
@@ -209,35 +326,39 @@ country_event = {
 		}
 		any_state = {
 			is_slave = no
-			average_consciousness = 6
+			average_consciousness = 5
 		}
 		upper_house = {
 			ideology = liberal
-			value = 0.1
+			value = 0.2
 		}
 	}
 	
 	mean_time_to_happen = {
 		months = 10
 		modifier = {
-			factor = 20
+			factor = 10
 			NOT = {
 				year = 1845
 			}
 		}
 		modifier = {
-			factor = 10
+			factor = 5
 			year = 1845
 			NOT = {
 				year = 1855
 			}
 		}
 		modifier = {
-			factor = 5
+			factor = 1.5
 			year = 1855
 			NOT = {
 				year = 1860
 			}
+		}
+		modifier = {
+			factor = 0.5
+			year = 1860
 		}
 	}
 	
@@ -249,7 +370,11 @@ country_event = {
 				has_pop_culture = dixie
 			}
 			militancy = 1
-			consciousness = 2
+			consciousness = 3
+			ideology = {
+				value = reactionary
+				factor = 0.05
+			}
 		}
 	}
 }
@@ -259,6 +384,11 @@ country_event = {
 	id = 16020
 	title = "EVTNAME16020"
 	desc = "EVTDESC16020"
+	news = yes
+	news_desc_long = "EVTDESC16020_NEWS_LONG"
+	news_desc_medium = "EVTDESC16020_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC16020_NEWS_SHORT"
+	picture = "danishgovernment"
 	major = yes
 	
 	trigger = {
@@ -274,7 +404,7 @@ country_event = {
 		}
 		upper_house = {
 			ideology = liberal
-			value = 0.1
+			value = 0.15
 		}
 	}
 	
@@ -294,16 +424,24 @@ country_event = {
 			}
 		}
 		modifier = {
-			factor = 5
+			factor = 1.5
 			year = 1855
 			NOT = {
 				year = 1860
 			}
 		}
+		modifier = {
+			factor = 0.5
+			year = 1860
+		}
+		modifier = {
+			factor = 0.9
+			has_country_flag = john_browns_raid
+		}
 	}
 	
 	option = {
-		name = "EVTOPTA16020"
+		name = "找到桑福德"
 		set_country_flag = dred_scott_decision
 		any_pop = {
 			limit = {
@@ -311,6 +449,25 @@ country_event = {
 			}
 			militancy = 1
 			consciousness = 2
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+		}
+	}
+	option = {
+		name = "找到斯科特"
+		set_country_flag = dred_scott_decision
+		any_pop = {
+			limit = {
+				has_pop_culture = dixie
+			}
+			militancy = 1
+			consciousness = 2
+			ideology = {
+				value = reactionary
+				factor = 0.05
+			}
 		}
 	}
 }
@@ -336,7 +493,7 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -351,47 +508,25 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16030"
-		state_scope = {
-			aristocrats = {
-				consciousness = 0.25 #1
-			}
-			capitalists = {
-				consciousness = 0.25 #1
-			}
+		aristocrats = {
+			consciousness = 1
 		}
+		capitalists = {
+			consciousness = 1
+		}	
 	}
 	
 	option = {
 		name  = "EVTOPTB16030"
 		craftsmen = {
-			consciousness = 0.25 #1
+			consciousness = 1
 		}
 		labourers = {
-			consciousness = 0.25 #1
+			consciousness = 1
 		}
 	}
 }
@@ -414,7 +549,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -429,26 +564,6 @@ country_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -458,11 +573,16 @@ country_event = {
 				is_slave = yes
 				is_colonial = no
 			}
-			aristocrats = {
-				consciousness = 0.25 #1
-			}
-			capitalists = {
-				consciousness = 0.25 #1
+			rich_strata = {
+				dominant_issue = {
+					value = yes_slavery
+					factor = 0.05
+				}
+				ideology = {
+					value = conservative
+					factor = 0.10
+				}
+				consciousness = 1
 			}
 		}
 	}
@@ -475,13 +595,33 @@ country_event = {
 				is_colonial = no
 			}
 			farmers = {
-				consciousness = 0.15 #0.5
+				dominant_issue = {
+					value = yes_slavery
+					factor = 0.05
+				}
+				ideology = {
+					value = conservative
+					factor = 0.10
+				}
+				consciousness = 0.5
 			}
 			labourers = {
-				consciousness = 0.15 #0.5
+				dominant_issue = {
+					value = yes_slavery
+					factor = 0.05
+				}
+				ideology = {
+					value = conservative
+					factor = 0.10
+				}
+				consciousness = 0.5
 			}
 			slaves = {
-				consciousness = 0.25 #1
+				consciousness = 1
+				ideology = {
+					value = liberal
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -506,7 +646,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -521,26 +661,6 @@ country_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -551,6 +671,17 @@ country_event = {
 				is_colonial = no
 			}
 			any_pop = {
+				limit = {
+					NOT = { type = slaves }
+				}
+				dominant_issue = {
+					value = yes_slavery
+					factor = 0.05
+				}
+				ideology = {
+					value = conservative
+					factor = 0.10
+				}
 				consciousness = 1
 			}
 		}
@@ -592,7 +723,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -607,26 +738,6 @@ country_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -637,6 +748,14 @@ country_event = {
 				is_colonial = no
 			}
 			any_pop = {
+				dominant_issue = {
+					value = no_slavery
+					factor = 0.05
+				}
+				ideology = {
+					value = liberal
+					factor = 0.10
+				}
 				consciousness = 1
 			}
 		}
@@ -681,7 +800,7 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -696,36 +815,11 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16070"
 		any_pop = {
-			limit = {
-				NOT = {
-					type = slaves
-				}
-			}
 			consciousness = 1
 		}
 	}
@@ -733,7 +827,14 @@ province_event = {
 	option = {
 		name = "EVTOPTB16070"
 		poor_strata = {
+			limit = {
+				NOT = { type = slaves }
+			}
 			consciousness = 1.5
+			ideology = {
+				value = reactionary
+				factor = 0.10
+			}
 		}
 	}
 }
@@ -757,7 +858,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -772,26 +873,6 @@ country_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -803,6 +884,10 @@ country_event = {
 			}
 			slaves = {
 				consciousness = 2
+				ideology = {
+					value = liberal
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -815,7 +900,14 @@ country_event = {
 				is_colonial = no
 			}
 			any_pop = {
+				limit = {
+					NOT = { type = slaves }
+				}
 				consciousness = 0.5
+				ideology = {
+					value = conservative
+					factor = 0.05
+				}
 			}
 		}
 	}
@@ -843,11 +935,12 @@ province_event = {
 		}
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_province_modifier = knights_of_the_golden_circle
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 100
+		months = 1200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -862,26 +955,6 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -889,6 +962,19 @@ province_event = {
 		add_province_modifier = {
 			name = knights_of_the_golden_circle
 			duration = 365
+		}
+		any_pop = {
+			limit = {
+				NOT = { type = slaves }
+			}
+			dominant_issue = {
+				value = yes_slavery
+				factor = 0.05
+			}
+			ideology = {
+				value = reactionary
+				factor = 0.10
+			}
 		}
 	}
 	
@@ -921,11 +1007,12 @@ province_event = {
 		}
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_province_modifier = american_anti_slavery_society
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #1000
+		months = 1200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -940,43 +1027,35 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16100"
 		add_province_modifier = {
 			name = american_anti_slavery_society
-			duration = 365
+			duration = 3650
 		}
 		any_pop = {
-			militancy = 0.2 #2
+			dominant_issue = {
+				value = no_slavery
+				factor = 0.05
+			}
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+			militancy = 2
 		}
 	}
 
 	option = {
 		name = "EVTOPTB16100"
 		any_pop = {
-			consciousness = 0.5 #1.5
+			consciousness = 1.5
+			ideology = {
+				value = conservative
+				factor = 0.05
+			}
 		}
 	}
 }
@@ -1001,7 +1080,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #600
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1016,26 +1095,6 @@ country_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -1046,7 +1105,11 @@ country_event = {
 				is_colonial = no
 			}
 			slaves = {
-				consciousness = 0.15 #1.5
+				consciousness = 3.5
+				ideology = {
+					value = liberal
+					factor = 0.20
+				}
 			}
 		}
 	}
@@ -1059,7 +1122,14 @@ country_event = {
 				is_colonial = no
 			}
 			any_pop = {
-				consciousness = 0.1 #0.5
+				limit = {
+					NOT = { type = slaves }
+				}
+				consciousness = 1.5
+				ideology = {
+					value = conservative
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -1086,7 +1156,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 100 #600
+		months = 1200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1101,42 +1171,46 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16120"
 		poor_strata = {
-			consciousness = 0.2 #2
+			dominant_issue = {
+				value = no_slavery
+				factor = 0.02
+			}
+			consciousness = 2
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB16120"
 		rich_strata = {
-			consciousness = 0.15 #1.5
+			dominant_issue = {
+				value = yes_slavery
+				factor = 0.05
+			}
+			consciousness = 1.5
+			ideology = {
+				value = conservative
+				factor = 0.20
+			}
 		}
 		middle_strata = {
-			consciousness = 0.15 #1.5
+			dominant_issue = {
+				value = yes_slavery
+				factor = 0.05
+			}
+			consciousness = 1.5
+			ideology = {
+				value = conservative
+				factor = 0.10
+			}
 		}
 	}
 }
@@ -1163,11 +1237,12 @@ province_event = {
 		}
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_country_flag = fugitive_slave_act_enacted
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 200 #600
+		months = 1200
 		modifier = {
 			factor = 0.5
 			has_country_flag = fugitive_slave_act_enacted
@@ -1186,32 +1261,16 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16130"
 		any_pop = {
-			consciousness = 0.2 #2
+			consciousness = 2
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
 		}
 	}
 	
@@ -1223,7 +1282,14 @@ province_event = {
 					is_slave = yes
 				}
 				any_pop = {
-					consciousness = 0.1 #0.5
+					limit = {
+						NOT = { type = slaves }
+					}
+					consciousness = 1.5
+					ideology = {
+						value = conservative
+						factor = 0.10
+					}
 				}
 			}
 		}
@@ -1242,16 +1308,25 @@ province_event = {
 			slavery = yes_slavery
 		}
 		state_scope = {
-			is_slave = yes
 			is_colonial = no
+		}
+		OR = { 
+			AND = { 
+				state_scope = {
+					is_slave = yes	
+				}
+			any_neighbor_province = {
+				has_province_modifier = underground_railroad
+			}	
 		}
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_province_modifier = underground_railroad
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #600
+		months = 1200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1266,33 +1341,13 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16140"
 		add_province_modifier = {
 			name = underground_railroad
-			duration = 365
+			duration = -1
 		}
 	}
 	
@@ -1304,7 +1359,11 @@ province_event = {
 					is_slave = no
 				}
 				any_pop = {
-					consciousness = 0.1
+					consciousness = 2
+					ideology = {
+						value = liberal
+						factor = 0.1
+					}
 				}
 			}
 		}
@@ -1328,11 +1387,12 @@ province_event = {
 		}
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_province_modifier = copperhead_democrats
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #800
+		months = 1200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1347,26 +1407,6 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -1374,6 +1414,15 @@ province_event = {
 		add_province_modifier = {
 			name = copperhead_democrats
 			duration = 365
+		}
+		any_pop = {
+			limit = {
+				NOT = { type = slaves }
+			}
+			ideology = {
+				value = reactionary
+				factor = 0.10
+			}
 		}
 	}
 	
@@ -1385,7 +1434,14 @@ province_event = {
 					is_slave = yes
 				}
 				any_pop = {
-					consciousness = 0.2 #2
+					limit = {
+						NOT = { type = slaves }
+					}
+					consciousness = 2
+					ideology = {
+						value = conservative
+						factor = 0.05
+					}
 				}
 			}
 		}
@@ -1411,7 +1467,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 750
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1424,26 +1480,6 @@ country_event = {
 			factor = 0.5
 			NOT = {
 				average_consciousness = 5
-			}
-		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
 			}
 		}
 	}
@@ -1460,6 +1496,10 @@ country_event = {
 				dominant_issue = {
 					value = no_slavery
 					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.05
 				}
 			}
 		}
@@ -1485,7 +1525,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 750
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1500,26 +1540,6 @@ country_event = {
 				average_consciousness = 5
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -1531,11 +1551,13 @@ country_event = {
 			}
 			any_pop = {
 				limit = {
-					NOT = {
-						type = slaves
-					}
+					NOT = { type = slaves }
 				}
-				consciousness = 0.5
+				consciousness = 2
+				ideology = {
+					value = reactionary
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -1558,13 +1580,23 @@ province_event = {
 		owner = {
 			slavery = yes_slavery
 		}
+		has_country_flag = kansas_nebraska_act_acting
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_province_modifier = free_staters
+		}
+		any_neighbor_province = {
+			state_scope = { 
+				OR = { 
+					is_slave = no
+					is_colonial = yes
+				}
+			}
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #750
+		months = 100
 		modifier = {
 			factor = 0.3
 			has_province_modifier = border_ruffians
@@ -1575,33 +1607,19 @@ province_event = {
 				has_country_flag = emigrant_aid_company
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16180"
 		add_province_modifier = {
 			name = free_staters
-			duration = 365
+			duration = 3650
+		}
+		any_pop = {
+			dominant_issue = {
+					value = no_slavery
+					factor = 0.05
+			}
 		}
 	}
 	
@@ -1614,7 +1632,7 @@ province_event = {
 					is_colonial = no
 				}
 				any_pop = {
-					consciousness = 0.15 #0.5
+					consciousness = 2
 				}
 			}
 		}
@@ -1635,39 +1653,29 @@ province_event = {
 		state_scope = {
 			is_colonial = yes
 		}
+		has_country_flag = kansas_nebraska_act_acting
 		owner = {
 			slavery = yes_slavery
 		}
 		NOT = {
+			has_province_modifier = border_ruffians
 			has_global_flag = american_civil_war_has_happened
+		}
+		any_neighbor_province = {
+			state_scope = { 
+				OR = { 
+					is_slave = no
+					is_colonial = yes
+				}
+			}
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #750
+		months = 200
 		modifier = {
 			factor = 0.3
 			has_province_modifier = free_staters
-		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
 		}
 	}
 	
@@ -1675,7 +1683,13 @@ province_event = {
 		name = "EVTOPTA16190"
 		add_province_modifier = {
 			name = border_ruffians
-			duration = 365
+			duration = 3650
+		}
+		any_pop = {
+			dominant_issue = {
+					value = yes_slavery
+					factor = 0.05
+			}
 		}
 	}
 	
@@ -1688,7 +1702,7 @@ province_event = {
 					is_slave = no
 				}
 				any_pop = {
-					consciousness = 0.15 #0.5
+					consciousness = 2
 				}
 			}
 		}
@@ -1710,31 +1724,12 @@ province_event = {
 		has_province_modifier = free_staters
 		NOT = {
 			has_global_flag = american_civil_war_has_happened
+			has_country_flag = bleeding_kansas
 		}
 	}
 	
 	mean_time_to_happen = {
 		months = 12
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
@@ -1745,11 +1740,17 @@ province_event = {
 			any_pop = {
 				reduce_pop = 0.95
 			}
+			any_owned = {
+				add_province_modifier = {
+					name = bleeding
+					duration = 1800
+				}
+			}
 		}
 		owner = {
 			set_country_flag = bleeding_kansas
 			any_pop = {
-				consciousness = 0.5
+				consciousness = 2
 			}
 		}
 	}
@@ -1773,32 +1774,13 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 15
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
+		months = 30
 	}
 	
 	option = {
 		name = "EVTOPTA14210"
 		any_pop = {
+			limit = { consciousness = 4 }
 			reduce_pop = 0.95
 		}
 	}
@@ -1814,9 +1796,7 @@ province_event = {
 		owner = {
 			tag = USA
 			slavery = yes_slavery
-			NOT = {
-				has_country_flag = emigrant_aid_company
-			}
+			NOT = { has_country_flag = emigrant_aid_company }
 		}
 		state_scope = {
 			is_colonial = no
@@ -1828,31 +1808,11 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 500
+		months = 400
 		modifier = {
 			factor = 0.1
 			owner = {
 				has_country_flag = bleeding_kansas
-			}
-		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
 			}
 		}
 	}
@@ -1864,7 +1824,11 @@ province_event = {
 		}
 		state_scope = {
 			any_pop = {
-				consciousness = 0.5
+				consciousness = 2
+				ideology = {
+					value = liberal
+					factor = 0.05
+				}
 			}
 		}
 	}
@@ -1888,7 +1852,7 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 100 #400
+		months = 200
 		
 		modifier = {
 			factor = 0.9
@@ -1904,33 +1868,13 @@ province_event = {
 				average_consciousness = 4
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16230"
 		remove_province_modifier = free_staters
 		any_pop = {
-			reduce_pop = 0.98 #0.95
+			reduce_pop = 0.95
 		}
 	}
 }
@@ -1953,7 +1897,7 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 150 #450
+		months = 200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
@@ -1968,33 +1912,13 @@ province_event = {
 				average_consciousness = 4
 			}
 		}
-		modifier = {
-			factor = 20
-			NOT = {
-				year = 1845
-			}
-		}
-		modifier = {
-			factor = 10
-			year = 1845
-			NOT = {
-				year = 1855
-			}
-		}
-		modifier = {
-			factor = 5
-			year = 1855
-			NOT = {
-				year = 1860
-			}
-		}
 	}
 	
 	option = {
 		name = "EVTOPTA16240"
 		remove_province_modifier = border_ruffians
 		any_pop = {
-			reduce_pop = 0.98 #0.98
+			reduce_pop = 0.95
 		}
 	}
 }
@@ -2006,22 +1930,30 @@ province_event = {
 	desc = "EVTDESC16250"
 	
 	trigger = {
-		NOT = {
-			is_core = CSA
+		NOT = { is_core = CSA }
+		OR = {
+			continent = north_america
+			continent = south_america
 		}
 		owner = {
 			tag = USA
 			slavery = yes_slavery
-			NOT = {
-				has_global_flag = american_civil_war_has_happened
-			}
+			NOT = { has_global_flag = american_civil_war_has_happened }
 		}
 		state_scope = {
 			is_slave = yes
 		}
 		yes_slavery = 10
-		average_consciousness = 5
-		continent = north_america
+		OR = {
+			average_consciousness = 5
+			owner = { ruling_party_ideology = liberal }
+			owner = {
+				upper_house = {
+					ideology = liberal
+					value = 0.4
+				}
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -2032,16 +1964,21 @@ province_event = {
 		}
 		modifier = {
 			factor = 0.5
-			average_consciousness = 4
+			average_consciousness = 5
 		}
 		modifier = {
 			factor = 0.5
-			average_consciousness = 5
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			NOT = { average_consciousness = 4 }
 		}
 	}
 	
 	option = {
 		name = "EVTOPTA16250"
+		owner = { prestige = -2 }
 		state_scope = {
 			any_owned = {
 				add_core = CSA
@@ -2083,10 +2020,31 @@ country_event = {
 	option = {
 		name = "EVTOPTA16300"
 		any_pop = {
+			limit = {
+				has_pop_culture = yankee
+			}
 			consciousness = 2
 			dominant_issue = {
-				factor = 0.1
+				factor = 0.05
 				value = no_slavery
+			}
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+		}
+		any_pop = {
+			limit = {
+				has_pop_culture = dixie
+			}
+			consciousness = 2
+			dominant_issue = {
+				factor = 0.05
+				value = yes_slavery
+			}
+			ideology = {
+				value = conservative
+				factor = 0.05
 			}
 		}
 	}
@@ -2140,11 +2098,26 @@ country_event = {
 	option = {
 		name = "EVTOPTA16400"
 		FROM = {
-			any_owned = {
+			all_core = {
 				add_core = USA
 			}
 		}
+		random_country = {
+			limit = {
+				tag = FROM
+				primary_culture = anglo_canadian
+			}
+			THIS = { add_accepted_culture = anglo_canadian }
+		}
 		inherit = FROM
+		random_owned = {
+			limit = {
+				is_core = RGR
+				state_scope = { is_slave = no }
+				owner = { slavery = yes_slavery }
+			}
+			state_scope = { is_slave = yes }
+		}
 		ai_chance = {
 			factor = 10
 		}
@@ -2200,10 +2173,8 @@ country_event = {
 	trigger = {
 		tag = USA
 		has_global_flag = american_civil_war_has_happened
-		has_country_flag = has_used_radical_reconstruction
-		NOT = {
-			exists = CSA
-		}
+		NOT = { exists = CSA }
+		slavery = no_slavery
 		owns = 211
 		owns = 195
 		owns = 139
@@ -2215,12 +2186,17 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTA16415"
+		set_country_flag = kkk
 		any_pop = {
 			limit = {
 				has_pop_culture = dixie
 			}
 			militancy = 3
 			consciousness = 1
+			ideology = {
+				value = reactionary
+				factor = 0.05
+			}
 		}
 	}
 }
@@ -2255,7 +2231,7 @@ country_event = {
 			limit = {
 				culture = dakota
 			}
-			militancy = 8
+			militancy = 10
 		}
 		set_country_flag = sioux_wars
 	}
@@ -2263,7 +2239,7 @@ country_event = {
 
 country_event = {
 	id = 16425
-	title = "Little Bighorn"
+	title = "小巨角战役"
 	desc = "EVTDESC16430"
 	picture = "sittingbull"
 	fire_only_once = yes
@@ -2290,6 +2266,7 @@ country_event = {
 	}
 }
 
+
 #End of The Sioux Wars
 country_event = {
 	id = 16430
@@ -2304,7 +2281,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 24
+		months = 50
 	}
 	
 	option = {
@@ -2350,7 +2327,7 @@ country_event = {
 					limit = {
 						culture = native_american_minor
 					}
-					militancy = 8
+					militancy = 10
 				}
 				any_pop = {
 					limit = {
@@ -2368,8 +2345,8 @@ country_event = {
 
 province_event = {
 	id = 16445
-	title = "Apache Raiders"
-	desc = "Local native groups are raiding our settlements in $PROVINCENAME$"
+	title = "阿帕奇侵入者"
+	desc = "土著部落正袭击我们位于$PROVINCENAME$的定居点"
 	picture = "Sioux"
 	
 	trigger = {
@@ -2384,7 +2361,7 @@ province_event = {
 	}
 	
 	option = {
-		name = "Blast them!"
+		name = "这群该死的！"
 		state_scope = {
 			any_pop = {
 				limit = {
@@ -2399,7 +2376,6 @@ province_event = {
 		}
 	}
 }
-
 
 
 #Apprehending Geronimo
@@ -2435,9 +2411,9 @@ country_event = {
 	}
 }
 
-# Texas goods
-country_event = {
-	id = 16451
+	# Texas goods
+	country_event = {
+	id = 8016451
 	title = "EVTNAME16451"
 	desc = "EVTDESC16451"
 	picture = "dixie"
@@ -2450,13 +2426,28 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTA1206" #Ok
-			small_arms = 100
-			canned_food = 200
-			artillery = 50
-			luxury_clothes = 50
-			wine = 50
-			liquor = 50
-			ammunition = 100
-			money = 1000
+		small_arms = 100
+		canned_food = 200
+		artillery = 50
+		luxury_clothes = 50
+		wine = 50
+		liquor = 50
+		ammunition = 100
+		money = 1000
+		any_pop = {
+			limit = { has_pop_culture = texan }
+			dominant_issue = {
+				value = yes_slavery
+				factor = 0.25
+			}
+			ideology = {
+				value = conservative
+				factor = 0.4
+			}
+			ideology = {
+				value = reactionary
+				factor = 0.2
+			}
+		}
 	}
 }

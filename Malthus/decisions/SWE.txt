@@ -3,10 +3,7 @@ political_decisions = {
 		potential = {
 			OR = {
 				tag = SWE
-				AND = {
-					tag = SCA
-					primary_culture = swedish
-				}
+				tag = SCA
 			}
 			owns = 329
 			NOT = {
@@ -26,7 +23,7 @@ political_decisions = {
 		
 		effect = {
 			any_pop = {
-				money = -0.1
+				money = -10
 			}
 			329 = {
 				sub_unit = {
@@ -39,15 +36,10 @@ political_decisions = {
 	}
 	pass_folkskolereformen = {
 		potential = {
-			OR = {
-				tag = SWE
-				AND = {
-					tag = SCA
-					primary_culture = swedish
-				}
-			}
+			tag = SWE
 			NOT = {
 				has_country_modifier = folkis_educates
+				education = public
 			}
 		}
 		
@@ -56,22 +48,17 @@ political_decisions = {
 		}
 		
 		effect = {
+			social_reform = public
 			add_country_modifier = {
 				name = folkis_educates
 				duration = -1
 			}
 		}
 	}
-	
+
 	the_vega_expedition = {
 		potential = {
-			OR = {
-				tag = SWE
-				AND = {
-					tag = SCA
-					primary_culture = swedish
-				}
-			}
+			tag = SWE
 			has_global_flag = suez_canal_built
 			NOT = {
 				has_country_flag = the_vega_expedition_went
@@ -93,13 +80,7 @@ political_decisions = {
 	
 	expand_motala_verkstad = {
 		potential = {
-			OR = {
-				tag = SWE
-				AND = {
-					tag = SCA
-					primary_culture = swedish
-				}
-			}
+			tag = SWE
 			owns = 325
 			NOT = {
 				has_global_flag = motala_verkstad_expanded
@@ -110,7 +91,11 @@ political_decisions = {
 			mechanical_production = 1
 			325 = {
 				state_scope = {
-					has_building = machine_parts_factory
+					OR = {
+						has_building = machine_parts_factory
+						has_building = iron_machine_parts_factory
+						has_building = steel_machine_parts_factory
+					}
 				}
 			}
 		}
@@ -129,13 +114,7 @@ political_decisions = {
 	
 	court_yard_speech = {
 		potential = {
-			OR = {
-				tag = SWE
-				AND = {
-					tag = SCA
-					primary_culture = swedish
-				}
-			}
+			tag = SWE
 			government = hms_government
 			OR = {
 				vote_franschise = wealth_weighted_voting
@@ -166,4 +145,5 @@ political_decisions = {
 			set_country_flag = court_yard_speech_held
 		}
 	}
+
 }

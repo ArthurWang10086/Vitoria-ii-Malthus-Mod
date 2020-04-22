@@ -14,7 +14,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -33,7 +33,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 400
 		modifier = {
 			factor = 0.5
 			social_science = 1
@@ -59,7 +59,7 @@ country_event = {
 			average_consciousness = 5
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			war_exhaustion = 4
 		}
 		modifier = {
@@ -75,7 +75,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -107,7 +107,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -126,7 +126,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 900
+		months = 400
 		modifier = {
 			factor = 0.5
 			social_science = 1
@@ -152,7 +152,7 @@ country_event = {
 			average_consciousness = 5
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			war_exhaustion = 4
 		}
 		modifier = {
@@ -168,7 +168,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -205,7 +205,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		slavery = no_slavery
 		OR = {
@@ -225,7 +225,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 900
+		months = 400
 		modifier = {
 			factor = 0.5
 			social_science = 1
@@ -322,7 +322,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 70
+		months = 50
 		modifier = {
 			factor = 0.5
 			social_science = 1
@@ -458,7 +458,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -495,7 +495,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		public_meetings = yes_meeting
 		OR = {
@@ -557,7 +557,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -597,7 +597,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -658,7 +658,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -697,7 +697,7 @@ country_event = {
 
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		is_ideology_enabled = socialist
 		OR = {
@@ -759,7 +759,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -805,7 +805,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -866,7 +866,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -907,7 +907,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -968,7 +968,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1006,7 +1006,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -1067,7 +1067,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1172,7 +1172,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1206,7 +1206,7 @@ country_event = {
 	picture = "Womensrights"
 	
 	trigger = {
-		year = 1870
+		invention = womens_suffrage_movement
 		civilized = yes
 		OR = {
 			government = prussian_constitutionalism
@@ -1267,7 +1267,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1333,7 +1333,7 @@ country_event = {
 			revolution_n_counterrevolution = 1
 		}
 		modifier = {
-			factor = 0.5
+			factor = 0.25
 			anti__rationalism = 1
 		}
 		modifier = {
@@ -1365,7 +1365,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1432,7 +1432,7 @@ country_event = {
 			revolution_n_counterrevolution = 1
 		}
 		modifier = {
-			factor = 0.5
+			factor = 0.25
 			anti__rationalism = 1
 		}
 		modifier = {
@@ -1464,7 +1464,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1541,7 +1541,7 @@ country_event = {
 			revolution_n_counterrevolution = 1
 		}
 		modifier = {
-			factor = 0.5
+			factor = 0.25
 			anti__rationalism = 1
 		}
 		modifier = {
@@ -1573,7 +1573,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1647,7 +1647,7 @@ country_event = {
 			revolution_n_counterrevolution = 1
 		}
 		modifier = {
-			factor = 0.5
+			factor = 0.25
 			anti__rationalism = 1
 		}
 		modifier = {
@@ -1679,7 +1679,7 @@ country_event = {
 			political_reform_want = 0.15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			public_meetings = yes_meeting
 		}
 	}
@@ -1728,7 +1728,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 400
 		modifier = {
 			factor = 0.9
 			average_consciousness = 3
@@ -1781,11 +1781,6 @@ country_event = {
 	option = {
 		name = "EVTOPTB17170"
 		random_country = {
-			limit = {
-				NOT = {
-					tag = THIS
-				}
-			}
 			prestige = -1
 		}
 		prestige = 5

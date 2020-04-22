@@ -5,6 +5,7 @@ country_event = {
 	news_desc_long = "EVTDESC35000_NEWS_LONG"
 	news_desc_medium = "EVTDESC35000_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC35000_NEWS_SHORT"
+	
 	trigger = {
 		tag = COB 
 		year = 1836

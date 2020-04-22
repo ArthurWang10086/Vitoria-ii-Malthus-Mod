@@ -15,56 +15,59 @@ country_event = {
 		NOT = {
 			is_ideology_enabled = socialist 
 		}
-		year = 1860
-		civilized = yes
-		literacy = 0.4
-		OR = {
-			unemployment = 0.2
-			NOT = {
-				poor_strata_life_needs = 0.8
-			}
-			NOT = {
-				poor_strata_everyday_needs = 0.5
-			}
-			NOT = {
-				middle_strata_everyday_needs = 0.5
-			}
-		}
+		has_country_flag = had_liberal_revolution
+		invention = pierre_joseph_proudhon
 	}
 	major = yes
 	fire_only_once = yes
 
 	mean_time_to_happen = {
-		months = 250
+		months = 24
 		
-		modifier = {
-			factor = 0.5
-			invention = pierre_joseph_proudhon
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-			unemployment = 0.2
-			NOT = {
-				poor_strata_life_needs = 0.5
-				}
-			NOT = {
-				poor_strata_everyday_needs = 0.25
-				}
-			NOT = {
-				middle_strata_everyday_needs = 0.25
-				}
-			}
-		}
 		modifier = {
 			factor = 1.5
 			poor_strata_life_needs = 0.95
-			}
+		}
 	}
 
 	option = {
 		name = "EVTOPTA1000"
 		enable_ideology = socialist
+		any_pop = {
+			limit = {
+				is_primary_culture = yes
+				location = {
+					is_colonial = no
+				}
+			}
+			ideology = {
+				value = socialist
+				factor = 0.1
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					NOT = { num_of_cities = 10 }
+				}
+			}
+			owner = {
+				any_neighbor_country = {
+					any_pop = {
+						limit = {
+							is_primary_culture = yes
+							location = {
+								is_colonial = no
+							}
+						}
+						ideology = {
+							value = socialist
+							factor = 0.05
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -85,35 +88,18 @@ country_event = {
 		NOT = {
 			is_ideology_enabled = communist 
 		}
-		year = 1870
-		civilized = yes
-		literacy = 0.5
-		OR = {
-			planned_economy = 10
-			pro_atheism = 10
-			pro_military = 15
-			unemployment = 0.2
-			AND = {
-				NOT = {
-					poor_strata_life_needs = 0.9
-					}
-				average_militancy = 3
-			}
-		}
+		is_ideology_enabled = socialist 
+		invention = karl_marx
 	}
 	
 	major = yes
 	fire_only_once = yes
 
 	mean_time_to_happen = {
-		months = 300
+		months = 24
 		
 		modifier = {
 			factor = 0.5
-			invention = karl_marx
-		}
-		modifier = {
-			factor = 0.8
 			invention = friedrich_engels
 		}
 		modifier = {
@@ -125,6 +111,49 @@ country_event = {
 	option = {
 		name = "EVTOPTA1001"
 		enable_ideology = communist
+		any_pop = {
+			limit = {
+				is_primary_culture = yes
+				socialist = 0.1
+				location = {
+					is_colonial = no
+				}
+			}
+			ideology = {
+				value = communist
+				factor = 0.1
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					NOT = { num_of_cities = 10 }
+				}
+			}
+			owner = {
+				any_neighbor_country = {
+					any_pop = {
+						limit = {
+							is_primary_culture = yes
+							socialist = 0.1
+							location = {
+								is_colonial = no
+							}
+						}
+						ideology = {
+							value = communist
+							factor = 0.05
+						}
+					}
+				}
+			}
+		}
+		any_country = {
+			set_variable = {
+				which = successful_communist_rebellions
+				value = 0
+			}
+		}
 	}
 }
 
@@ -145,16 +174,8 @@ country_event = {
 		NOT = {
 			is_ideology_enabled = anarcho_liberal 
 		}
-		year = 1848
 		civilized = yes
-		literacy = 0.65
-		OR = {
-			laissez_faire = 15
-			pluralism = 10
-			anti_military = 20
-			political_reform_want = 0.5
-			unemployment = 0.2
-		}
+		invention = populism_vs._establishment
 	}
 	
 	major = yes
@@ -167,6 +188,45 @@ country_event = {
 	option = {
 		name = "EVTOPTA1002"
 		enable_ideology = anarcho_liberal
+		any_pop = {
+			limit = {
+				is_primary_culture = yes
+				literacy = 0.4
+				liberal = 0.1
+				location = {
+					is_colonial = no
+				}
+			}
+			ideology = {
+				value = anarcho_liberal
+				factor = 0.1
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					NOT = { num_of_cities = 10 }
+				}
+			}
+			owner = {
+				any_neighbor_country = {
+					any_pop = {
+						limit = {
+							is_primary_culture = yes
+							literacy = 0.4
+							liberal = 0.1
+							location = {
+								is_colonial = no
+							}
+						}
+						ideology = {
+							value = anarcho_liberal
+							factor = 0.05
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -187,17 +247,20 @@ country_event = {
 		NOT = {
 			is_ideology_enabled = fascist 
 		}
-		
-		year = 1905 
-		literacy = 0.65
-		civilized = yes
+		invention = mussolini
 		OR = {
-			interventionism = 25
-			secularized = 25
-			jingoism = 5
-			residency = 5
-			social_reform_want = 0.5
-			unemployment = 0.2
+			nationalvalue = nv_supremacy
+			nationalvalue = nv_might			
+			any_core = {
+				empty = no
+				NOT = { owned_by = THIS }
+			}
+			has_recently_lost_war = yes
+			is_disarmed = yes
+			unemployment = 0.3
+			any_neighbor_country = {
+				government = proletarian_dictatorship
+			}
 		}
 	}
 	
@@ -205,30 +268,89 @@ country_event = {
 	fire_only_once = yes
 	
 	mean_time_to_happen =  {
-		months = 300
-		
+		months = 24
 		modifier = {
 			factor = 0.5
 			invention = karl_marx
-		}
-		modifier = {
-			factor = 0.9
-			war_exhaustion = 4
-		}
-		modifier = {
-			factor = 0.9
-			average_consciousness = 4
-		}
-		modifier = {
-			factor = 1.2
-			NOT = {
-				average_consciousness = 3
-			}
 		}
 	}
 
 	option = {
 		name = "EVTOPTA1003"
 		enable_ideology = fascist
+		any_pop = {
+			limit = {
+				is_primary_culture = yes
+				location = {
+					is_colonial = no
+				}
+			}
+			ideology = {
+				value = fascist
+				factor = 0.1
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					NOT = { num_of_cities = 10 }
+				}
+			}
+			owner = {
+				any_neighbor_country = {
+					any_pop = {
+						limit = {
+							is_primary_culture = yes
+							location = {
+								is_colonial = no
+							}
+						}
+						ideology = {
+							value = fascist
+							factor = 0.05
+						}
+					}
+				}
+			}
+		}
+		any_country = {
+			set_variable = {
+				which = successful_fascist_rebellions
+				value = 0
+			}
+		}
+	}
+}
+
+
+
+country_event = {
+	id = 1004
+	title = "社会自由主义"
+	desc = "一种挑战古典自由主义的新思想出现。"
+	picture = "AnarchoLiberals"
+	
+	trigger = {
+		NOT = {
+			is_ideology_enabled = social_liberal 
+		}
+		is_ideology_enabled = socialist 
+		invention = social_conscience
+	}
+	
+	major = yes
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 24
+		modifier = {
+			factor = 0.5
+			not = { poor_strata_everyday_needs = 0.5 }
+		}
+	}
+
+	option = {
+		name = "我们将抱着极大的兴趣观察一切。"
+		enable_ideology = social_liberal
 	}
 }

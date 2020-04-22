@@ -4,6 +4,7 @@ country_event = {
 	title = "EVTNAME70000"
 	desc = "EVTDESC70000"
 	picture = "Slaves"
+	
 	trigger = {
 		country = {
 			slavery = yes_slavery
@@ -12,9 +13,10 @@ country_event = {
 			}
 		}
 	}
+	
 	is_triggered_only = yes
 	allow_multiple_instances = yes
-	
+		
 	option = {
 		name = "EVTOPTA70000"
 		is_slave = yes
@@ -23,13 +25,7 @@ country_event = {
 				limit = {
 					is_slave = no
 				}
-				any_pop = { consciousness = 1 }
-			}
-			any_state = {
-				limit = {
-					is_slave = yes
-				}
-				any_pop = { consciousness = -0.5 }
+				any_pop = { consciousness = 2 }
 			}
 		}
 		ai_chance = {
@@ -41,13 +37,14 @@ country_event = {
 					OR = {
 						province_id = 84 #California
 						province_id = 106 #Colorado
-						province_id = 91 #Idaho
+						province_id = 92 #Idaho
 						province_id = 163 #Illinois
 						province_id = 151 #Iowa
 						province_id = 173 #Michigan
 						province_id = 155 #Minnesota
 						province_id = 116 #Montana
-						province_id = 97 #Nevada-Utah
+						province_id = 97 #Utah
+						province_id = 94 #Nevada
 						province_id = 117 #N. Dakota
 						province_id = 120 #S. Dakota
 						province_id = 81 #Oregon
@@ -55,6 +52,7 @@ country_event = {
 						province_id = 159 #Wisconsin
 						province_id = 110 #Wyoming
 						is_core = CAN
+						is_core = COL
 					}
 				}
 			}
@@ -109,22 +107,14 @@ country_event = {
 				limit = {
 					is_slave = yes
 				}
-				any_pop = { consciousness = 1 }
-			}
-			any_state = {
-				limit = {
-					is_slave = no
-				}
-				any_pop = { consciousness = -0.5 }
-			}
+				any_pop = { consciousness = 2 }
+			}		
 		}
 		ai_chance = {
 			factor = 50
 			modifier = {
 				factor = 0
-				owner = { 
-					tag = CSA 
-				}
+				owner = { tag = CSA }
 			}
 			modifier = {
 				factor = 0
@@ -134,6 +124,7 @@ country_event = {
 						province_id = 200 #Florida
 						is_core = TEX
 						is_core = CUB
+						is_core = RGR
 						AND = {
 							is_core = MEX
 							NOT = { is_core = USA }
@@ -178,6 +169,7 @@ country_event = {
 	title = "EVTNAME70001"
 	desc = "EVTDESC70001"
 	picture = "Western"
+	
 	trigger = {
 		country = {
 			slavery = no_slavery
@@ -186,6 +178,7 @@ country_event = {
 			}
 		}
 	}
+	
 	is_triggered_only = yes
 	allow_multiple_instances = yes
 	
@@ -208,9 +201,40 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = "EVTOPTA70002"
-		casus_belli = {
-			type = gunboat
-			target = FROM
+		relation = { who = FROM value = -50 }
+		random_owned = {
+			limit = {
+				owner = { is_greater_power = yes }
+			}
+			owner = {
+				diplomatic_influence = { who = FROM value = 20 }
+			}
+		}
+		random_country = {
+			limit = {
+				tag = FROM
+				part_of_sphere = no
+				is_vassal = no
+				THIS = { is_greater_power = yes }
+			}
+			add_casus_belli = {
+				target = THIS
+				type = add_to_sphere
+				months = 36
+			}
+		}
+		random_country = {
+			limit = {
+				tag = FROM
+				neighbour = THIS
+				is_disarmed = no
+				is_vassal = no
+			}
+			add_casus_belli = {
+				target = THIS
+				type = cut_down_to_size
+				months = 12
+			}
 		}
 	}
 }
@@ -249,9 +273,6 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = "EVTOPTA70002"
-		casus_belli = {
-			type = gunboat
-			target = FROM
-		}
+		relation = { who = FROM value = -20 }
 	}
 }

@@ -37,7 +37,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA33300" 
 		prestige = -5
-		treasury = -100
+		treasury = -2000
 	}
 }
 

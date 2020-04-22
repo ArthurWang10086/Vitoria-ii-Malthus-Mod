@@ -13,21 +13,21 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400 #COMMON
+		months = 200 #COMMON
 		
 		modifier = {
 			factor = 0.9
 			NOT = {
-				prestige = 0
+				prestige = 50
 			}
 		}
 		modifier = {
 			factor = 1.1
-			prestige = 45
+			prestige = 100
 		}
 		modifier = {
 			factor = 1.3
-			prestige = 60
+			prestige = 150
 		}
 	}
 	
@@ -39,8 +39,15 @@ country_event = {
 					is_colonial = yes
 				}
 			}
+			rich_strata = {
+				consciousness = -4
+			}
 			poor_strata = {
 				militancy = 4
+				ideology = {
+					value = liberal
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -58,6 +65,12 @@ country_event = {
 			}
 			rich_strata = {
 				consciousness = 4
+			}
+			any_pop = {
+				dominant_issue = {
+					value = free_press
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -78,7 +91,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400 #COMMON
+		months = 200 #COMMON
 		modifier = {
 			factor = 1.1
 			ruling_party_ideology = conservative
@@ -125,7 +138,11 @@ country_event = {
 			any_pop = {
 				dominant_issue = {
 					value = free_press
-					factor = 0.5
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
 				}
 			}
 		}
@@ -149,20 +166,21 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
 			factor = 0.8
-			average_consciousness = 6
-		}
-		
-		modifier = {
-			factor = 0.7
 			average_consciousness = 8
 		}
 		modifier = {
-			factor = 1.4
+			factor = 2.5
 			NOT = {
 				average_consciousness = 6
+			}
+		}
+		modifier = {
+			factor = 5
+			NOT = {
+				average_consciousness = 4
 			}
 		}
 	}
@@ -178,6 +196,10 @@ country_event = {
 			any_pop = {
 				limit = {
 					literacy = 0.2
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
 				}
 				militancy = 2
 				consciousness = 1
@@ -195,7 +217,7 @@ country_event = {
 			}
 			any_pop = {
 				limit = {
-					literacy = 0.8
+					literacy = 0.6
 				}
 				militancy = 4
 				consciousness = 2
@@ -239,7 +261,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 300
+		months = 200
 		modifier = {
 			factor = 0.9
 			literacy = 0.7
@@ -256,12 +278,12 @@ country_event = {
 		}
 		
 		modifier = {
-			factor = 1.1
+			factor = 1.3
 			ruling_party_ideology = liberal
 		}
 		
 		modifier = {
-			factor = 1.3
+			factor = 1.5
 			ruling_party_ideology = conservative
 		}
 	}
@@ -290,8 +312,12 @@ country_event = {
 			}
 			any_pop = {
 				dominant_issue = {
-					factor = 0.5
+					factor = 0.1
 					value = harassment
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
 				}
 			}
 		}
@@ -311,19 +337,23 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 430
+		months = 200
 		modifier = {
 			factor = 0.9
 			average_consciousness = 8
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.5
+			average_militancy = 8
+		}
+		modifier = {
+			factor = 1.3
 			NOT = {
-				average_consciousness = 8
+				average_consciousness = 6
 			}
 		}
 		modifier = {
-			factor = 1.4
+			factor = 1.5
 			NOT = {
 				average_militancy = 7
 			}
@@ -370,7 +400,11 @@ country_event = {
 				militancy = -1
 				dominant_issue = {
 					value = gerrymandering
-					factor = 0.8
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
 				}
 			}
 		}
@@ -391,7 +425,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 100
 		
 		modifier = {
 			factor = 4
@@ -400,7 +434,9 @@ country_event = {
 		
 		modifier = {
 			factor = 0.9
-			conservative = 20
+			NOT = {
+				conservative = 20
+			}	
 		}	
 	}
 	
@@ -415,7 +451,7 @@ country_event = {
 			any_pop = {
 				ideology = {
 					value = conservative
-					factor = 0.8
+					factor = 0.1
 				}
 				militancy = 4
 			}
@@ -431,9 +467,13 @@ country_event = {
 				}
 			}
 			any_pop = {
+				dominant_issue = {
+					value = non_secret_ballots
+					factor = 0.1
+				}
 				ideology = {
 					value = liberal
-					factor = 0.8
+					factor = 0.1
 				}
 				militancy = -1
 			}
@@ -455,12 +495,10 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 300
+		months = 200
 		modifier = {
-			factor = 0.9
-			NOT = {
-				average_militancy = 5
-			}
+			factor = 0.8
+			average_militancy = 5
 		}
 		
 		modifier = {
@@ -469,7 +507,7 @@ country_event = {
 		}
 		
 		modifier = {
-			factor = 1.4
+			factor = 2.5
 			NOT = {
 				average_consciousness = 7
 			}
@@ -488,7 +526,11 @@ country_event = {
 				militancy = -1
 				dominant_issue = {
 					value = secret_ballots
-					factor = 0.7
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
 				}
 			}
 		}
@@ -522,7 +564,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 200
 		modifier = {
 			factor = 0.9
 			ruling_party_ideology = liberal
@@ -534,7 +576,7 @@ country_event = {
 		}
 		
 		modifier = {
-			factor = 2.0
+			factor = 5
 			NOT = {
 				ruling_party_ideology = conservative
 				ruling_party_ideology = liberal
@@ -553,7 +595,7 @@ country_event = {
 			any_pop = {
 				ideology = {
 					value = conservative
-					factor = 0.5
+					factor = 0.2
 				}
 				militancy = -1
 			}
@@ -571,7 +613,7 @@ country_event = {
 			any_pop = {
 				ideology = {
 					value = liberal
-					factor = 0.5
+					factor = 0.2
 				}
 				militancy = 3
 			}
@@ -595,9 +637,9 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 200
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			socialist = 40
 		}
 		modifier = {
@@ -645,7 +687,11 @@ country_event = {
 			any_pop = {
 				dominant_issue = {
 					value = state_controlled
-					factor = 0.3
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
 				}
 			}
 		}
@@ -665,15 +711,17 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 450
+		months = 200
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			war_exhaustion = 4
 		}
 		
 		modifier = {
-			factor = 1.1
-			average_consciousness = 7
+			factor = 1.3
+			NOT = {
+				average_consciousness = 7
+			}
 		}
 			
 	}
@@ -686,8 +734,16 @@ country_event = {
 					is_colonial = yes
 				}
 			}
-			any_pop = {
+			poor_strata = {
 				militancy = -1
+				dominant_issue = {
+					value = non_socialist
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
+				}
 			}
 		}
 		prestige = -5
@@ -701,8 +757,16 @@ country_event = {
 					is_colonial = yes
 				}
 			}
-			any_pop = {
+			poor_strata = {
 				militancy = 1
+				consciousness = 3
+			}
+			rich_strata = {
+				consciousness = -3
+				dominant_issue = {
+					value = no_trade_unions
+					factor = 0.1
+				}
 			}
 		}
 		prestige = 5
@@ -723,15 +787,15 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 300
+		months = 200
 		modifier = {
-			factor = 0.9
-			average_consciousness = 7
+			factor = 0.8
+			average_consciousness = 8
 		}
 		modifier = {
-			factor = 1.1
+			factor = 1.5
 			NOT = {
-				average_consciousness = 7
+				average_consciousness = 6
 			}
 		}
 	}
@@ -743,9 +807,22 @@ country_event = {
 				NOT = {
 					is_colonial = yes
 				}
+				has_pop_type = capitalists
 			}
-			labourers = {
+			rich_strata = {
+				militancy = -2
+			}
+			poor_strata = {
 				consciousness = 3
+				militancy = 3
+				dominant_issue = {
+					value = all_trade_unions
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -759,8 +836,16 @@ country_event = {
 				}
 				has_pop_type = capitalists
 			}
-			capitalists = {
-				consciousness = 5
+			poor_strata = {
+				militancy = -2
+			}
+			rich_strata = {
+				consciousness = 3
+				militancy = 3
+				dominant_issue = {
+					value = state_controlled
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -781,14 +866,14 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400
-		modifier = {
-			factor = 0.9
-			poor_strata_life_needs = 0.9
-		}
+		months = 100
 		modifier = {
 			factor = 0.8
-			poor_strata_life_needs = 0.8
+			NOT = { poor_strata_life_needs = 0.9 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { poor_strata_life_needs = 0.8 }
 		}
 		modifier = {
 			factor = 2
@@ -822,14 +907,17 @@ country_event = {
 					is_colonial = yes
 				}
 			}
-			any_pop = {
+			poor_strata = {
 				ideology = {
 					value = socialist
-					factor = 0.5
+					factor = 0.1
 				}
-				scaled_militancy = {
-					ideology = socialist
-					factor = 3
+			}
+			rich_strata = {
+				consciousness = -3
+				dominant_issue = {
+					value = non_socialist
+					factor = 0.1
 				}
 			}
 		}
@@ -849,7 +937,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 500
+		months = 200
 		
 		modifier = {
 			factor = 0.9
@@ -857,7 +945,7 @@ country_event = {
 		}
 		
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			plurality = 5
 		}
 	}
@@ -872,7 +960,7 @@ country_event = {
 			}
 			any_pop = {
 				consciousness = -1
-				militancy = 1
+				militancy = 2
 			}
 		}
 	}
@@ -888,6 +976,14 @@ country_event = {
 			any_pop = {
 				consciousness = 1
 				militancy = -1
+				dominant_issue = {
+					value = yes_meeting
+					factor = 0.1
+				}
+				ideology = {
+					value = liberal
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -910,25 +1006,33 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 200
 		modifier = {
 			factor = 0.9
-			NOT = {
-				average_militancy = 8
-			}
+			average_consciousness = 4
 		}
 		modifier = {
-			factor = 0.9
-			NOT = {
-				average_consciousness = 5
-			}
+			factor = 0.8
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.7
+			average_consciousness = 8
 		}
 	}
 	
 	option = {
 		name = "EVTOPTA3751"
 		any_pop = {
-			militancy = 4
+			consciousness = -2
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -2
+			}
 		}
 	}
 	
@@ -936,7 +1040,19 @@ country_event = {
 		name = "EVTOPTB3751"
 		political_reform = yes_meeting
 		any_pop = {
-			consciousness = 6
+			consciousness = 2
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
 		}
 	}
 }
@@ -956,21 +1072,17 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
-			factor = 0.9
-			NOT = {
-				average_consciousness = 8
-			}
+			factor = 0.5
+			average_consciousness = 8
 		}
 		modifier = {
-			factor = 0.9
-			NOT = {
-				average_militancy = 8
-			}
+			factor = 1.5
+			average_militancy = 8
 		}
 		modifier = {
-			factor = 1.3
+			factor = 2
 			NOT = {
 				political_reform_want = 0.2
 			}
@@ -1030,18 +1142,25 @@ country_event = {
 	
 	trigger = {
 		civilized = yes
-		average_militancy = 5
+		average_militancy = 3
 		public_meetings = yes_meeting
 	}
 	
 	mean_time_to_happen = {
-		months = 700
+		months = 100
 		
 		modifier = {
-			factor = 0.9
-			average_militancy = 8
+			factor = 0.8
+			average_militancy = 5
 		}
-		
+		modifier = {
+			factor = 0.7
+			average_militancy = 6
+		}
+		modifier = {
+			factor = 0.6
+			average_militancy = 7
+		}
 		modifier = {
 			factor = 0.9
 			average_consciousness = 8
@@ -1052,12 +1171,17 @@ country_event = {
 		name = "EVTOPTA3753"
 		random_state = {
 			limit = {
+				average_militancy = 3
 				NOT = {
 					is_colonial = yes
 				}
 			}
 			any_pop = {
-				militancy = 1.5
+				militancy = 2
+				ideology = {
+					value = reactionary
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -1066,12 +1190,17 @@ country_event = {
 		name = "EVTOPTB3753"
 		random_state = {
 			limit = {
+				average_militancy = 3
 				NOT = {
 					is_colonial = yes
 				}
 			}
 			any_pop = {
-				consciousness = 1.5
+				consciousness = 2
+				ideology = {
+					value = liberal
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -1096,19 +1225,27 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 700
+		months = 400
 		modifier = {
 			factor = 0.9
 			NOT = {
-				prestige = 0
+				prestige = 100
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			plurality = 6
 		}
 		modifier = {
-			factor = 0.8
+			factor = 0.7
+			plurality = 7
+		}
+		modifier = {
+			factor = 0.6
+			plurality = 8
+		}
+		modifier = {
+			factor = 0.5
 			NOT = {
 				middle_strata_everyday_needs = 0.5
 			}
@@ -1128,7 +1265,13 @@ country_event = {
 		name = "EVTOPTB3754"
 		upper_house = {
 			ideology = conservative
-			value = 0.1
+			value = 0.2
+		}
+		rich_strata = {
+			dominant_issue = {
+				value = no_meeting
+				factor = 0.1
+			}
 		}
 		plurality = -1
 	}
@@ -1152,18 +1295,22 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		
 		modifier = {
-			factor = 0.9
+			factor = 0.8
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 0.5
 			average_militancy = 8
 		}
 		modifier = {
-			factor = 0.9
-			unemployment = 0.15
+			factor = 0.5
+			unemployment = 0.2
 		}
 		modifier = {
-			factor = 1.3
+			factor = 3
 			poor_strata_everyday_needs = 0.8
 		}
 			
@@ -1220,20 +1367,18 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 500
+		months = 200
 		modifier = {
-			factor = 0.9
+			factor = 0.7
 			political_reform_want = 0.25
 		}
 		modifier = {
+			factor = 0.5
+			political_reform_want = 0.50
+		}
+				modifier = {
 			factor = 0.9
 			social_reform_want = 0.1
-		}
-		modifier = {
-			factor = 1.1
-			NOT = {
-				political_reform_want = 0.3
-			}
 		}
 	}
 	
@@ -1250,6 +1395,10 @@ country_event = {
 				militancy = 2
 			}
 			any_pop = {
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
 				scaled_militancy = {
 					factor = 2
 					ideology = conservative
@@ -1268,7 +1417,7 @@ country_event = {
 			}
 			any_pop = {
 				ideology = {
-					factor = 0.5
+					factor = 0.1
 					value = conservative
 				}
 				scaled_militancy = {
@@ -1296,17 +1445,21 @@ country_event = {
 		civilized = yes
 		upper_house_composition = party_appointed
 		political_reform_want = 0.3
-		average_militancy = 5
-		poor_strata_life_needs = 0.8
-		middle_strata_life_needs = 0.8
+		average_militancy = 3
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
 			factor = 1.5
 			NOT = {
-				average_militancy = 10
+				average_militancy = 4
+			}
+		}
+		modifier = {
+			factor = 1.5
+			NOT = {
+				plurality = 6
 			}
 		}
 		modifier = {	
@@ -1354,15 +1507,20 @@ country_event = {
 		upper_house_composition = appointed
 		political_reform_want = 0.2
 		average_militancy = 4
-		plurality = 6
 	}
 	
 	mean_time_to_happen = {
-		months = 700
+		months = 100
 		modifier = {
 			factor = 1.5
 			NOT = {
 				average_militancy = 8
+			}
+		}
+		modifier = {
+			factor = 1.5
+			NOT = {
+				plurality = 6
 			}
 		}
 		modifier = {
@@ -1424,12 +1582,13 @@ country_event = {
 		upper_house_composition = state_equal_weight
 		political_reform_want = 0.2
 		any_state = {
-			average_militancy = 6
+			average_militancy = 3
+			is_colonial = no
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 500
+		months = 200
 		modifier = {
 			factor = 1.3
 			NOT = {
@@ -1452,11 +1611,11 @@ country_event = {
 		name = "EVTOPTA4102"
 		random_state = {
 			limit = {
-				average_militancy = 6
+				average_militancy = 3
 				is_colonial = no
 			}
 			any_pop = {
-				militancy = 1
+				militancy = 2
 				consciousness = 1
 			}
 		}
@@ -1467,7 +1626,7 @@ country_event = {
 		any_pop = {
 			dominant_issue = {
 				value = population_equal_weight
-				factor = 0.1
+				factor = 0.2
 			}
 		}
 		prestige = -20
@@ -1488,7 +1647,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
 			factor = 0.9
 			political_reform_want = 0.2
@@ -1568,7 +1727,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 300
 		modifier = {
 			factor = 0.9
 			plurality = 4
@@ -1611,7 +1770,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.9
 			plurality = 4
@@ -1661,13 +1820,13 @@ country_event = {
 		voting_system = proportional_representation
 		upper_house = {
 			ideology = liberal
-			value = 0.5
+			value = 0.3
 		}
 		political_reform_want = 0.3
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.9
 			political_reform_want = 0.45
@@ -1725,22 +1884,34 @@ country_event = {
 	trigger = {
 		civilized = yes
 		vote_franschise = none_voting
-		average_militancy = 8
+		average_militancy = 2
 		political_reform_want = 0.2
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 200
 		modifier = {
 			factor = 0.8
-			average_militancy = 10
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.8
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 0.8
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 0.8
+			average_militancy = 6
 		}
 		modifier = {
 			factor = 0.8
 			average_consciousness = 8
 		}
 		modifier = {
-			factor = 1.1
+			factor = 2
 			NOT = {
 				political_reform_want = 0.4
 			}
@@ -1756,11 +1927,14 @@ country_event = {
 				}
 			}
 			any_pop = {
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
 				dominant_issue = {
 					value = landed_voting
 					factor = 0.2
 				}
-				militancy = 2
 			}
 		}
 	}
@@ -1774,11 +1948,10 @@ country_event = {
 				}
 			}
 			any_pop = {
-				dominant_issue = {
-					value = landed_voting
-					factor = 0.1
+				scaled_militancy = {
+					ideology = liberal
+					factor = 4
 				}
-				militancy = 3
 			}
 		}
 	}
@@ -1794,17 +1967,17 @@ country_event = {
 	trigger = {
 		civilized = yes
 		vote_franschise = landed_voting
-		middle_strata_everyday_needs = 0.9
+		NOT = { middle_strata_everyday_needs = 0.9 }
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
-			factor = 0.9
-			middle_strata_everyday_needs = 0.7
+			factor = 0.8
+			NOT = { middle_strata_everyday_needs = 0.7 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			NOT = {
 				poor_strata_everyday_needs = 1
 			}
@@ -1822,8 +1995,15 @@ country_event = {
 			poor_strata = {
 				militancy = 2
 			}
+			middle_strata = {
+				militancy = 2
+			}
 			rich_strata = {
 				militancy = -1
+				ideology = {
+					factor = 0.1
+					value = reactionary
+				}
 			}
 		}
 	}
@@ -1838,6 +2018,25 @@ country_event = {
 			}
 			poor_strata = {
 				militancy = -1
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
+				dominant_issue = {
+					value = wealth_weighted_voting
+					factor = 0.1
+				}
+			}
+			middle_strata = {
+				militancy = -1
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
+				dominant_issue = {
+					value = wealth_weighted_voting
+					factor = 0.2
+				}
 			}
 			rich_strata = {
 				militancy = 2
@@ -1859,16 +2058,26 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
 			factor = 0.9
 			plurality = 0.3
 		}
 		modifier = {
-			factor = 1.1
-			NOT = {
-				middle_strata_militancy = 5
-			}
+			factor = 0.8
+			plurality = 0.5
+		}
+		modifier = {
+			factor = 0.7
+			middle_strata_militancy = 5
+		}
+		modifier = {
+			factor = 0.6
+			middle_strata_militancy = 6
+		}
+		modifier = {
+			factor = 0.5
+			middle_strata_militancy = 7
 		}
 	}
 	
@@ -1885,6 +2094,14 @@ country_event = {
 			}
 			rich_strata = {
 				militancy = -1
+				ideology = {
+					factor = 0.1
+					value = reactionary
+				}
+				dominant_issue = {
+					value = landed_voting
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -1897,11 +2114,30 @@ country_event = {
 					is_colonial = yes
 				}
 			}
+			poor_strata = {
+				consciousness = 3
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
+				dominant_issue = {
+					value = wealth_voting
+					factor = 0.1
+				}
+			}
 			middle_strata = {
 				consciousness = 3
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
+				dominant_issue = {
+					value = wealth_voting
+					factor = 0.2
+				}
 			}
 			rich_strata = {
-				militancy = 1
+				militancy = 2
 			}
 		}
 	}
@@ -1920,13 +2156,17 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.9
-			average_militancy = 6
+			average_militancy = 2
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.8
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 2
 			NOT = {
 				average_consciousness = 8
 			}
@@ -1949,14 +2189,42 @@ country_event = {
 				militancy = 2
 				consciousness = -1
 			}
+			rich_strata = {
+				ideology = {
+					factor = 0.1
+					value = reactionary
+				}
+				dominant_issue = {
+					value = wealth_weighted_voting
+					factor = 0.1
+				}
+			}
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB4303"
-		any_pop = {
-			militancy = 1
-			consciousness = 1
+		poor_strata = {
+			consciousness = 2
+			ideology = {
+				factor = 0.05
+				value = liberal
+			}
+			dominant_issue = {
+				value = universal_weighted_voting
+				factor = 0.05
+			}
+		}
+		middle_strata = {
+			consciousness = 2
+			ideology = {
+				factor = 0.05
+				value = liberal
+			}
+			dominant_issue = {
+				value = universal_weighted_voting
+				factor = 0.05
+			}
 		}
 	}
 }
@@ -1971,17 +2239,20 @@ country_event = {
 	trigger = {
 		civilized = yes
 		vote_franschise = universal_weighted_voting
-		universal_voting = 15
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
-			factor = 0.9
+			factor = 0.7
+			universal_voting = 10
+		}
+		modifier = {
+			factor = 0.5
 			universal_voting = 20
 		}
 		modifier = {
-			factor = 1.1
+			factor = 3
 			NOT = {
 				political_reform_want = 0.2
 			}
@@ -2003,6 +2274,14 @@ country_event = {
 			rich_strata = {
 				militancy = -3
 				consciousness = 1
+				ideology = {
+					factor = 0.1
+					value = reactionary
+				}
+				dominant_issue = {
+					value = wealth_voting
+					factor = 0.1
+				}
 			}
 		}
 	}
@@ -2018,6 +2297,14 @@ country_event = {
 			poor_strata = {
 				militancy = -3
 				consciousness = 1
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
+				dominant_issue = {
+					value = universal_voting
+					factor = 0.1
+				}
 			}
 			rich_strata = {
 				militancy = 3
@@ -2037,22 +2324,25 @@ country_event = {
 	trigger = {
 		civilized = yes
 		vote_franschise = universal_voting
-		average_militancy = 3
+		any_state = {
+			is_colonial = no
+			NOT = { average_militancy = 2 }
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 200
 		modifier = {
-			factor = 0.9
+			factor = 0.7
 			average_consciousness = 7
 		}
 		modifier = {
-			factor = 1.2
-			average_militancy = 5
+			factor = 1.5
+			average_militancy = 3
 		}
 		modifier = {
-			factor = 1.4
-			average_militancy = 7
+			factor = 1.5
+			average_militancy = 5
 		}
 	}
 	
@@ -2060,12 +2350,16 @@ country_event = {
 		name = "EVTOPTA4305"
 		random_state = {
 			limit = {
+				NOT = { average_militancy = 2 }
 				NOT = {
 					is_colonial = yes
 				}
 			}
 			any_pop = {
-				militancy = -2
+				ideology = {
+					factor = 0.1
+					value = liberal
+				}
 			}
 		}
 	}
@@ -2074,13 +2368,13 @@ country_event = {
 		name = "EVTOPTB4305"
 		random_state = {
 			limit = {
+				NOT = { average_militancy = 2 }
 				NOT = {
 					is_colonial = yes
 				}
 			}
 			any_pop = {
-				militancy = -3
-				consciousness = 1
+				consciousness = -3
 			}
 		}
 	}
@@ -2101,15 +2395,15 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
-			factor = 1.5
+			factor = 2
 			NOT = {
 				poor_strata_life_needs = 0.9
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.6
 			middle_strata_everyday_needs = 0.9
 		}
 	}
@@ -2127,9 +2421,17 @@ country_event = {
 			}
 			middle_strata = {
 				militancy = -2
+				dominant_issue = {
+					value = free_trade
+					factor = 0.1
+				}
 			}
 			rich_strata = {
 				militancy = -3
+				dominant_issue = {
+					value = free_trade
+					factor = 0.2
+				}
 			}
 		}
 	}
@@ -2147,9 +2449,17 @@ country_event = {
 			}
 			middle_strata = {
 				militancy = -2
+				dominant_issue = {
+					value = free_trade
+					factor = 0.1
+				}
 			}
 			poor_strata = {
 				militancy = -3
+				dominant_issue = {
+					value = free_trade
+					factor = 0.2
+				}
 			}
 		}
 	}
@@ -2174,9 +2484,9 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 100
 		modifier = {
-			factor = 2
+			factor = 10
 			NOT = {
 				average_militancy = 5
 			}
@@ -2192,7 +2502,13 @@ country_event = {
 		upper_house = {
 			ideology = liberal
 			value = 0.2
-		}	
+		}
+		any_pop = {
+			dominant_issue = {
+				value = free_trade
+				factor = 0.1
+			}
+		}
 	}
 	
 	option = {
@@ -2205,48 +2521,46 @@ country_event = {
 
 #Guns Cross The Border
 country_event = {
-    id = 4402
-    title = "EVTNAME4402"
-    desc = "EVTDESC4402"
-    picture = "Merchants"
-    
-    trigger = {
+	id = 4402
+	title = "EVTNAME4402"
+	desc = "EVTDESC4402"
+	picture = "Merchants"
+	
+	trigger = {
 		civilized = yes
-        trade_policy = free_trade
+		trade_policy = free_trade
         any_neighbor_country = {
             NOT = {
                 trade_policy = free_trade
             }
         }
-    }
-    
-    mean_time_to_happen = {
-        months = 800
-        modifier = {
-            factor = 0.9
-            NOT = {
-                average_militancy = 5
-            }
-        }
-        modifier = {
-            factor = 0.9
-            NOT = {
-                average_consciousness = 5
-            }
-        }
-        modifier = {
-            factor = 1.1
-            average_militancy = 5
-        }
-    }
-    
-    option = {
-        name = "EVTOPTA4402"
+	}
+	
+	mean_time_to_happen = {
+		months = 400
+		modifier = {
+			factor = 0.9
+			NOT = {
+				average_militancy = 5
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				average_consciousness = 5
+			}
+		}
+		modifier = {
+			factor = 1.1
+			average_militancy = 5
+		}
+	}
+	
+	option = {
+		name = "EVTOPTA4402"
         random_country = {
             limit = {
-                NOT = {
-                    trade_policy = free_trade
-                }
+                NOT = { trade_policy = free_trade }
                 neighbour = THIS
             }
             relation = {
@@ -2254,15 +2568,13 @@ country_event = {
                 value = 30
             }
         }
-    }
-    
-    option = {
-        name = "EVTOPTB4402"
-        prestige = 5
-    }
-}
+	}
 	
-
+	option = {
+		name = "EVTOPTB4402"
+		prestige = 5
+	}
+}
 
 # Local Business Fails
 country_event = {
@@ -2277,22 +2589,22 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
-			factor = 0.9
+			factor = 0.6
 			NOT = {
 				poor_strata_life_needs = 0.8
 			}
 		}
 		modifier = {
-			factor = 1.5
+			factor = 3
 			middle_strata_life_needs = 0.9
 		}
 	}
 	
 	option = {
 		name = "EVTOPTA4403"
-		treasury = -100
+		treasury = -50000
 		random_state = {
 			limit = {
 				NOT = {
@@ -2301,6 +2613,13 @@ country_event = {
 			}
 			poor_strata = {
 				militancy = -2
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
 			}
 		}
 	}
@@ -2315,7 +2634,14 @@ country_event = {
 			}
 			any_pop = {
 				militancy = 1
+				dominant_issue = {
+					value = free_trade
+					factor = 0.1
+				}
 			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
 }
@@ -2337,13 +2663,13 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
-			factor = 1.1
+			factor = 2
 			poor_strata_life_needs = 0.9
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.6
 			average_militancy = 6
 		}
 	}
@@ -2351,14 +2677,31 @@ country_event = {
 	option = {
 		name = "EVTOPTA4404"
 		bureaucrats = {
-			militancy = -2
+			militancy = 2
+		}
+		any_pop = {
+			dominant_issue = {
+				value = free_trade
+				factor = 0.05
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB4404"
+		treasury = -50000
 		capitalists = {
 			militancy = -2
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
 		}
 	}
 }
@@ -2376,9 +2719,9 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
-			factor = 1.4
+			factor = 2.5
 			NOT = {
 				average_consciousness = 7
 			}
@@ -2391,17 +2734,30 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTA4405"
-		bureaucrats = {
-			militancy = 3
+		random_state = {
+			limit = { is_colonial = no }
+			poor_strata = {
+				militancy = 3
+			}
+			bureaucrats = {
+				militancy = 3
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB4405"
-		ammunition = -10
-		small_arms = -10
-		artillery = -5
-		canned_food = -15
+		treasury = -50000
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
 	}
 }
 
@@ -2419,13 +2775,21 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
-			factor = 0.7
+			factor = 0.25
 			war = yes
 		}
 		modifier = {
 			factor = 1.5
+			war_exhaustion = 1
+		}
+		modifier = {
+			factor = 1.5
+			war_exhaustion = 2
+		}
+		modifier = {
+			factor = 2
 			war_exhaustion = 4
 		}
 	}
@@ -2460,18 +2824,18 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
-			factor = 1.4
+			factor = 0.5
 			war_exhaustion = 5
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.5
 			war = yes
 		}
 		modifier = {
-			factor = 1.1
-			average_militancy = 7
+			factor = 1.5
+			average_militancy = 3
 		}
 	}
 	
@@ -2504,10 +2868,18 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
-			factor = 1.1
+			factor = 4
 			war = yes
+		}
+		modifier = {
+			factor = 0.8
+			war_exhaustion = 3
+		}
+		modifier = {
+			factor = 0.8
+			war_exhaustion = 5
 		}
 		modifier = {
 			factor = 0.8
@@ -2542,19 +2914,19 @@ country_event = {
 		civilized = yes
 		war_policy = pacifism
 		OR = {
-			pacifism = 10
-			anti_military = 15
+			pacifism = 5
+			anti_military = 10
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
-			factor = 1.1
+			factor = 2
 			jingoism = 10
 		}
 		modifier = {
-			factor = 1.1
+			factor = 2
 			pro_military = 10
 		}
 		modifier = {
@@ -2594,13 +2966,13 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			pro_atheism = 10
 		}
 		modifier = {
-			factor = 1.5
+			factor = 4
 			moralism = 20
 		}
 	}
@@ -2636,7 +3008,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.9
 			average_consciousness = 3
@@ -2654,7 +3026,7 @@ country_event = {
 			average_militancy = 5
 		}
 		modifier = {
-			factor = 1.5
+			factor = 3
 			NOT = {
 				plurality = 15
 			}
@@ -2706,18 +3078,21 @@ country_event = {
 	trigger = {
 		civilized = yes
 		religious_policy = pluralism
-		average_militancy = 6
+		any_state = {
+			is_colonial = no
+			average_militancy = 3
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
 			factor = 0.8
-			average_militancy = 7
+			average_militancy = 4
 		}
 		modifier = {
 			factor = 1.3
-			consciousness = 7
+			NOT = { consciousness = 7 }
 		}
 	}
 	
@@ -2725,12 +3100,12 @@ country_event = {
 		name = "EVTOPTA4412"
 		random_state = {
 			limit = {
-				NOT = {
-					is_colonial = yes
-				}
+				is_colonial = no
+				average_militancy = 3
 			}
 			any_pop = {
 				militancy = -2
+				consciousness = 2
 			}
 		}
 	}
@@ -2739,13 +3114,11 @@ country_event = {
 		name = "EVTOPTB4412"
 		random_state = {
 			limit = {
-				NOT = {
-					is_colonial = yes
-				}
+				is_colonial = no
+				average_militancy = 3
 			}
 			any_pop = {
 				militancy = -1
-				consciousness = -1
 			}
 		}
 	}
@@ -2759,18 +3132,23 @@ country_event = {
 	picture = "Prosper"
 	
 	trigger = {
-		civilized = yes
 		religious_policy = moralism
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
-			factor = 0.9
-			moralism = 5
+			factor = 0.8
+			moralism = 6
 		}
 		modifier = {
-			factor = 1.1
+			factor = 1.5
+			NOT = {
+				moralism = 5
+			}
+		}
+		modifier = {
+			factor = 2
 			NOT = {
 				moralism = 5
 			}
@@ -2821,21 +3199,21 @@ country_event = {
 	
 	trigger = {
 		civilized = yes
-		protectionism = 15
+		protectionism = 10
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
-			factor = 0.9
-			average_militancy = 6
+			factor = 0.8
+			average_militancy = 5
 		}
 		modifier = {
 			factor = 0.8
 			unemployment = 0.3
 		}
 		modifier = {
-			factor = 1.5
+			factor = 2
 			NOT = {
 				unemployment = 0.1
 			}
@@ -2887,20 +3265,20 @@ country_event = {
 	trigger = {
 		civilized = yes
 		trade_policy = protectionism
-		protectionism = 10
-		free_trade = 10
+		protectionism = 5
+		free_trade = 5
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
 			factor = 0.8
 			unemployment = 0.1
 		}
 		modifier = {
-			factor = 1.1
+			factor = 1.5
 			NOT = {
-				average_militancy = 6
+				average_militancy = 5
 			}
 		}
 	}
@@ -2954,8 +3332,8 @@ country_event = {
 	trigger = {
 		civilized = yes
 		economic_policy = laissez_faire
-		laissez_faire = 10
-		moralism = 10
+		laissez_faire = 5
+		moralism = 5
 		upper_house = {
 			ideology = liberal
 			value = 0.2
@@ -2963,10 +3341,10 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
 			factor = 0.8
-			moralism = 15
+			moralism = 10
 		}
 		modifier = {
 			factor = 1.2
@@ -3025,18 +3403,17 @@ country_event = {
 	picture = "supportwar"
 	
 	trigger = {
-		civilized = yes
 		OR = {
-			pro_military = 10
-			jingoism = 10
+			pro_military = 5
+			jingoism = 5
 		}
-		moralism = 10
+		moralism = 5
 		religious_policy = moralism
 		war_exhaustion = 2
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
 			factor = 0.3
 			war = yes
@@ -3073,7 +3450,7 @@ country_event = {
 	trigger = {
 		civilized = yes
 		public_meetings = yes_meeting
-		average_militancy = 6
+		average_militancy = 3
 		upper_house = {
 			ideology = conservative
 			value = 0.3
@@ -3081,10 +3458,14 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1600
+		months = 200
 		modifier = {
 			factor = 0.8
 			num_of_revolts = 3
+		}
+		modifier = {
+			factor = 0.5
+			num_of_revolts = 5
 		}
 		modifier = {
 			factor = 0.9
@@ -3138,11 +3519,10 @@ country_event = {
 		NOT = {
 			poor_strata_life_needs = 0.9
 		}
-		canned_food = 15
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 100
 		modifier = {
 			factor = 0.7
 			NOT = {
@@ -3183,11 +3563,22 @@ country_event = {
 				militancy = 4
 			}
 		}
+		ai_chance = {
+			factor = 50
+		}
 	}
 	
 	option = {
 		name = "EVTOPTC4419"
+		treasury = -50000
 		canned_food = -15
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 50000 }
+			}
+		}
 	}
 }
 
@@ -3203,18 +3594,20 @@ country_event = {
 		upper_house_composition = party_appointed
 		war_policy = jingoism
 		prestige = 20
-		average_militancy = 6
+		war = no
+		any_neighbor_country = {
+			NOT = { alliance_with = THIS }
+			NOT = { in_sphere = THIS }
+			NOT = { truce_with = THIS }
+			NOT = { relation = { who = THIS value = 0 } }
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		modifier = {
 			factor = 0.9
-			war = no
-		}
-		modifier = {
-			factor = 0.9
-			average_militancy = 7
+			average_militancy = 3
 		}
 		modifier = {
 			factor = 0.9
@@ -3230,25 +3623,63 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTA4420"
-		random_state = {
-			limit = {
-				NOT = {
-					is_colonial = yes
-				}
+		add_country_modifier = {
+			name = CB_gen_plus
+			duration = 100
+		}
+		any_pop = {
+			dominant_issue = {
+				value = jingoism
+				factor = 0.05
 			}
-			any_pop = {
-				dominant_issue = {
-					value = jingoism
-					factor = 0.1
-				}
-				militancy = 1
-			}
+			militancy = -1
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB4420"
-		any_neighbor_country = {
+		badboy = 5
+		random_country = {
+			limit = {
+				neighbour = THIS
+				NOT = { alliance_with = THIS }
+				NOT = { in_sphere = THIS }
+				NOT = { truce_with = THIS }
+				NOT = { relation = { who = THIS value = 0 } }
+				NOT = { number_of_states = 2 }
+				civilized = yes
+			}
+			add_casus_belli = {	
+				target = THIS
+				type = conquest
+				months = 12
+			}
+		}
+		random_country = {
+			limit = {
+				neighbour = THIS
+				NOT = { alliance_with = THIS }
+				NOT = { in_sphere = THIS }
+				NOT = { truce_with = THIS }
+				NOT = { relation = { who = THIS value = 0 } }
+				number_of_states = 2
+				civilized = yes
+			}
+			add_casus_belli = {	
+				target = THIS
+				type = acquire_state
+				months = 12
+			}
+		}
+		random_country = {
+			limit = {
+				neighbour = THIS
+				NOT = { alliance_with = THIS }
+				NOT = { in_sphere = THIS }
+				NOT = { truce_with = THIS }
+				NOT = { relation = { who = THIS value = 0 } }
+				any_owned_province = { is_colonial = yes }
+			}
 			add_casus_belli = {	
 				target = THIS
 				type = conquest
@@ -3278,7 +3709,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.9
 			political_reform_want = 0.3
@@ -3329,13 +3760,13 @@ country_event = {
 	
 	trigger = {
 		civilized = yes
-		pacifism = 7.5
+		pacifism = 5
 		trade_unions = all_trade_unions
 		is_ideology_enabled = socialist
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		
 		modifier = {
 			factor = 0.9
@@ -3383,11 +3814,11 @@ country_event = {
 			any_pop = {
 				dominant_issue = {
 					value = pacifism
-					factor = 0.4
+					factor = 0.2
 				}
 				ideology = {
 					value = socialist
-					factor = 0.3
+					factor = 0.1
 				}
 			}
 		}	
@@ -3404,11 +3835,11 @@ country_event = {
 	trigger = {
 		civilized = yes
 		press_rights = censored_press
-		free_press = 5
+		free_press = 2.5
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.8
 			average_consciousness = 6
@@ -3444,7 +3875,7 @@ country_event = {
 			consciousness = 2
 			dominant_issue = {
 				value = free_press
-				factor = 0.2
+				factor = 0.1
 			}	
 		}
 	}
@@ -3468,7 +3899,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
@@ -3526,7 +3957,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 200
 		
 		modifier = {
 			factor = 0.8
@@ -3537,7 +3968,7 @@ country_event = {
 			secularized = 15
 		}
 		modifier = {
-			factor = 1.2
+			factor = 2
 			NOT = {
 				average_consciousness = 7
 			}
@@ -3582,13 +4013,13 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
-		civilized = yes
 		upper_house_composition = party_appointed
+		civilized = yes
 		political_reform_want = 0.15
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 200
 		
 		modifier = {
 			factor = 0.9
@@ -3630,7 +4061,443 @@ country_event = {
 	option = {
 		name = "EVTOPTB4430"
 		any_pop = {
+			militancy = 3
+		}
+	}
+}
+
+#Immigration Policy
+country_event = {
+	id = 4435
+	title = "EVTNAME4435" #The Border Crossing
+	desc = "EVTDESC4435"
+	picture = "arrested"
+	
+	trigger = {
+		civilized = yes
+		immigration_policy = nobody_gets_out
+		war = no
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 0.9
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 1.5
+			poor_strata_everyday_needs = 0.9
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { poor_strata_everyday_needs = 0.7 }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { poor_strata_life_needs = 0.8 }
+		}
+	}
+	
+	option = {
+		name = "不能允许这种纠纷。"
+		any_pop = {
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+	}
+	
+	option = {
+		name = "我们会考虑他们的想法。"
+		upper_house = {
+			ideology = liberal
+			value = 0.2
+		}
+		any_pop = {
+			dominant_issue = {
+				value = quota_immigration
+				factor = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 4436
+	title = "EVTNAME4436" #Immigration Quotas Questioned
+	desc = "EVTDESC4436"
+	picture = "Demonstration"
+	
+	trigger = {
+		civilized = yes
+		immigration_policy = quota_immigration
+		liberal = 10
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 1.1
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 1.1
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 1.1
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { average_consciousness = 5 }
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			poor_strata_everyday_needs = 0.9
+		}
+		modifier = {
+			factor = 1.2
+			NOT = { poor_strata_everyday_needs = 0.7 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { poor_strata_life_needs = 0.8 }
+		}
+	}
+	
+	option = {
+		name = "定额的存在有其理由。"
+		any_pop = {
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+	}
+	
+	option = {
+		name = "调整定额限制。"
+		upper_house = {
+			ideology = liberal
+			value = 0.2
+		}
+		any_pop = {
+			dominant_issue = {
+				value = open_immigration
+				factor = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 4437
+	title = "EVTNAME4437" #$COUNTRY_ADJ$ Naturalization
+	desc = "EVTDESC4437"
+	picture = "Metis"
+	
+	trigger = {
+		civilized = yes
+		immigration_policy = open_immigration
+		liberal = 10
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 0.9
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { average_consciousness = 5 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { literacy = 0.3 }
+		}
+		modifier = {
+			factor = 0.8
+			literacy = 0.7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+	}
+	
+	option = {
+		name = "这还不是时候。"
+		any_pop = {
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+	}
+	
+	option = {
+		name = "我们应考虑调整政策了。"
+		upper_house = {
+			ideology = liberal
+			value = 0.2
+		}
+		any_pop = {
+			dominant_issue = {
+				value = naturalization
+				factor = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 4438
+	title = "EVTNAME4438" #A Proud Citizen
+	desc = "EVTDESC4438"
+	picture = "merchants"
+	
+	trigger = {
+		civilized = yes
+		immigration_policy = naturalization
+		NOT = { average_militancy = 3 }
+	}
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 1.1
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { average_consciousness = 5 }
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 0.8
+			poor_strata_everyday_needs = 0.9
+		}
+		modifier = {
+			factor = 1.2
+			NOT = { poor_strata_everyday_needs = 0.7 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { poor_strata_life_needs = 0.8 }
+		}
+	}
+	
+	option = {
+		name = "类似的人们都应渴望做到像他一样。"
+		any_pop = {
+			limit = {
+				is_primary_culture = no
+				is_accepted_culture = no
+			}
+			militancy = -2
+			consciousness = -4
+		}
+	}
+	
+	option = {
+		name = "用这个故事促进进一步的改革。"
+		upper_house = {
+			ideology = liberal
+			value = 0.2
+		}
+		any_pop = {
+			dominant_issue = {
+				value = naturalization
+				factor = 0.1
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 4439
+	title = "EVTNAME4439" #The $COUNTRY_ADJ$ Historical Society
+	desc = "EVTDESC4439"
+	picture = "Finepeople"
+	
+	trigger = {
+		civilized = yes
+		OR = {
+			immigration_policy = open_immigration
+			immigration_policy = naturalization
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 400
+		modifier = {
+			factor = 0.9
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 0.8
+			NOT = { average_consciousness = 5 }
+		}
+		modifier = {
+			factor = 0.8
+			NOT = { average_consciousness = 3 }
+		}
+		modifier = {
+			factor = 0.8
+			NOT = { literacy = 0.3 }
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.7
+		}
+		modifier = {
+			factor = 1.2
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 1.2
+			average_consciousness = 9
+		}
+	}
+	
+	option = {
+		name = "支持他们。"
+		upper_house = {
+			ideology = reactionary
+			value = 0.2
+		}
+		random_owned = {
+			limit = {
+				owner = { immigration_policy = naturalization }
+			}
+			owner = {
+				any_pop = {
+					limit = { is_primary_culture = yes }
+					dominant_issue = {
+						value = open_immigration
+						factor = 0.05
+					}
+					ideology = {
+						value = reactionary
+						factor = 0.05
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { immigration_policy = open_immigration }
+			}
+			owner = {
+				any_pop = {
+					limit = { is_primary_culture = yes }
+					dominant_issue = {
+						value = quota_immigration
+						factor = 0.05
+					}
+					ideology = {
+						value = reactionary
+						factor = 0.05
+					}
+				}
+			}
+		}
+		any_pop = {
+			limit = {
+				is_primary_culture = no
+				is_accepted_culture = no
+			}
 			militancy = 2
+			ideology = {
+				value = liberal
+				factor = 0.05
+			}
+		}
+	}
+	
+	option = {
+		name = "拒绝他们。"
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				issue = residency
+				factor = 4
+			}
+		}
+		any_pop = {
+			limit = {
+				is_primary_culture = no
+				is_accepted_culture = no
+			}
+			militancy = -1
+			consciousness = -2
 		}
 	}
 }

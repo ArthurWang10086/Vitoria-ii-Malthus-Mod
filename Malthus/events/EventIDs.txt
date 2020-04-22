@@ -49,4 +49,3 @@
 #	37700 -- SPA, Spain
 # Clean Up Events -- 60000
 # On Action Events -- 70000
-# CB generation -- 90000

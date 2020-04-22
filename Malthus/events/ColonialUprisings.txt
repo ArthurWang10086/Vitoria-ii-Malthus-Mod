@@ -14,17 +14,18 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 	}
 	
 	mean_time_to_happen = {
-		months = 1000	
+		months = 400	
 		modifier = {
 			factor = 0.9
 			average_consciousness = 3
 		}
 		modifier = {
 			factor = 0.9
-			average_consciousness = 4
+			average_consciousness = 7
 		}
 		modifier = {
 			factor = 0.9
@@ -33,7 +34,7 @@ country_event = {
 			}
 		}
 		modifier = {
-			factor = 1.5
+			factor = 2
 			high_n_low_pressure_steam_engines = 1
 		}
 	}
@@ -41,9 +42,7 @@ country_event = {
 	option = {
 		name = "EVTOPTA14500"
 		random_state = {
-			limit = {
-				is_colonial = yes
-			}
+			limit = { is_colonial = yes }
 			any_owned = {
 				add_province_modifier = {
 					name = colonial_dry_spell
@@ -53,7 +52,6 @@ country_event = {
 		}
 		prestige = -5
 	}
-	
 	option = {
 		name = "EVTOPTB14500"
 		random_state = {
@@ -68,7 +66,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "EVTOPTC14500"
 		random_state = {
@@ -94,27 +91,28 @@ country_event  = {
 	
 	trigger = {
 		colonial_nation = yes
-		NOT = {	
-			economic_policy = laissez_faire
-		}
+		civilized = yes
+		NOT = {	economic_policy = laissez_faire }
 		liberal = 0.05
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 300
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
 		}
 		modifier = {
-			factor = 0.9
-			average_consciousness = 6
+			factor = 0.8
+			NOT = { business_regulations = 1 }
 		}
 		modifier = {
 			factor = 1.5
-			NOT = {
-				biologism = 1
-			}
+			market_regulations = 1
+		}
+		modifier = {
+			factor = 1.5
+			economic_responsibility = 1
 		}
 	}
 	
@@ -159,39 +157,42 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		NOT = {
+		civilized = yes
+		NOT = { 
 			nationalism_n_imperialism = 1
+			economic_policy = laissez_faire
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 600
+		months = 300
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			upper_house = {
 				ideology = conservative
 				value = 0.2
 			}
 		}
 		modifier = {
+			factor = 1.5
+			economic_policy = interventionism
+		}
+		modifier = {
 			factor = 0.9
-			NOT = {
-				economic_policy = laissez_faire
-			}
+			economic_policy = state_capitalism
+		}
+		modifier = {
+			factor = 0.75
+			economic_policy = planned_economy
 		}
 		modifier = {
 			factor = 1.5
-			NOT = {
-				poor_strata_life_needs = 0.7
-			}
+			NOT = { poor_strata_life_needs = 0.7 }
 		}	
 	}
 	
 	option = {
 		name = "EVTOPTA14520"
-		ai_chance = {
-			factor = 0
-		}
 		random_state = {
 			limit = {
 				is_colonial = yes
@@ -207,9 +208,6 @@ country_event = {
 
 	option = {
 		name = "EVTOPTB14520"
-		ai_chance = {
-			factor = 10
-		}
 		random_state = {
 			limit = {
 				is_colonial = yes
@@ -230,20 +228,42 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
+		any_owned_province = {
+			is_colonial = yes
+			average_militancy = 2
+		}
 	}
-	
 	mean_time_to_happen = {
-		months = 1500
+		months = 200
+		modifier = {
+			factor = 0.9
+			average_consciousness = 5
+		}
+		modifier = {	
+			factor = 1.1
+			NOT = { average_consciousness = 4 }
+		}
+		modifier = {	
+			factor = 1.1
+			NOT = { average_consciousness = 3 }
+		}
+		modifier = {	
+			factor = 1.1
+			NOT = { average_consciousness = 2 }
+		}
 	}
 	
 	option = {
 		name = "EVTOPTA14530"
 		capital_scope = {
-			state_scope = {
-				bureaucrats = {
-					consciousness = 2
-					militancy = 3
-				}
+			bureaucrats = {
+				consciousness = 2
+				militancy = 3
+			}
+			rich_strata = {
+				consciousness = 2
+				militancy = 3
 			}
 		}
 	}
@@ -256,8 +276,16 @@ country_event = {
 			}
 			any_owned = {
 				any_pop = {
+					limit = {
+						is_primary_culture = no
+						is_accepted_culture = no
+					}
 					militancy = 2
 					consciousness = 1
+					ideology = {
+						value = separatist
+						factor = 0.10
+					}
 				}
 			}
 		}
@@ -273,11 +301,17 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
+		empiricism = 1
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 300
 		
+		modifier = {
+			factor = 0.9
+			literacy = 0.5
+		}
 		modifier = {
 			factor = 0.9
 			literacy = 0.6
@@ -292,9 +326,7 @@ country_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = {
-				empiricism = 1
-			}
+			NOT = { phenomenology_n_hermeneutic = 1 }
 		}
 	}
 	
@@ -333,20 +365,39 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		nationalism_n_imperialism = 1
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
 			factor = 0.9
 			literacy = 0.8
 		}
 		modifier = {
+			factor = 1.1
+			NOT = { literacy = 0.7 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { literacy = 0.6 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { literacy = 0.5 }
+		}
+		modifier = {
 			factor = 0.9
-			NOT = {
-				average_militancy = 4
-			}
+			NOT = { average_militancy = 2 }
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 4
 		}
 		modifier = {
 			factor = 0.9
@@ -374,7 +425,7 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTB14550"
-		years_of_research = 0.6
+		years_of_research = 0.2
 		any_pop = {
 			consciousness = 0.2
 		}
@@ -390,37 +441,35 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
+		literacy = 0.5
 	}
 	
 	mean_time_to_happen = {
-		months = 1300
+		months = 300
 		modifier = {
 			factor = 0.9
-			NOT = {
-				literacy = 0.5
-			}
+			literacy = 0.6
 		}
 		modifier = {	
 			factor = 0.9
-			NOT = {
-				literacy = 0.6
-			}
+			literacy = 0.7
 		}
 		modifier = {
 			factor = 0.9
-			NOT = {
-				literacy = 0.7
-			}
+			literacy = 0.8
 		}
 		modifier = {
 			factor = 0.9
-			NOT = {
-				average_consciousness = 5
-			}
-		}
-		modifier = {
-			factor = 1.5
 			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 3
+		}
+		modifier = {
+			factor = 1.2
+			NOT = { average_consciousness = 5 }
 		}
 	}
 	
@@ -431,8 +480,11 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					NOT = { literacy = 0.3 }
+				}
 				consciousness = 2
-				literacy = 0.3
+				literacy = 0.1
 			}
 		}
 	}
@@ -440,13 +492,21 @@ country_event = {
 	option = {
 		name = "EVTOPTB14560"
 		prestige = 2
-		years_of_research = 0.01
+		years_of_research = 0.1
 		random_state = {
 			limit = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				militancy = 4
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -461,28 +521,52 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		average_militancy = 3
+		civilized = yes
 		state_n_government = 1
+		any_owned_province = {
+			is_colonial = yes
+			average_militancy = 3
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 150
 		modifier = {
-			factor = 0.9
-			average_militancy = 3
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 4
+			}
 		}
 		modifier = {
-			factor = 0.9
-			average_militancy = 4
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 5
+			}
 		}
 		modifier = {	
 			factor = 0.9
 			average_consciousness = 4
 		}
+		modifier = {	
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {	
+			factor = 0.9
+			average_consciousness = 8
+		}
 		modifier = {
 			factor = 1.5
 			NOT = {
 				average_consciousness = 4
+			}
+		}
+		modifier = {
+			factor = 1.5
+			NOT = {
+				average_consciousness = 2
 			}
 		}
 	}
@@ -494,7 +578,15 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				militancy = 3
+				ideology = {
+					value = separatist
+					factor = 0.25
+				}
 			}
 		}
 	}
@@ -505,63 +597,84 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				consciousness = 3
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
 }
 
 # Holy Site Disturbed
-province_event = {
+country_event = {
 	id = 14580
 	title = "EVTNAME14580"
 	desc = "EVTDESC14580"
+	picture = "angry_natives"
 	
 	trigger = {
-		is_colonial = yes
-		is_state_religion = no
+		any_owned_province = {
+			is_colonial = yes
+			is_state_religion = no
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 200
 		modifier = {
 			factor = 0.9
-			owner = {
-				average_consciousness = 4
-			}
+			NOT = { average_consciousness = 4 }
 		}
 		modifier = {
 			factor = 0.9
-			owner = {
-				average_consciousness = 5
-			}
+			NOT = { average_consciousness = 5 }
 		}
 		modifier = {
-			factor = 2 # 1.5
-			owner = {
-				nationalism_n_imperialism = 1
-			}
+			factor = 1.5
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 1.5
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 1.5
+			nationalism_n_imperialism = 1
 		}
 	}
 	option = {
 		name = "EVTOPTA14580"
-		state_scope = {
+		random_state = {
+			limit = {
+				is_colonial = yes
+				any_owned_province = { is_state_religion = no }
+			}
 			any_pop = {
-				limit = {
-					is_state_religion = no
-				}
+				limit = { is_state_religion = no }
 				militancy = 5
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB14580"
-		state_scope = {
+		random_state = {
+			limit = {
+				is_colonial = yes
+				any_owned_province = { is_state_religion = no }
+			}
 			any_pop = {
-				limit = {
-					is_state_religion = no
-				}
+				limit = { is_state_religion = yes }
 				militancy = 3
 				consciousness = 2
 			}
@@ -578,26 +691,35 @@ province_event = {
 	trigger = {
 		is_colonial = yes
 		is_primary_culture = no
+		is_accepted_culture = no
 		average_militancy = 2
 		has_pop_type = soldiers
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 800
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.8
 			average_militancy = 4
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			average_militancy = 5
 		}
 		modifier = {
-			factor = 2
+			factor = 0.8
+			average_militancy = 6
+		}
+		modifier = {
+			factor = 1.5
 			NOT = {
 				owner = {
 					average_consciousness = 5
@@ -609,12 +731,16 @@ province_event = {
 	option = {
 		name = "EVTOPTA14590"
 		state_scope = {
-			any_pop = {
+			soldiers = {
 				limit = {
 					is_primary_culture = no
 					is_accepted_culture = no
 				}
 				militancy = 4
+				ideology = {
+					value = separatist
+					factor = 0.25
+				}
 			}
 		}
 	}
@@ -622,15 +748,19 @@ province_event = {
 	option = {
 		name = "EVTOPTB14590"
 		owner = {
-			prestige = -1
+			prestige = -5
 		}
 		state_scope = {
-			any_pop = {
+			soldiers = {
 				limit = {
 					is_primary_culture = no
 					is_accepted_culture = no
 				}
 				militancy = 2
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -649,25 +779,37 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		average_consciousness = 4
-		average_militancy = 2
+		civilized = yes
+		any_owned_province = {
+			is_colonial = yes
+			average_consciousness = 4
+			average_militancy = 4
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1500
+		months = 150
 		modifier = {
-			factor = 0.9
-			average_militancy = 3
-		}
-		modifier = {
-			factor = 0.9
-			average_militancy = 4
-		}
-		modifier = {
-			factor = 1.4
-			NOT = {
-				biologism = 1
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 5
 			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 6
+			}
+		}
+		modifier = {
+			factor = 1.1
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { average_consciousness = 3 }
 		}
 	}
 	
@@ -678,7 +820,15 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				militancy = 1
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -686,6 +836,18 @@ country_event = {
 	option = {
 		name = "EVTOPTB14600"
 		prestige = -15
+		any_owned = {
+			limit = {
+				is_colonial = yes
+			}
+			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
+				militancy = -2
+			}
+		}
 	}
 }
 
@@ -701,16 +863,18 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 300
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			average_militancy = 5
 		}
 		modifier = {
 			factor = 0.8
-			NOT = {
-				average_consciousness = 4
-			}
+			average_militancy = 6
+		}
+		modifier = {
+			factor = 0.8
+			NOT = { average_consciousness = 4 }
 		}
 		modifier = {
 			factor = 0.9
@@ -726,13 +890,41 @@ province_event = {
 				}
 			}
 		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 10 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 15 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 20 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 25 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 30 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 35 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 40 }
+		}
 	}
 	
 	option = {
 		name = "EVTOPTA14610"
 		state_scope = {
 			any_pop = {
-				militancy = -1
+				militancy = -2
 			}
 		}
 	}
@@ -750,14 +942,26 @@ province_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 600
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			average_militancy = 5
+		}
+		modifier = {
+			factor = 0.8
+			average_militancy = 6
 		}
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
 		}
 		modifier = {
 			factor = 0.9
@@ -771,25 +975,55 @@ province_event = {
 				average_consciousness = 5
 			}
 		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 10 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 15 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 20 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 25 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 30 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 35 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cities = 40 }
+		}
 	}
 	
 	option = {
 		name = "EVTOPTA14620"
 		state_scope = {
 			any_pop = {
-				reduce_pop = 0.95
-				militancy = -1
+				limit = { militancy = 4 }
+				reduce_pop = 0.99
+				militancy = 1
 				consciousness = 1
 			}
-		}	
-	}
+		}
+	}	
 	
 	option = {
 		name = "EVTOPTB14620"
 		state_scope = {
 			any_pop = {
-				reduce_pop = 0.80
-				militancy = -2
+				limit = { militancy = 4 }
+				reduce_pop = 0.95
+				militancy = -3
 			}
 		}
 	}
@@ -804,6 +1038,7 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		NOT = {
 			administration_spending = 0.5
 		}
@@ -813,7 +1048,13 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 300
+		modifier = {
+			factor = 0.9
+			NOT = {
+				administration_spending = 0.4
+			}
+		}
 		modifier = {
 			factor = 0.9
 			NOT = {
@@ -855,7 +1096,15 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				militancy = 3
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -871,13 +1120,37 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
+		NOT = {
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 4
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 1000
 		modifier = {
-			factor = 0.9
-			average_militancy = 4
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 1
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 2
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 3
+			}
 		}
 		modifier = {
 			factor = 0.9
@@ -885,13 +1158,11 @@ country_event = {
 		}
 		modifier = {
 			factor = 0.9
-			average_consciousness = 5
+			average_consciousness = 6
 		}
 		modifier = {
 			factor = 1.5
-			NOT = {
-				social_alienation = 1
-			}
+			social_alienation = 1
 		}
 	}
 	
@@ -902,7 +1173,15 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				militancy = 5
+				ideology = {
+					value = separatist
+					factor = 0.25
+				}
 			}
 		}
 	}
@@ -914,7 +1193,15 @@ country_event = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				consciousness = 5
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -922,98 +1209,112 @@ country_event = {
 
 	
 #Big Game Hunting
-province_event = {
+country_event = {
 	id = 14650
 	title = "EVTNAME14650"
 	desc = "EVTDESC14650"
+	picture = "scramble_for_africa"
 	
 	trigger = {
-		NOT = { has_country_modifier = recent_safari2 }
-		is_colonial = yes
-		continent = africa
+		civilized = yes
+		any_owned_province = {
+			NOT = { port = yes }
+			is_colonial = yes
+			continent = africa
+			NOT = { average_militancy = 2 }
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1400
-		
-		modifier = {
-			factor = 0.8
-			is_coastal = no
-		}
-		modifier = {
-			factor = 0.9
-			NOT = {
-				average_militancy = 4
-			}
-		}
-		modifier = {
-			factor = 0.9
-			NOT = {
-				average_consciousness = 4
-			}
-		}
-		modifier = {
-			factor = 0.9
-			owner = {
-				machine_guns = 1 #This modifier is very funny
-			}
-		}
+		months = 300
 		modifier = {
 			factor = 1.5
-			life_rating = 20
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { average_militancy = 2 }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { average_consciousness = 4 }
+		}
+		modifier = {
+			factor = 0.9
+			machine_guns = 1
 		}	
 	}
 	
 	option = {
 		name = "EVTOPTA14650"
-		state_scope = {
-			any_pop = {
-				militancy = -3
+		random_state = {
+			limit = {
+				is_colonial = yes
+				any_owned_province = {
+					port = no
+					continent = africa
+					NOT = { average_militancy = 2 }
+				}
 			}
-		}
-		add_country_modifier = {
-			name = recent_safari2
-			duration = 365
+			any_pop = {
+				militancy = -2
+			}
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB14650"
-		owner = {
-			prestige = 5
-		}
-		add_country_modifier = {
-			name = recent_safari2
-			duration = 365
-		}
-		state_scope = {
+		prestige = 5
+		random_state = {
+			limit = {
+				is_colonial = yes
+				any_owned_province = {
+					port = no
+					continent = africa
+					NOT = { average_militancy = 2 }
+				}
+			}
 			any_pop = {
-				militancy = 1
+				militancy = 2
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
 }
 
 #Heia Safari!
-province_event = {
+country_event = {
 	id = 14660
 	title = "EVTNAME14660"
 	desc = "EVTDESC14660"
+	picture = "scramble_for_africa"
 	
 	trigger = {
 		year = 1860
-		NOT = { has_country_modifier = recent_safari }
-		is_colonial = yes
-		continent = africa
-		owner = { civilized = yes }
+		civilized = yes
+		any_owned_province = {
+			NOT = { port = yes }
+			is_colonial = yes
+			continent = africa
+			NOT = { life_rating = 21 }
 		}
+	}
 	
 	mean_time_to_happen = {
-		months = 2400
+		months = 300
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			NOT = {
-				average_militancy = 5
+				average_militancy = 3
+			}
+		}
+		modifier = {
+			factor = 0.8
+			NOT = {
+				average_militancy = 1
 			}
 		}
 		modifier = {
@@ -1023,12 +1324,13 @@ province_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
-			NOT = {
-				life_rating = 15
-			}
+			factor = 1.5
+			average_militancy = 3
+		}		
+		modifier = {
+			factor = 1.5
+			average_militancy = 4
 		}
-		
 		modifier = {
 			factor = 1.5
 			average_militancy = 5
@@ -1037,13 +1339,7 @@ province_event = {
 	
 	option = {
 		name = "EVTOPTA14660"
-		owner = {
-			prestige = 3
-		}
-		add_country_modifier = {
-			name = recent_safari
-			duration = 365
-		}
+		prestige = 3
 	}
 	
 	option = {
@@ -1051,18 +1347,16 @@ province_event = {
 		random_country = {
 			limit = {
 				civilized = yes
-				NOT = {
-					tag = THIS
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+					neighbour = THIS
 				}
 			}
 			relation = {
 				who = THIS
 				value = 30
 			}
-		}
-		 add_country_modifier = {
-			name = recent_safari
-			duration = 365
 		}
 	}
 }
@@ -1080,12 +1374,13 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		biologism = 1
-		prestige = 50
+		prestige = 100
 	}
 	
 	mean_time_to_happen = {
-		months = 2000
+		months = 1000
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
@@ -1096,33 +1391,89 @@ country_event = {
 		}
 		modifier = {
 			factor = 0.9
-			average_militancy = 4
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
 		}
 		modifier = {
 			factor = 1.5
 			NOT = {
-				mass_politics = 1
+				any_owned_province = {
+					is_colonial = yes
+					average_militancy = 2
+				}
 			}
+		}
+		modifier = {
+			factor = 2
+			NOT = {
+				any_owned_province = {
+					is_colonial = yes
+					average_militancy = 1
+				}
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 3
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 4
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 5
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 6
+			}
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { mass_politics = 1 }
 		}
 	}
 	
 	option = {
 		name = "EVTOPTA14670"
-		badboy = 5
-		prestige = -5
+		badboy = 3
+		prestige = -20
 		
 	}
 	
 	option = {
 		name = "EVTOPTB14670"
-		badboy = 2
-		prestige = -2
+		badboy = 1
+		prestige = -5
 		random_state = {
 			limit = {
 				is_colonial = yes
 			}
 			any_pop = {
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
 				consciousness = 5
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 	}
@@ -1135,13 +1486,16 @@ country_event = {
 	desc = "EVTDESC14680"
 	picture = "emigration"
 	
+	# PICTURE: http://en.wikipedia.org/wiki/File:Southern_Cross_-_call_to_British.jpg
+	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		invention = mission_to_civilize
 	}
 	
 	mean_time_to_happen = {	
-		months = 700
+		months = 300
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
@@ -1149,6 +1503,10 @@ country_event = {
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 6
 		}
 		modifier = {
 			factor = 1.5
@@ -1167,7 +1525,7 @@ country_event = {
 			any_owned = {
 				add_province_modifier = {
 					name = colonial_recruitment
-					duration = 7300
+					duration = 1825
 				}
 			}
 		}
@@ -1199,39 +1557,51 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		is_greater_power = yes
+		any_owned_province = {
+			is_colonial = yes
+			NOT = {
+				average_militancy = 1
+				has_province_modifier = loyal_askaris
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
-		months = 800
-		modifier = {
-			factor = 0.9
-			prestige = 40
-		}
-		modifier = {
-			factor = 0.9
-			prestige = 80
-		}
-		modifier = {
-			factor = 0.9
-			NOT = {
-				badboy = 0.25
-			}
-		}
+		months = 400
 		modifier = {
 			factor = 1.5
-			average_militancy = 4
+			NOT = { invention = mission_to_civilize }
+		}
+		modifier = {
+			factor = 0.8
+			invention = social_anthropology
+		}
+		modifier = {
+			factor = 0.9
+			prestige = 100
+		}
+		modifier = {
+			factor = 0.9
+			prestige = 300
+		}
+		modifier = {
+			factor = 0.9
+			prestige = 500
 		}
 	}
 	
 	option = {
 		name = "EVTOPTA14690"
-		random_state = {
+		random_owned = {
 			limit = {
 				is_colonial = yes
+				NOT = { average_militancy = 1 }
+				NOT = { has_province_modifier = loyal_askaris }
 			}
 			any_pop = {
-				militancy = -3
+				consciousness = -1
 			}
 		}
 	}
@@ -1241,6 +1611,8 @@ country_event = {
 		random_owned = {
 			limit = {
 				is_colonial = yes
+				NOT = { average_militancy = 1 }
+				NOT = { has_province_modifier = loyal_askaris }
 			}
 			add_province_modifier = {
 				name = loyal_askaris
@@ -1260,11 +1632,12 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		market_regulations = 1
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 400
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
@@ -1309,12 +1682,13 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		is_greater_power = yes
 		economic_responsibility = 1
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 400
 		modifier = {
 			factor = 0.8
 			economic_policy = state_capitalism
@@ -1338,8 +1712,8 @@ country_event = {
 	option = {
 		name = "EVTOPTA14710"
 		capitalists = {
-			militancy = 0.5
-			consciousness = 2
+			militancy = 2
+			consciousness = 4
 		}
 	}
 	
@@ -1351,7 +1725,15 @@ country_event = {
 			}
 			any_owned = {
 				any_pop = {
-					militancy = 5
+					limit = {
+						is_primary_culture = no
+						is_accepted_culture = no
+					}
+					militancy = 3
+					ideology = {
+						value = separatist
+						factor = 0.10
+					}
 				}
 			}
 		}
@@ -1367,11 +1749,12 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		average_consciousness = 4
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 400
 		modifier = {
 			factor = 0.9
 			war_exhaustion = 4
@@ -1413,7 +1796,7 @@ country_event = {
 				is_colonial = no
 			}
 			any_pop = {
-				consciousness = 0.5
+				consciousness = 1
 			}
 		}
 	}
@@ -1434,6 +1817,7 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		is_ideology_enabled = socialist
 		nationalism_n_imperialism = 1
 		NOT = {
@@ -1443,18 +1827,26 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 300
+		modifier = {
+			factor = 0.9
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
 		modifier = {
 			factor = 0.9
 			average_militancy = 4
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			average_consciousness = 5
 		}
 		modifier = {
-			factor = 0.9
-			num_of_revolts = 2
+			factor = 0.75
+			num_of_revolts = 1
 		}
 		modifier = {
 			factor = 0.9
@@ -1512,10 +1904,10 @@ country_event = {
 	news_desc_long = "EVTDESC14740_NEWS_LONG"
 	news_desc_medium = "EVTDESC14740_NEWS_MEDIUM"
 	news_desc_short = "EVTDESC14740_NEWS_SHORT"
-	major = yes
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		administration_spending = 0.6
 		education_spending = 0.6
 		military_spending = 0.6
@@ -1525,7 +1917,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1500
+		months = 400
 		modifier = {
 			factor = 0.9
 			NOT = {
@@ -1569,6 +1961,7 @@ country_event = {
 		prestige = 10
 		years_of_research = 0.2
 		random_state = {
+			limit = { is_colonial = yes }
 			any_pop = {
 				militancy = -4
 				consciousness = -4
@@ -1586,26 +1979,60 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 		OR = {
 			government = hms_government
 			government = democracy
 			government = prussian_constitutionalism
 		}
+		liberal = 0.2
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 300
+		modifier = {
+			factor = 0.9
+			NOT = { average_consciousness = 5 }
+		}
 		modifier = {
 			factor = 0.9
 			average_consciousness = 5
 		}
 		modifier = {
 			factor = 0.9
-			average_consciousness = 6
+			average_consciousness = 7
 		}
 		modifier = {
 			factor = 0.9
-			average_militancy = 4
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 3
+			}
+		}
+		modifier = {
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 4
+			}
+		}
+		modifier = {
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 5
+			}
+		}
+		modifier = {
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 6
+			}
 		}
 	}
 	
@@ -1637,16 +2064,15 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		NOT = {
-			press_rights = state_press
-		}
+		civilized = yes
+		press_rights = free_press
 		NOT = {
 			administration_spending = 0.9
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 300
 		modifier = {
 			factor = 0.9
 			average_militancy = 5
@@ -1660,10 +2086,6 @@ country_event = {
 			NOT = {
 				administration_spending = 0.7
 			}
-		}
-		modifier = {
-			factor = 0.9
-			press_rights = free_press
 		}
 		modifier = {
 			factor = 1.5
@@ -1700,32 +2122,33 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		prestige = 50
+		civilized = yes
+		prestige = 100
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			NOT = {
 				average_consciousness = 3
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			NOT = {
 				average_militancy = 3
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			OR = {
 				jingoism = 10
 				pro_military = 10
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			is_greater_power = yes
 		}
 		modifier = {
@@ -1759,14 +2182,11 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		explosives = 2
-		cement = 15
-		steel = 5
-		lumber = 20
+		civilized = yes
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 500
 		modifier = {
 			factor = 0.9
 			NOT = {
@@ -1783,12 +2203,42 @@ country_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
-			average_militancy = 5
+			factor = 2
+			NOT = {
+				any_owned_province = {
+					is_colonial = yes
+					average_militancy = 2
+				}
+			}
 		}
 		modifier = {
-			factor = 1.5
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 3
+			}
+		}
+		modifier = {
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 4
+			}
+		}
+		modifier = {
+			factor = 0.9
+			any_owned_province = {
+				is_colonial = yes
+				average_militancy = 5
+			}
+		}
+		modifier = {
+			factor = 2
 			health_care = good_health_care
+		}
+		modifier = {
+			factor = 2
+			organic_chemistry = 1
 		}
 	}
 	
@@ -1798,18 +2248,36 @@ country_event = {
 			limit = {
 				is_colonial = yes
 			}
+			any_pop = {
+				reduce_pop = 0.8
+			}
 			any_owned = {
 				life_rating = -1
 			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB14780"
-		explosives = -2
-		cement = -15
-		steel = -5
-		lumber = -20
+		treasury = -10000
+		random_state = {
+			limit = {
+				is_colonial = yes
+			}
+			any_pop = {
+				reduce_pop = 0.95
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				NOT = { money = 10000 }
+			}
+		}
 	}
 }
 
@@ -1822,10 +2290,11 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
 			factor = 0.9
 			NOT = {
@@ -1847,10 +2316,12 @@ country_event = {
 	option = {
 		name = "EVTOPTA14790"
 		capitalists = {
-			consciousness = 1
+			consciousness = 2
 		}
 		random_state = {
-			limit = { is_colonial = yes }
+			limit = {
+				is_colonial = yes
+			}
 			any_owned = {
 				life_rating = 1
 			}
@@ -1860,7 +2331,7 @@ country_event = {
 	option = {
 		name = "EVTOPTB14790"
 		capitalists = {
-			consciousness = -1
+			consciousness = -2
 		}
 	}
 }
@@ -1874,25 +2345,23 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
+		civilized = yes
+		empiricism = 1
 	}
 	
 	mean_time_to_happen = {
-		months = 1200
+		months = 300
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
 		}
 		modifier = {
-			factor = 0.9
-			average_consciousness = 5
-		}
-		modifier = {
-			factor = 0.9
+			factor = 0.8
 			analytic_philosophy = 1
 		}
 		modifier = {
 			factor = 1.5
-			average_militancy = 6
+			average_militancy = 3
 		}
 	}
 	
@@ -1928,11 +2397,11 @@ country_event = {
 	
 	trigger = {
 		colonial_nation = yes
-		machine_parts = 5
+		civilized = yes
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
 			factor = 0.9
 			average_consciousness = 6
@@ -1965,12 +2434,20 @@ country_event = {
 	
 	option = {
 		name = "EVTOPTA14810"
-		random_state = {
+		random_owned = {
 			limit = {
 				is_colonial = yes
 			}
 			any_pop = {
-				militancy = 5
+				limit = {
+					is_primary_culture = no
+					is_accepted_culture = no
+				}
+				militancy = 3
+				ideology = {
+					value = separatist
+					factor = 0.10
+				}
 			}
 		}
 		machine_parts = 5
@@ -1979,11 +2456,12 @@ country_event = {
 	option = {
 		name = "EVTOPTB14810"
 		capital_scope = {
-			capitalists = {
-				militancy = 4
-				consciousness = 4
+			state_scope = {
+				rich_strata = {
+					militancy = 2
+					consciousness = 4
 				}
 			}
-			machine_parts = -5
+		}
 	}
 }

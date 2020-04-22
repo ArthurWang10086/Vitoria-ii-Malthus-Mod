@@ -10,33 +10,48 @@ country_event = {
 		civilized = yes
 		NOT = {
 			poor_strata_everyday_needs = 0.8
+			any_owned_province = {
+				has_province_modifier = trustee_system
+			}
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 240
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			average_militancy = 3
 		}
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			average_militancy = 4
 		}
 		modifier = {
-			factor = 1.2
-			NOT = {
-				average_militancy = 3
-			}
-		}
-		modifier = {
-			factor = 1.5
-			NOT = {
-				average_consciousness = 2
-			}
+			factor = 0.8
+			average_militancy = 5
 		}
 		modifier = {
 			factor = 0.9
+			average_consciousness = 3
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 1.5
+			NOT = {	average_militancy = 3 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { average_consciousness = 2 }
+		}
+		modifier = {
+			factor = 0.8
 			social_science = 1
 		}
 	}
@@ -47,7 +62,7 @@ country_event = {
 			any_owned = {
 				add_province_modifier = {
 					name = trustee_system
-					duration = 14600
+					duration = 3650
 				}
 			}
 		}
@@ -76,39 +91,71 @@ country_event = {
 	picture = "penal_colony"
 	
 	trigger = {
-		colonial_nation = yes
 		civilized = yes
+		any_owned_province = {
+			is_colonial = yes
+			is_overseas = yes
+		}
 		NOT = {
-			poor_strata_everyday_needs = 0.9
 			has_country_modifier = penal_colonies
+			poor_strata_everyday_needs = 0.9
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		
 		modifier = {
 			factor = 0.9
 			crime_fighting = 0.5
 		}
-		
 		modifier = {
 			factor = 0.9
 			crime_fighting = 0.6
 		}
-		
+		modifier = {
+			factor = 0.9
+			crime_fighting = 0.7
+		}
+		modifier = {
+			factor = 0.9
+			crime_fighting = 0.8
+		}
+		modifier = {
+			factor = 0.9
+			crime_fighting = 0.9
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
 		modifier = {
 			factor = 0.9
 			average_militancy = 4
 		}
-		
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
 		}
 		modifier = {
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
 			factor = 1.5
 			poor_strata_life_needs = 0.9
+		}
+		modifier = {
+			factor = 0.8
+			NOT = { poor_strata_life_needs = 0.9 }
 		}
 	}
 	
@@ -163,10 +210,12 @@ country_event = {
 			poor_strata_everyday_needs = 0.9
 		}
 		average_militancy = 2
+		state_n_government = 1
+		liberal = 0.1
 	}
 	
 	mean_time_to_happen = {
-		months = 2000
+		months = 300
 		
 		modifier = {
 			factor = 0.9
@@ -185,27 +234,30 @@ country_event = {
 			average_consciousness = 5
 		}
 		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
 			factor = 1.5
-			NOT = {
-				average_consciousness = 5
-			}
+			NOT = { average_consciousness = 5 }
 		}
 	}
-	
 	option = {
 		name = "EVTOPTA22020"
 		any_pop = {
 			militancy = -0.5
 		}
 	}
-	
 	option = {
 		name = "EVTOPTB22020"
 		any_pop = {
 			consciousness = -0.5
 		}
 	}
-	
 	option = {
 		name = "EVTOPTC22020"
 		upper_house = {
@@ -223,37 +275,35 @@ country_event = {
 	picture = "jacktheripper"
 	
 	trigger = {
+		civilized = yes
 		NOT = {
-			poor_strata_life_needs = 0.9
+			poor_strata_everyday_needs = 0.9
 		}
-		upper_house = {
-			ideology = liberal
-			value = 0.1
-		}
+		liberal = 0.1
 	}
 	
 	mean_time_to_happen = {
-		months = 1500
+		months = 400
 		modifier = {
-			factor = 0.9
-			NOT = {
-				poor_strata_everyday_needs = 0.9
-			}
+			factor = 0.8
+			NOT = {	poor_strata_life_needs = 0.9 }
 		}
 		modifier = {
 			factor = 0.9
 			average_consciousness = 4
 		}
 		modifier = {
-			factor = 1.5
-			NOT = {
-				average_militancy = 4
-			}
+			factor = 0.9
+			average_consciousness = 6
 		}
-		#modifier = {
-		#	factor = 1.5
-		#	luxury_needs = 0.5
-		#}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 8
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { average_militancy = 4 }
+		}
 	}
 	
 	option = {
@@ -268,7 +318,6 @@ country_event = {
 			}
 		}
 	}
-	
 	option = {
 		name = "EVTOPTB22030"
 		random_state = {
@@ -298,9 +347,9 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 320
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			NOT = {
 				poor_strata_life_needs = 0.9
 			}
@@ -310,10 +359,20 @@ country_event = {
 			average_consciousness = 3
 		}
 		modifier = {
+			factor = 0.9
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
 			factor = 1.5
-			NOT = {
-				average_militancy = 4
-			}
+			NOT = { average_militancy = 3 }
 		}
 	}
 	
@@ -351,9 +410,9 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 1000
+		months = 400
 		modifier = {
-			factor = 0.9
+			factor = 0.8
 			NOT = {
 				poor_strata_life_needs = 0.9
 			}
@@ -364,15 +423,11 @@ country_event = {
 		}
 		modifier = {
 			factor = 1.1
-			NOT = {
-				average_militancy = 4
-			}
+			NOT = { average_militancy = 4 }
 		}
 		modifier = {
 			factor = 1.1
-			NOT = {
-				average_consciousness = 4
-			}
+			NOT = { average_consciousness = 4 }
 		}
 	}
 	
@@ -382,7 +437,6 @@ country_event = {
 			militancy = 2
 		}
 	}
-	
 	option = {
 		name = "EVTOPTB22050"
 		poor_strata = {
@@ -400,13 +454,13 @@ country_event = {
 	
 	trigger = {
 		NOT = {
-			rich_strata_life_needs = 0.9
+			rich_strata_everyday_needs = 0.9
 		}
 		liberal = 0.1
 	}
 	
 	mean_time_to_happen = {
-		months = 800
+		months = 280
 		modifier = {
 			factor = 0.9
 			average_militancy = 4
@@ -447,18 +501,16 @@ country_event = {
 	
 	trigger = {
 		NOT = {
-			poor_strata_life_needs = 0.95
+			poor_strata_life_needs = 1
 			middle_strata_everyday_needs = 0.8
 		}
 	}
 
 	mean_time_to_happen = {
-		months = 800
+		months = 400
 		modifier = {
 			factor = 0.9
-			NOT = {
-				average_consciousness = 4
-			}
+			NOT = { average_consciousness = 4 }
 		}
 		modifier = {
 			factor = 0.9
@@ -466,9 +518,7 @@ country_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = {
-				plurality = 5
-			}
+			NOT = { plurality = 5 }
 		}
 	}
 	
@@ -502,15 +552,19 @@ country_event = {
 	
 	trigger = {
 		social_science = 1
-		liberal = 0.1
-		capital_scope = {
-			average_militancy = 3
+		liberal = 0.2
+		any_owned_province = {
+			average_militancy = 2
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 1500
+		months = 120
 		
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
 		modifier = {
 			factor = 0.9
 			average_militancy = 4
@@ -522,26 +576,30 @@ country_event = {
 		}
 		
 		modifier = {
-			factor = 0.9
+			factor = 0.75
 			year = 1900
 		}
-		
 		modifier = {
 			factor = 1.5
-			NOT = {
-				year = 1900
-			}
+			NOT = { year = 1900 }
 		}
 	}
 	
 	option = {
 		name = "EVTOPTA22080"
 		plurality = 1
-		capital_scope = {
+		any_owned = {
+			limit = { is_colonial = no }
 			any_pop = {
 				scaled_consciousness = {
 					ideology = liberal
-					factor = 3
+					factor = 2
+				}
+			}
+			any_pop = {
+				scaled_militancy = {
+					ideology = conservative
+					factor = 1
 				}
 			}
 		}
@@ -550,11 +608,18 @@ country_event = {
 	option = {
 		name = "EVTOPTB22080"
 		plurality = 1
-		capital_scope = {
+		any_owned = {
+			limit = { is_colonial = no }
 			any_pop = {
 				scaled_consciousness = {
 					ideology = conservative
-					factor = 3
+					factor = 2
+				}
+			}
+			any_pop = {
+				scaled_militancy = {
+					ideology = liberal
+					factor = 1
 				}
 			}
 		}

@@ -128,7 +128,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA43802" 
-		prestige = 5
+		prestige = 10
 	}
 }
 
@@ -172,6 +172,98 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA43803" 
-		prestige = 1
+		prestige = 20
+	}
+}
+
+#The Federal Council of Australasia
+country_event = {
+
+	id = 43805
+	title = "EVTNAME43805"
+	desc = "EVTDESC43805"
+	picture = "deliberation"
+	
+	trigger = {
+		tag = NZL
+		war = no
+		is_vassal = yes
+		AST = {
+			exists = yes
+			is_vassal = yes
+			war = no
+		}
+		NOT = {
+			average_militancy = 3
+			num_of_revolts = 1
+			has_country_flag = federal_council_of_australasia
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = "吞并不符合新西兰的最佳利益。"
+		set_country_flag = federal_council_of_australasia
+		prestige = 5
+		relation = { who = AST value = -50 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = "与澳大利亚政府联系。"
+		set_country_flag = federal_council_of_australasia
+		AST = { country_event = 43806 }
+		ai_chance = {
+			factor = 95
+		}
+	}
+}
+
+country_event = {
+
+	id = 43806
+	title = "EVTNAME43805"
+	desc = "EVTDESC43806"
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "我们欢迎他们加入联邦。"
+		prestige = -10
+		NZL = {
+			all_core = { add_core = AST }
+		}
+		any_pop = {
+			limit = { is_primary_culture = yes }
+			dominant_issue = {
+				factor = 0.10
+				value = oppression
+			}
+			consciousness = 4
+		}
+		any_pop = {
+			limit = { has_pop_culture = aborigine }
+			militancy = 4
+		}
+		add_accepted_culture = maori
+		inherit = NZL
+		ai_chance = {
+			factor = 20
+		}
+	}
+	
+	option = {
+		name = "礼貌地拒绝新西兰的提议。"
+		prestige = 5
+		relation = { who = NZL value = 50 }
+		ai_chance = {
+			factor = 80
+		}
 	}
 }

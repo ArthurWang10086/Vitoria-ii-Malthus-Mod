@@ -1,107 +1,1504 @@
+#################################################################################
+#																				#
+#             				World's Fair Events									#
+#																				#
+#################################################################################
 
 country_event = {
 
-	id = 30000 
-
+	id = 300001850 
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
 	trigger = {
-		year = 1849
-		not = { year = 1935 }
-		not = { has_global_flag = PlanWorldFair }
+		year = 1850
+		NOT = { year = 1851 }
+		NOT = { has_global_flag = PlanWorldFair1850 }
 		war = no 
 		civilized = yes
-		or = { 
-			industrial_score = 500 # limit to major non-western economies if not a GP
-			and = {
-				is_greater_power = yes # nation is a great power
-				industrial_score = 200 
-			}
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
 		}
 	}
  
 	mean_time_to_happen =  {
-		months = 800
-
-		modifier = {
-			factor = 0.8
-			year = 1870
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1850
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
 		}
-		modifier = {
-			factor = 0.8
-			year = 1890
-		}
-		modifier = {
-			factor = 0.8
-			year = 1910
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
 		}
 	}
-
-	title = "EVTNAME30000"
-	desc = "EVTDESC30000"
-	picture = "Worldsfair"
-
+	
 	option = {
-		name = "EVTOPTA30000" # let's organize it
-		money = -1000
-		set_global_flag = PlanWorldFair
-		set_country_flag = world_fair_planner
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001851
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1860
+		NOT = { year = 1861 }
+		NOT = { has_global_flag = PlanWorldFair1860 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1860
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001852
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1870
+		NOT = { year = 1871 }
+		NOT = { has_global_flag = PlanWorldFair1870 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1870
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001853
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1880
+		NOT = { year = 1881 }
+		NOT = { has_global_flag = PlanWorldFair1880 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1880
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001854
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1890
+		NOT = { year = 1891 }
+		NOT = { has_global_flag = PlanWorldFair1890 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1890
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001855
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1900
+		NOT = { year = 1901 }
+		NOT = { has_global_flag = PlanWorldFair1900 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1900
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001856
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1910
+		NOT = { year = 1911 }
+		NOT = { has_global_flag = PlanWorldFair1910 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1910
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001857
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1920
+		NOT = { year = 1921 }
+		NOT = { has_global_flag = PlanWorldFair1920 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1920
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001858
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	trigger = {
+		year = 1930
+		NOT = { year = 1931 }
+		NOT = { has_global_flag = PlanWorldFair1930 }
+		war = no 
+		civilized = yes
+		OR = {
+			is_greater_power = yes
+			is_secondary_power = yes
+		}
+	}
+ 
+	mean_time_to_happen =  {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = PlanWorldFair1930
+	}
+	
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = "EVTOPTB30000" # maybe another time
+		prestige = -5
+		any_country = {
+			limit = {
+				OR = {
+					is_greater_power = yes
+					is_secondary_power = yes
+				}
+				NOT = { tag = THIS }
+			}
+			country_event = 300001
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300001
+	title = "世界博览会"
+	desc = "本年代的世博会即将举办。我国是否申办呢？"
+	picture = "Worldsfair"
+	
+	is_triggered_only = yes
+ 
+	option = {
+		name = "一个绝好的主意！" # let's organize it
+		money = -25000
+		set_country_flag = PlanWorldFairbid
+		set_global_flag = WorldFairbidding
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_country_modifier = in_bankrupcy
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 100000 }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { money = 50000 }
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { money = 1000 }
+			}
+		}
 	}
 	option = {
 		name = "EVTOPTB30000" # maybe another time
 		prestige = -5
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 3
+				has_country_flag = held_last_world_fair
+			}
+		}
 	}
 }
 
 country_event = {
 
-	id = 30001 # hold world fair 
+	id = 300002
+	title = "世博会举办地"
+	desc = "我国已被选为世博会的举办国！"
+	picture = "administration"
 
 	trigger = {
-		has_global_flag = PlanWorldFair
-		has_country_flag = world_fair_planner
-		year = 1849
-		not = { 
-			year = 1935 
+		has_country_flag = PlanWorldFairbid
+		has_global_flag = WorldFairbidding
+	}
+
+ 	mean_time_to_happen =  {
+		months = 6
+		modifier = {
+			factor = 2
+			is_greater_power = no
+			rank = 12
 		}
-		war = no 
-		civilized = yes
+		modifier = {
+			factor = 3
+			is_greater_power = no
+			NOT = { rank = 12 }
+		}
+		modifier = {
+			factor = 5
+			is_greater_power = no
+			is_secondary_power = no
+		}
+		modifier = {
+			factor = 0.9
+			rank = 7
+		}
+		modifier = {
+			factor = 0.9
+			rank = 6
+		}
+		modifier = {
+			factor = 0.9
+			rank = 5
+		}
+		modifier = {
+			factor = 0.9
+			rank = 4
+		}
+		modifier = {
+			factor = 0.9
+			rank = 3
+		}
+		modifier = {
+			factor = 0.9
+			rank = 2
+		}
+		modifier = {
+			factor = 0.9
+			rank = 1
+		}
+		modifier = {
+			factor = 2
+			has_country_flag = held_last_world_fair
+		}
+		modifier = {
+			factor = 1.2
+			badboy = 0.5
+		}
+		modifier = {
+			factor = 1.5
+			badboy = 0.75
+		}
+		modifier = {
+			factor = 2
+			badboy = 1
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+		}
+	}
+	
+	immediate = {
+		clr_global_flag = WorldFairbidding
+	}
+	
+	option = {
+		name = "好哇！"
+		clr_country_flag = PlanWorldFairbid
+		set_country_flag = PlanWorldFair
+		set_country_flag = held_last_world_fair
+		set_global_flag = WorldFairUnderway
+		prestige = 10
+		set_variable = {
+			which = boycotts
+			value = 0
+		}
+	}
+}
+
+country_event = {
+
+	id = 300003
+	title = "世博会举办地"
+	desc = "我国没有被选为世博会举办国。$COUNTRY_ADJ$申办团成员都十分气愤，并有人做出失礼举动。"
+	picture = "administration"
+
+	trigger = {
+		has_country_flag = PlanWorldFairbid
+		has_global_flag = WorldFairUnderway
+	}
+	
+	mean_time_to_happen = {
+		days = 3
+	}
+	
+	immediate = {
+		clr_country_flag = PlanWorldFairbid
+		clr_country_flag = held_last_world_fair
+	}
+	
+	option = {
+		name = "额，我国无论如何都要参加。"
+		money = -5000
+		set_country_flag = PlanWorldFairteam
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					alliance_with = THIS
+				}
+			}
+			modifier = {
+				factor = 2
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					relation = { who = THIS value = 50 }
+				}
+			}
+			modifier = {
+				factor = 0
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					war_with = THIS
+				}
+			}
+			modifier = {
+				factor = 0.9
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					badboy = 0.5
+				}
+			}
+			modifier = {
+				factor = 0.8
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					badboy = 0.75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					badboy = 1
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "表明歉意，不过无需为代表团费心。"
+		prestige = -5
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 2
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					NOT = { relation = { who = THIS value = 0 } }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "抵制世博会！"
+		random_country = {
+			limit = {
+				has_country_flag = PlanWorldFair
+				THIS = { is_greater_power = yes }
+			}
+			prestige = -2
+			change_variable = {
+				which = boycotts
+				value = 1
+			}
+		}
+		random_country = {
+			limit = {
+				has_country_flag = PlanWorldFair
+				THIS = { is_greater_power = no }
+			}
+			prestige = -1
+		}
+		random_country = {
+			limit = { has_country_flag = PlanWorldFair }
+			relation = {
+				who = THIS
+				value = -20
+			}
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					alliance_with = THIS
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					relation = { who = THIS value = 50 }
+				}
+			}
+			modifier = {
+				factor = 2
+				any_greater_power = {
+					has_country_flag = PlanWorldFair
+					NOT = { relation = { who = THIS value = 0 } }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+
+	id = 300004 
+	title = "筹划世博会"
+	desc = "我们一定要为即将到来的世博会做好准备。"
+	picture = "administration"
+	
+	trigger = {
+		has_country_flag = PlanWorldFair
+		NOT = { has_country_flag = PlanWorldFair2 }
+		NOT = { has_country_flag = atworldfair }
 	}
  
 	mean_time_to_happen =  {
-		months = 12
-
-		modifier = {
-			factor = 0.2
-			year = 1855
-		}
-		modifier = {
-			factor = 0.25
-			year = 1870
-		}
-		modifier = {
-			factor = 0.50
-			year = 1885
-		}
-		modifier = {
-			factor = 0.65
-			year = 1890
-		}
-		modifier = {
-			factor = 0.85
-			year = 1900
+		months = 3
+	}
+	
+	immediate = {
+		set_country_flag = PlanWorldFair2
+	}
+	
+	option = {
+		name = "必须十分华丽！不用吝惜花费。"
+		set_country_flag = magnificent_fair
+		money = -30000	
+		change_variable = {
+			which = boycotts
+			value = -1
 		}
 	}
-
-	title = "EVTNAME30001"
-	desc = "EVTDESC30001"
-	picture = "Worldsfair"
-
+	
 	option = {
-		name = "EVTOPTA30001" # hold the fair
-		prestige = 20
-		clr_country_flag = world_fair_planner
-		clr_global_flag = PlanWorldFair
+		name = "精明些，不过仍要呈现出一届真正的盛会。"
+		money = -15000	
+	}
+	
+	option = {
+		name = "用小笔资金解决吧，不会有人关心的。"
+		set_country_flag = shoestring_fair
+		money = -5000	
+		change_variable = {
+			which = boycotts
+			value = 1
+		}
 	}
 }
+
+country_event = {
+
+	id = 300005
+	title = "世博会出现腐败！"
+	desc = "世博会一名组织者在记账时显得创新了些……"
+	picture = "administration"
+	
+	trigger = {
+		has_country_flag = PlanWorldFair2 
+	}
+ 
+	mean_time_to_happen =  {
+		months = 15
+		modifier = {
+			factor = 2
+			has_country_flag = world_fair_accounting
+		}
+		modifier = {
+			factor = 0.8
+			has_country_flag = magnificent_fair
+		}
+	}
+	
+	option = {
+		name = "额……"
+		set_country_flag = world_fair_accounting
+		money = -30000	
+		change_variable = {
+			which = boycotts
+			value = 1
+		}
+	}
+}
+
+country_event = {
+
+	id = 3000051
+	title = "世博会建设中断！"
+	desc = "不可避免的材料短缺使世博会的建造项目悉数停工。"
+	picture = "administration"
+	
+	trigger = {
+		has_country_flag = PlanWorldFair2 
+	}
+ 
+	mean_time_to_happen =  {
+		months = 15
+		modifier = {
+			factor = 2
+			has_country_flag = slowconstruction
+		}
+		modifier = {
+			factor = 0.8
+			has_country_flag = shoestring_fair
+		}	
+	}
+	
+	option = {
+		name = "额……"
+		money = -30000	
+		set_country_flag = slowconstruction 
+	}
+}
+
+country_event = {
+
+	id = 300006
+	title = "$YEAR$年$CAPITAL$世界博览会"
+	desc = "场地完工，世博会可以开始了！"
+	major = yes
+	trigger = {
+		has_global_flag = WorldFairUnderway
+		has_country_flag = PlanWorldFair2
+		NOT = { has_country_flag = atworldfair }
+	}
+ 
+	mean_time_to_happen =  {
+		months = 10
+		modifier = {
+			factor = 1.3
+			has_country_flag = slowconstruction
+		}
+	}
+	
+	immediate = {
+		clr_country_flag = PlanWorldFair2
+		clr_country_flag = slowconstruction
+		clr_country_flag = world_fair_accounting
+		set_country_flag = atworldfair
+	}
+	
+	option = {
+		name = "好哇！"
+		money = -10000	
+		any_country = {
+			limit = { has_country_flag = PlanWorldFairteam }
+			clr_country_flag = PlanWorldFairteam
+			country_event = 300007
+		}
+	}
+}
+
+country_event = {
+
+	id = 300007
+	title = "世博会开幕！"
+	desc = "我国代表团已前往$FROMCOUNTRY_ADJ$的世博会！"
+	picture = "Worldsfair"
+	
+	is_triggered_only = yes
+ 
+	option = {
+		name = "好哇！"
+		set_country_flag = atworldfair
+	}
+}
+
+country_event = {
+
+	id = 3000071
+	title = "在世博会被踩在脚下！"
+	desc = "$COUNTRY_ADJ$代表团与世博会内其他国家代表团相比显得相形见绌！"
+	picture = "Worldsfair"
+	
+	trigger = {
+		has_country_flag = atworldfair
+		NOT = { has_country_flag = PlanWorldFair }
+	}
+ 
+	mean_time_to_happen =  {
+		months = 1
+	}
+	
+	immediate = {
+		clr_country_flag = atworldfair
+	}
+	
+	option = {
+		name = "该死！"
+		money = -5000	
+		prestige = -10
+	}
+}
+
+country_event = {
+
+	id = 3000072
+	title = "在世博会备受尊重！"
+	desc = "$COUNTRY_ADJ$代表团在世博会的展示受人尊重。"
+	picture = "Worldsfair"
+	
+	trigger = {
+		has_country_flag = atworldfair
+		NOT = { has_country_flag = PlanWorldFair }
+	}
+ 
+	mean_time_to_happen =  {
+		months = 1
+	}
+	
+	immediate = {
+		clr_country_flag = atworldfair
+	}
+	
+	option = {
+		name = "棒极了！"
+		prestige = 5
+	}
+}
+
+country_event = {
+
+	id = 3000073
+	title = "在世博会内有杰出表现！"
+	desc = "$COUNTRY_ADJ$代表团在世博会内显得鹤立鸡群！"
+	picture = "Worldsfair"
+	
+	trigger = {
+		has_global_flag = WorldFairUnderway
+		has_country_flag = atworldfair
+		NOT = { has_country_flag = PlanWorldFair }
+		NOT = { has_global_flag = outstanding }
+	}
+ 
+	mean_time_to_happen =  {
+		months = 1
+	}
+	
+	immediate = {
+		clr_country_flag = atworldfair
+		set_global_flag = outstanding
+	}
+	
+	option = {
+		name = "万岁！"
+		money = 5000	
+		prestige = 10
+		random_country = {
+			limit = { has_country_flag = PlanWorldFair }
+			country_event = 3000074
+		}
+	}
+}
+
+country_event = {
+
+	id = 3000074
+	title = "在世博会被超过！"
+	desc = "尽管$COUNTRY_ADJ$代表团已经干得不错了，但我们仍在自己的世博会被$FROMCOUNTRY_ADJ$代表团超过。"
+	picture = "Worldsfair"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "妈的！"
+		prestige = -10
+	}
+}
+
+country_event = {
+
+	id = 3000075
+	title = "世博会评价：杰出非凡！"
+	desc = "尘埃落定的数月过后，$COUNTRY_ADJ$的世博会被认为是一次空前的成功。"
+	news = yes
+	news_title = "EVTNAME3000075_NEWS_TITLE"
+	news_desc_long = "EVTDESC3000075_NEWS_LONG"
+	news_desc_medium = "EVTDESC3000075_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC3000075_NEWS_SHORT"
+	picture = "Worldsfair"
+	
+	trigger = {
+		has_global_flag = WorldFairUnderway
+		has_country_flag = PlanWorldFair
+		has_country_flag = atworldfair
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+		modifier = {
+			factor = 0.9
+			has_country_flag = magnificent_fair
+		}
+		modifier = {
+			factor = 1.1
+			has_country_flag = shoestring_fair
+		}
+		modifier = {
+			factor = 1.2
+			has_global_flag = outstanding
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				check_variable = {
+					which = boycotts
+					value = 4
+				}
+			}
+		}
+		modifier = {
+			factor = 0.8
+			NOT = {
+				check_variable = {
+					which = boycotts
+					value = 2
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		clr_global_flag = WorldFairUnderway
+		clr_country_flag = PlanWorldFair
+		clr_country_flag = atworldfair
+		clr_country_flag = shoestring_fair
+		clr_country_flag = magnificent_fair
+		clr_global_flag = outstanding
+	}
+	
+	option = {
+		name = "所有参与者都值得赞扬！"
+		prestige = 25
+	}
+}
+
+country_event = {
+
+	id = 3000076
+	title = "世博会评价：中规中矩"
+	desc = "尘埃落定的数月过后，$COUNTRY_ADJ$的世博会尽管没有被人说很糟糕，但却逐渐被人遗忘了。"
+	news = yes
+	news_title = "EVTNAME3000075_NEWS_TITLE"
+	news_desc_long = "EVTDESC3000076_NEWS_LONG"
+	news_desc_medium = "EVTDESC3000076_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC3000076_NEWS_SHORT"
+	picture = "Worldsfair"
+	
+	trigger = {
+		has_global_flag = WorldFairUnderway
+		has_country_flag = PlanWorldFair
+		has_country_flag = atworldfair
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	immediate = {
+		clr_global_flag = WorldFairUnderway
+		clr_country_flag = PlanWorldFair
+		clr_country_flag = atworldfair
+		clr_country_flag = shoestring_fair
+		clr_country_flag = magnificent_fair
+		clr_global_flag = outstanding
+	}
+	
+	option = {
+		name = "我们下次要做得更好。"
+		prestige = 10
+	}
+}
+
+country_event = {
+
+	id = 3000077
+	title = "世博会评价：一场灾难！"
+	desc = "尘埃落定的数月过后，$COUNTRY_ADJ$的世博会被认为糟糕至极。这真是我国名声的污点！"
+	news = yes
+	news_title = "EVTNAME3000075_NEWS_TITLE"
+	news_desc_long = "EVTDESC3000077_NEWS_LONG"
+	news_desc_medium = "EVTDESC3000077_NEWS_MEDIUM"
+	news_desc_short = "EVTDESC3000077_NEWS_SHORT"
+	picture = "Worldsfair"
+	
+	trigger = {
+		has_global_flag = WorldFairUnderway
+		has_country_flag = PlanWorldFair
+		has_country_flag = atworldfair
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+		modifier = {
+			factor = 1.1
+			has_country_flag = magnificent_fair
+		}
+		modifier = {
+			factor = 0.9
+			has_country_flag = shoestring_fair
+		}
+		modifier = {
+			factor = 0.9
+			check_variable = {
+				which = boycotts
+				value = 4
+			}
+		}
+		modifier = {
+			factor = 0.8
+			check_variable = {
+				which = boycotts
+				value = 6
+			}
+		}
+	}
+	
+	immediate = {
+		clr_global_flag = WorldFairUnderway
+		clr_country_flag = PlanWorldFair
+		clr_country_flag = atworldfair
+		clr_country_flag = shoestring_fair
+		clr_country_flag = magnificent_fair
+		clr_global_flag = outstanding
+	}
+	
+	option = {
+		name = "可恶！解雇所有人！"
+		prestige = -25
+	}
+}
+
+
+
+#################################################################################
+#																				#
+#             				Regional Fairs										#
+#																				#
+#################################################################################
 
 country_event = {
 
@@ -111,32 +1508,61 @@ country_event = {
 		year = 1849
 		not = { year = 1935 }
 		not = { has_global_flag = PlanRegionalFair }
-		not = {  has_country_flag = regionalfairplanner }
+		not = { has_country_flag = regionalfairplanner }
+		not = { has_country_flag = colonialfairplanner }
+		not = { has_country_flag = PlanWorldFair }
 		war = no 
 		civilized = yes
 		or = { 
-			industrial_score = 50 # limit to major non-western economies if not a GP
+			industrial_score = 100 # limit to major non-western economies if not a GP
 			and = {
 				is_greater_power = yes # nation is a great power
-				industrial_score = 25 
+				industrial_score = 50 
 			}
 		}
 	}
  
 	mean_time_to_happen =  {
-		months = 800
-
+		months = 120
 		modifier = {
-			factor = 0.8
-			year = 1870
+			factor = 1.1
+			num_of_cities = 50
 		}
 		modifier = {
-			factor = 0.8
-			year = 1890
+			factor = 1.1
+			num_of_cities = 45
 		}
 		modifier = {
-			factor = 0.8
-			year = 1910
+			factor = 1.1
+			num_of_cities = 40
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 35
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 30
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 25
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 20
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 15
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 10
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 5
 		}
 	}
 
@@ -146,7 +1572,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA30000" # let's organize it
-		money = -250
+		money = -25000
 		set_global_flag = PlanRegionalFair
 		set_country_flag = regionalfairplanner
 	}
@@ -172,23 +1598,23 @@ country_event = {
 		months = 12
 
 		modifier = {
-			factor = 0.2
+			factor = 0.75
 			year = 1855
 		}
 		modifier = {
-			factor = 0.25
+			factor = 0.75
 			year = 1870
 		}
 		modifier = {
-			factor = 0.50
+			factor = 0.75
 			year = 1885
 		}
 		modifier = {
-			factor = 0.65
+			factor = 0.75
 			year = 1890
 		}
 		modifier = {
-			factor = 0.85
+			factor = 0.75
 			year = 1900
 		}
 	}
@@ -199,11 +1625,17 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA30003" # hold the fair
-		prestige = 10
+		prestige = 15
 		clr_global_flag = PlanRegionalFair
 		clr_country_flag = regionalfairplanner
 	}
 }
+
+#################################################################################
+#																				#
+#             				Colonial Fairs										#
+#																				#
+#################################################################################
 
 country_event = {
 
@@ -214,26 +1646,76 @@ country_event = {
 		not = { year = 1935 }
 		not = { has_global_flag = PlanColonialFair }
 		not = { has_country_flag = colonialfairplanner }
+		not = { has_country_flag = regionalfairplanner }
+		not = { has_country_flag = PlanWorldFair }
 		war = no
 		colonial_nation = yes 
 		civilized = yes
-		industrial_score = 50 
+		industrial_score = 100
 	}
  
 	mean_time_to_happen =  {
-		months = 800
+		months = 168
 
 		modifier = {
-			factor = 0.8
-			year = 1870
+			factor = 0.2
+			year = 1885
 		}
 		modifier = {
-			factor = 0.8
+			factor = 0.25
 			year = 1890
 		}
 		modifier = {
-			factor = 0.8
-			year = 1910
+			factor = 1.1
+			num_of_cities = 50
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 45
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 40
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 35
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 30
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 25
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 20
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 15
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 10
+		}
+		modifier = {
+			factor = 1.1
+			num_of_cities = 5
+		}
+		modifier = {
+			factor = 0.50
+			year = 1895
+		}
+		modifier = {
+			factor = 0.65
+			year = 1900
+		}
+		modifier = {
+			factor = 0.85
+			year = 1905
 		}
 	}
 
@@ -243,7 +1725,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA30000" # let's organize it
-		money = -500
+		money = -15000
 		set_global_flag = PlanColonialFair
 		set_country_flag = colonialfairplanner
 	}
@@ -269,23 +1751,23 @@ country_event = {
 		months = 12
 
 		modifier = {
-			factor = 0.2
+			factor = 0.75
 			year = 1885
 		}
 		modifier = {
-			factor = 0.25
+			factor = 0.75
 			year = 1890
 		}
 		modifier = {
-			factor = 0.50
+			factor = 0.75
 			year = 1895
 		}
 		modifier = {
-			factor = 0.65
+			factor = 0.75
 			year = 1900
 		}
 		modifier = {
-			factor = 0.85
+			factor = 0.75
 			year = 1905
 		}
 	}
@@ -296,7 +1778,7 @@ country_event = {
 
 	option = {
 		name = "EVTOPTA30005" # hold the fair
-		prestige = 15
+		prestige = 10
 		clr_global_flag = PlanColonialFair
 		clr_country_flag = colonialfairplanner
 	}

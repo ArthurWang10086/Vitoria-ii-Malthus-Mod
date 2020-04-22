@@ -30,7 +30,7 @@ province_event = {
 			militancy = 1
 		}
 		owner = {
-			prestige = 2
+			prestige = 10
 		}
 	}
 }
@@ -91,6 +91,6 @@ country_event = {
 	}
 	option = {
 		name = "EVTOPTA5002"
-		prestige = 2
+		prestige = 10
 	}
 }

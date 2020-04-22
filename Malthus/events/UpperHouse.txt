@@ -5,16 +5,17 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		is_ideology_enabled = socialist
 		upper_house = {
 			ideology = liberal
 			value = 0.5
 		}
-		social_reform_want = 0.25
+		social_reform_want = 0.15
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -43,15 +44,16 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		upper_house = {
 			ideology = socialist
 			value = 0.5
 		}
-		political_reform_want = 0.25
+		political_reform_want = 0.15
 	}
 	
 	mean_time_to_happen = {
-		months = 500
+		months = 150
 	}
 	
 	option = {
@@ -86,6 +88,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		universal_voting = 10
 		NOT = {
 			vote_franschise = universal_voting
@@ -93,7 +96,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 150
+		months = 100
 	}
 	
 	option = {
@@ -126,6 +129,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		yes_meeting = 10
 		NOT = {
 			public_meetings = yes_meeting
@@ -137,7 +141,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -164,6 +168,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		is_ideology_enabled = socialist
 		political_reform_want = 0.1
 		average_militancy = 4
@@ -177,7 +182,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 300
+		months = 100
 	}
 	
 	option = {
@@ -216,6 +221,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		political_reform_want = 0.1
 		NOT = {
 			press_rights = free_press
@@ -227,7 +233,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -254,6 +260,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		NOT = {
 			upper_house = {
 				ideology = reactionary
@@ -271,7 +278,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 400
+		months = 200
 	}
 	
 	option = {
@@ -298,6 +305,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		NOT = {
 			upper_house_composition = party_appointed
 		}
@@ -309,7 +317,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 700
+		months = 300
 	}
 	
 	option = {
@@ -336,6 +344,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		social_reform_want = 0.2
 		NOT = {
 			wage_reform = good_minimum_wage
@@ -347,7 +356,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -373,6 +382,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		political_reform_want = 0.15
 		average_militancy = 4
 		upper_house = {
@@ -382,7 +392,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -408,6 +418,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		is_greater_power = yes
 		social_reform_want = 0.15
 		health_care = no_health_care
@@ -418,7 +429,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -453,6 +464,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		unemployment_subsidies = no_subsidies
 		social_reform_want = 0.1
 		average_militancy = 4
@@ -463,7 +475,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -494,6 +506,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		average_militancy = 5
 		upper_house = {
 			ideology = conservative
@@ -505,7 +518,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 300
+		months = 100
 	}
 	
 	option = {
@@ -533,6 +546,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		average_militancy = 2
 		ruling_party_ideology = socialist
 		NOT = {
@@ -544,7 +558,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -554,15 +568,44 @@ country_event = {
 			value = 0.5
 		}
 		any_pop = {
-			militancy = 3
+			limit = { location = { is_colonial = no } }
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 3
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 3
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { is_ideology_enabled = fascist }
+			}
+			owner = {
+				any_pop = {
+					limit = { location = { is_colonial = no } }
+					scaled_militancy = {
+						ideology = fascist
+						factor = 3
+					}
+				}
+			}
 		}
 	}
 	
 	option = {
 		name = "EVTOPTB18130"
-		scaled_militancy = {
+		upper_house = {
 			ideology = socialist
-			factor = 4
+			value = -0.2
+		}
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = socialist
+				factor = 4
+			}
 		}
 	}
 }
@@ -574,6 +617,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		upper_house = {	
 			ideology = fascist
 			value = 0.1
@@ -588,7 +632,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -615,6 +659,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		vote_franschise = none_voting
 		average_militancy = 5
 		NOT = {
@@ -631,7 +676,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -657,6 +702,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		average_militancy = 2
 		upper_house = {
 			ideology = liberal
@@ -672,7 +718,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -697,6 +743,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		average_militancy = 3
 		upper_house = {
 			ideology = socialist
@@ -708,7 +755,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 200
+		months = 100
 	}
 	
 	option = {
@@ -738,6 +785,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		average_consciousness = 3
 		upper_house = {
 			ideology = conservative
@@ -747,7 +795,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 194
+		months = 100
 	}
 	
 	option = {
@@ -772,6 +820,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		upper_house = {
 			ideology = reactionary
 			value = 0.1
@@ -784,7 +833,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 323
+		months = 100
 	}
 	
 	option = {
@@ -816,6 +865,7 @@ country_event = {
 	picture = "Upperhouse"
 	
 	trigger = {
+		civilized = yes
 		upper_house = {
 			ideology = anarcho_liberal
 			value = 0.05
@@ -823,7 +873,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 232
+		months = 100
 	}
 	
 	option = {
@@ -845,4 +895,1702 @@ country_event = {
 			}
 		}
 	}
+}
+
+#events for reactionary UH to roll back reforms
+country_event = {
+	id = 18210
+	title = "EVTNAME18210" #The Right to Vote
+	desc = "EVTDESC18210"
+	picture = "senate_debate"
+	
+	trigger = {
+		NOT = { has_country_flag = cutoff_reactionary_UH_1 }
+		civilized = yes
+		war = no
+		OR = {
+			upper_house = {
+				ideology = reactionary
+				value = 0.5
+			}
+			upper_house = {
+				ideology = communist
+				value = 0.5
+			}
+			upper_house = {
+				ideology = fascist
+				value = 0.5
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.4
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.1
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.1
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.3
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.2
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.2
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.2
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.3
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.3
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.1
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.4
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.4
+					}
+				}
+			}
+		}
+		OR = {
+			vote_franschise = universal_voting
+			vote_franschise = universal_weighted_voting
+			vote_franschise = wealth_voting
+			vote_franschise = wealth_weighted_voting
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 5
+			ai = no
+			has_country_flag = reactionary_UH_1
+		}
+		modifier = {
+			factor = 3
+			vote_franschise = universal_voting
+		}
+		modifier = {
+			factor = 2
+			vote_franschise = universal_weighted_voting
+		}
+		modifier = {
+			factor = 1.5
+			vote_franschise = wealth_voting
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.5
+				}
+				upper_house = {
+					ideology = communist
+					value = 0.5
+				}
+				upper_house = {
+					ideology = fascist
+					value = 0.5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_country_modifier = springtime_of_nations
+				has_country_modifier = global_liberal_agitation
+			}
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 1.5
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 2
+			num_of_revolts = 1
+		}
+	}
+	
+	option = {
+		name = "让法案通过。"
+		set_country_flag = reactionary_UH_1
+		upper_house = {
+			ideology = conservative
+			value = 0.25
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+			}
+			owner = {
+				political_reform = landed_voting
+				rich_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = -5
+					militancy = -5
+				}
+				middle_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = 4
+					ideology = {
+						value = liberal
+						factor = 0.05
+					}
+					scaled_militancy = {
+						ideology = liberal
+						factor = 4
+					}
+				}
+				poor_strata = { consciousness = 2 }
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+			}
+			owner = {
+				political_reform = wealth_weighted_voting
+				rich_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = -5
+					militancy = -5
+				}
+				middle_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = 4
+					ideology = {
+						value = liberal
+						factor = 0.05
+					}
+					scaled_militancy = {
+						ideology = liberal
+						factor = 4
+					}
+				}
+				poor_strata = { consciousness = 2 }
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+			}
+			owner = {
+				political_reform = wealth_voting
+				rich_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = -5
+					militancy = -5
+				}
+				middle_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = -2
+					militancy = -2
+				}
+				poor_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = 4
+					ideology = {
+						value = liberal
+						factor = 0.05
+					}
+					scaled_militancy = {
+						ideology = liberal
+						factor = 4
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+			}
+			owner = {
+				political_reform = universal_weighted_voting
+				rich_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = -5
+					militancy = -5
+				}
+				middle_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = -3
+					militancy = -3
+				}
+				poor_strata = {
+					limit = { location = { is_colonial = no } }
+					consciousness = 4
+					ideology = {
+						value = liberal
+						factor = 0.05
+					}
+					scaled_militancy = {
+						ideology = liberal
+						factor = 4
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	option = {
+		name = "那将导致太多问题。"
+		set_country_flag = reactionary_UH_1
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		rich_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.2
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		middle_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.1
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = landed_voting
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = wealth_weighted_voting
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = wealth_voting
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = universal_weighted_voting
+						factor = 0.25
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "不要再提起此事。"
+		set_country_flag = cutoff_reactionary_UH_1
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		rich_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.2
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		middle_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.1
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = 18215
+	title = "EVTNAME18215" #Party Loyalty?
+	desc = "EVTDESC18215"
+	picture = "senate_debate"
+	
+	trigger = {
+		civilized = yes
+		upper_house_composition = appointed
+		NOT = { has_country_flag = no_party_appointed_rollback }
+		OR = {
+			ruling_party_ideology = reactionary
+			ruling_party_ideology = fascist
+			ruling_party_ideology = communist
+		}
+		OR = {
+			government = proletarian_dictatorship
+			government = presidential_dictatorship
+			government = fascist_dictatorship
+		}
+		war = no
+		OR = {
+			upper_house = {
+				ideology = reactionary
+				value = 0.5
+			}
+			upper_house = {
+				ideology = communist
+				value = 0.5
+			}
+			upper_house = {
+				ideology = fascist
+				value = 0.5
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.4
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.1
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.1
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.3
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.2
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.2
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.2
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.3
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.3
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.1
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.4
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.4
+					}
+				}
+			}
+		}		
+	}
+	
+	mean_time_to_happen = {
+		months = 24
+		modifier = {
+			factor = 0.5
+			OR = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.5
+				}
+				upper_house = {
+					ideology = communist
+					value = 0.5
+				}
+				upper_house = {
+					ideology = fascist
+					value = 0.5
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			ai = no
+			has_country_flag = reactionary_UH_2
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 1.5
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 2
+			num_of_revolts = 1
+		}
+	}
+	
+	option = {
+		name = "我们一定要让政府内部团结一致。"
+		set_country_flag = reactionary_UH_2
+		upper_house = {
+			ideology = conservative
+			value = 0.25
+		}
+		political_reform = party_appointed
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { ruling_party_ideology = reactionary }
+			}
+			owner = {
+				any_pop = {
+					limit = { location = { is_colonial = no } }
+					scaled_consciousness = {
+						ideology = reactionary
+						factor = -4
+					}
+					scaled_militancy = {
+						ideology = reactionary
+						factor = -4
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { ruling_party_ideology = communist }
+			}
+			owner = {
+				any_pop = {
+					limit = { location = { is_colonial = no } }
+					scaled_consciousness = {
+						ideology = communist
+						factor = -4
+					}
+					scaled_militancy = {
+						ideology = communist
+						factor = -4
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { ruling_party_ideology = fascist }
+			}
+			owner = {
+				any_pop = {
+					limit = { location = { is_colonial = no } }
+					scaled_consciousness = {
+						ideology = fascist
+						factor = -4
+					}
+					scaled_militancy = {
+						ideology = fascist
+						factor = -4
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "不，让政府以自己的意愿统治。"
+		set_country_flag = reactionary_UH_2
+		set_country_flag = no_party_appointed_rollback
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		any_pop = {
+			limit = {
+				location = { is_colonial = no }
+				OR = {
+					strata = rich
+					strata = middle
+				}
+			}
+			consciousness = 3
+			dominant_issue = {
+				value = party_appointed
+				factor = 0.25
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = 18220
+	title = "EVTNAME18220" #The Right to Information
+	desc = "EVTDESC18220"
+	picture = "senate_debate"
+	
+	trigger = {
+		NOT = { has_country_flag = cutoff_reactionary_UH_3 }
+		civilized = yes
+		OR = { 
+			press_rights = free_press
+			press_rights = censored_press
+		}
+		war = no
+		OR = {
+			upper_house = {
+				ideology = reactionary
+				value = 0.5
+			}
+			upper_house = {
+				ideology = communist
+				value = 0.5
+			}
+			upper_house = {
+				ideology = fascist
+				value = 0.5
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.4
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.1
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.1
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.3
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.2
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.2
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.2
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.3
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.3
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.1
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.4
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.4
+					}
+				}
+			}
+		}
+		OR = {
+			average_consciousness = 5
+			average_militancy = 3
+			num_of_revolts = 1
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 1.5
+			press_rights = free_press
+		}
+		modifier = {
+			factor = 5
+			ai = no
+			has_country_flag = reactionary_UH_3
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.5
+				}
+				upper_house = {
+					ideology = communist
+					value = 0.5
+				}
+				upper_house = {
+					ideology = fascist
+					value = 0.5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_country_modifier = springtime_of_nations
+				has_country_modifier = global_liberal_agitation
+			}
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 0.75
+			num_of_revolts = 1
+		}
+	}
+	
+	option = {
+		name = "让法案通过。"
+		set_country_flag = reactionary_UH_3
+		upper_house = {
+			ideology = conservative
+			value = 0.25
+		}
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+			}
+			owner = {
+				political_reform = censored_press
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+			}
+			owner = {
+				political_reform = state_press
+			}
+		}
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = communist
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = fascist
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	option = {
+		name = "那将导致太多问题。"
+		set_country_flag = reactionary_UH_3
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 3
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 3
+			}
+			scaled_consciousness = {
+				ideology = communist
+				factor = 3
+			}
+			scaled_consciousness = {
+				ideology = fascist
+				factor = 3
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = censored_press
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = state_press
+						factor = 0.25
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "不要再提起此事。"
+		set_country_flag = cutoff_reactionary_UH_3
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 3
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 3
+			}
+			scaled_consciousness = {
+				ideology = communist
+				factor = 3
+			}
+			scaled_consciousness = {
+				ideology = fascist
+				factor = 3
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = 18225
+	title = "EVTNAME18225" #The Right to Gather
+	desc = "EVTDESC18225"
+	picture = "senate_debate"
+	
+	trigger = {
+		civilized = yes
+		public_meetings = yes_meeting
+		war = no
+		OR = {
+			upper_house = {
+				ideology = reactionary
+				value = 0.5
+			}
+			upper_house = {
+				ideology = communist
+				value = 0.5
+			}
+			upper_house = {
+				ideology = fascist
+				value = 0.5
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.4
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.1
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.1
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.3
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.2
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.2
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.2
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.3
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.3
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.1
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.4
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.4
+					}
+				}
+			}
+		}
+		OR = {
+			average_consciousness = 5
+			average_militancy = 3
+			num_of_revolts = 1
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.5
+			OR = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.5
+				}
+				upper_house = {
+					ideology = communist
+					value = 0.5
+				}
+				upper_house = {
+					ideology = fascist
+					value = 0.5
+				}
+			}
+		}
+		modifier = {
+			factor = 5
+			ai = no
+			has_country_flag = reactionary_UH_4
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_country_modifier = springtime_of_nations
+				has_country_modifier = global_liberal_agitation
+			}
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 0.75
+			num_of_revolts = 1
+		}
+	}
+	
+	option = {
+		name = "他们是对的，我们不能忍受这种蛊惑人心的行为。"
+		set_country_flag = reactionary_UH_4
+		upper_house = {
+			ideology = conservative
+			value = 0.25
+		}
+		political_reform = no_meeting
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = communist
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = fascist
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {
+		name = "不，规则如旧。"
+		set_country_flag = reactionary_UH_4
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		any_pop = {
+			limit = {
+				location = { is_colonial = no }
+				OR = {
+					strata = rich
+					strata = middle
+				}
+			}
+			consciousness = 3
+			dominant_issue = {
+				value = no_meeting
+				factor = 0.25
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = 18230
+	title = "EVTNAME18230" #Rights of the Opposition
+	desc = "EVTDESC18230"
+	picture = "senate_debate"
+	
+	trigger = {
+		NOT = { has_country_flag = cutoff_reactionary_UH_5 }
+		civilized = yes
+		war = no
+		OR = {
+			political_parties = secret_ballots
+			political_parties = non_secret_ballots
+			political_parties = gerrymandering
+			political_parties = harassment
+		}
+		OR = {
+			upper_house = {
+				ideology = reactionary
+				value = 0.5
+			}
+			upper_house = {
+				ideology = communist
+				value = 0.5
+			}
+			upper_house = {
+				ideology = fascist
+				value = 0.5
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.4
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.1
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.1
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.3
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.2
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.2
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.2
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.3
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.3
+					}
+				}
+			}
+			AND = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.1
+				}
+				OR = {
+					upper_house = {
+						ideology = communist
+						value = 0.4
+					}
+					upper_house = {
+						ideology = fascist
+						value = 0.4
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 2
+			political_parties = secret_ballots
+		}
+		modifier = {
+			factor = 1.5
+			political_parties = non_secret_ballots
+		}
+		modifier = {
+			factor = 5
+			ai = no
+			has_country_flag = reactionary_UH_5
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.5
+				}
+				upper_house = {
+					ideology = communist
+					value = 0.5
+				}
+				upper_house = {
+					ideology = fascist
+					value = 0.5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_country_modifier = springtime_of_nations
+				has_country_modifier = global_liberal_agitation
+			}
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 5
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			average_consciousness = 9
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 2
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 3
+		}
+		modifier = {
+			factor = 1.2
+			average_militancy = 4
+		}
+		modifier = {
+			factor = 1.5
+			average_militancy = 5
+		}
+		modifier = {
+			factor = 2
+			num_of_revolts = 1
+		}
+	}
+	
+	option = {
+		name = "让法案通过。"
+		set_country_flag = reactionary_UH_5
+		upper_house = {
+			ideology = conservative
+			value = 0.25
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+			}
+			owner = {
+				political_reform = underground_parties
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+			}
+			owner = {
+				political_reform = harassment
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+			}
+			owner = {
+				political_reform = gerrymandering
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+			}
+			owner = {
+				political_reform = non_secret_ballots
+			}
+		}
+		any_pop = {
+			limit = { location = { is_colonial = no } }
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = communist
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = fascist
+				factor = -3
+			}
+			scaled_consciousness = {
+				ideology = liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+		}
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	option = {
+		name = "那将导致太多问题。"
+		set_country_flag = reactionary_UH_5
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		rich_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.2
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		middle_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.1
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = non_secret_ballots
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = gerrymandering
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = harassment
+						factor = 0.25
+					}
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+			}
+			owner = {
+				any_pop = {
+					limit = {
+						location = { is_colonial = no }
+						OR = {
+							strata = rich
+							strata = middle
+						}
+					}
+					dominant_issue = {
+						value = underground_parties
+						factor = 0.25
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = "不要再提起此事。"
+		set_country_flag = cutoff_reactionary_UH_5
+		upper_house = {
+			ideology = reactionary
+			value = 0.25
+		}
+		rich_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.3
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		middle_strata = {
+			limit = { location = { is_colonial = no } }
+			ideology = {
+				value = reactionary
+				factor = 0.2
+			}
+			scaled_consciousness = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}	
 }
